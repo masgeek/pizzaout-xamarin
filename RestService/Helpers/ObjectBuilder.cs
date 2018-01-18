@@ -21,7 +21,7 @@ namespace RestService.Helpers
 
             Orders result = null;
             if (!(token is JObject)) return null;
-
+        
             try
             {
                 result = JsonConvert.DeserializeObject<Orders>(response.Content);
@@ -34,14 +34,19 @@ namespace RestService.Helpers
             return result;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="response"></param>
+        /// <returns></returns>
         public static List<Orders> BuildOrdersObjectArr(IRestResponse response)
         {
             var token = JToken.Parse(response.Content); //validate if its object or array
 
-            JArray test = null;
+            //JArray test = null;
             List<Orders> result = null;
             if (!(token is JArray)) return null;
-
+        
             try
             {
                 result = JsonConvert.DeserializeObject<List<Orders>>(response.Content);
@@ -50,7 +55,6 @@ namespace RestService.Helpers
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                return null;
             }
 
             return result;

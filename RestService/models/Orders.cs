@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Dynamic;
+using System.Linq;
 using Newtonsoft.Json.Linq;
 using SimpleJson;
 
@@ -39,5 +40,20 @@ namespace RestService.models
         //public List<TimeLine> ORDER_TIMELINE { get; set; }
         public JArray ORDER_TIMELINE { get; set; }
         public JArray ORDER_ITEMS { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public List<OrderItems> GetOrderItems()
+        {
+            List<OrderItems> items = (ORDER_ITEMS).Select(x => new OrderItems
+            {
+                ORDER_ITEM_ID = (int)x["ORDER_ITEM_ID"],
+                ORDER_ID = (int)x["ORDER_ID"]
+            }).ToList();
+
+            return items;
+        }
     }
 }

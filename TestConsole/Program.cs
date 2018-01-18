@@ -33,7 +33,7 @@ namespace TestConsole
                 {
                     foreach (var order in orders)
                     {
-                        Console.WriteLine(order.ORDER_TOTAL);
+                        Console.WriteLine(order.GetOrderItems());
                     }
                 }
 
