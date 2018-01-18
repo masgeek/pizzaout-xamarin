@@ -45,7 +45,7 @@ namespace RestService.Helpers
             try
             {
                 result = JsonConvert.DeserializeObject<List<Orders>>(response.Content);
-                test = JsonConvert.DeserializeObject<JArray>(response.Content);
+                //test = JsonConvert.DeserializeObject<JArray>(response.Content);
             }
             catch (Exception ex)
             {

@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Dynamic;
+using Newtonsoft.Json.Linq;
+using SimpleJson;
 
 namespace RestService.models
 {
@@ -34,6 +36,8 @@ namespace RestService.models
         //public List<OrderItems> LOCATION { get; set; }
         //public List <OrderItems> ORDER_ITEMS { get; set; }
 
-        public List<TimeLine> ORDER_TIMELINE { get; set; }
+        //public List<TimeLine> ORDER_TIMELINE { get; set; }
+        public JArray ORDER_TIMELINE { get; set; }
+        public JArray ORDER_ITEMS { get; set; }
     }
 }
