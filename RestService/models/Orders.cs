@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Dynamic;
 using System.Linq;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using SimpleJson;
 
@@ -11,7 +12,7 @@ namespace RestService.models
     [SuppressMessage("ReSharper", "InconsistentNaming")]
     public class Orders
     {
-      
+
         public int ORDER_ID { get; set; }
         public int USER_ID { get; set; }
         public int LOCATION_ID { get; set; }
@@ -25,6 +26,7 @@ namespace RestService.models
         public DateTime UPDATED_AT { get; set; }
         public string PAYMENT_METHOD { get; set; }
         public string ORDER_STATUS { get; set; }
+
         public string NOTES { get; set; }
         //public Rider riderModel;
         //public AddressModel addressModelModel;
@@ -68,36 +70,37 @@ namespace RestService.models
         public List<OrderItems> GetOrderItems(JArray orderItemsJArray)
         {
             List<OrderItems> items = null;
-            if (orderItemsJArray != null)
-            {
-                var children = orderItemsJArray.Children();
+            if (orderItemsJArray == null) return null;
 
-                foreach (var child in children)
+            var children = orderItemsJArray.Children();
+
+            foreach (var child in children)
+            {
+                var itemProperties = child.Children<JProperty>();
+
+                List<JToken> properties = itemProperties.Select(o => o.Value).ToList();
+
+                foreach (var itemProperty in itemProperties)
                 {
-                    var h = child.Children<JProperty>();
+                    var t = itemProperty.Value;
                 }
-                /*
-                items = (orderItemsJArray.Children()).Select(x => new OrderItems
-                {
-                    ORDER_ITEM_ID = (int)x["ORDER_ITEM_ID"],
-                    ORDER_ID = (int)x["ORDER_ID"]
-                }).ToList();*/
             }
 
+           
             return items;
         }
 
         public List<OrderItems> GetOrderDetails(JArray orderItemsJArray)
         {
             List<OrderItems> items = null;
-            if (orderItemsJArray != null)
+            if (orderItemsJArray == null) return null;
+
+            items = (orderItemsJArray).Select(x => new OrderItems
             {
-                items = (orderItemsJArray).Select(x => new OrderItems
-                {
-                    ORDER_ITEM_ID = (int)x["ORDER_ITEM_ID"],
-                    ORDER_ID = (int)x["ORDER_ID"]
-                }).ToList();
-            }
+                ORDER_ITEM_ID = (int) x["ORDER_ITEM_ID"],
+                ORDER_ID = (int) x["ORDER_ID"]
+            }).ToList();
+
 
             return items;
         }
