@@ -38,6 +38,7 @@ namespace RestService.models
         //public List <OrderItems> ORDER_ITEMS { get; set; }
 
         //public List<TimeLine> ORDER_TIMELINE { get; set; }
+        public JArray ORDER_DETAILS { get; set; }
         public JArray ORDER_TIMELINE { get; set; }
         public JArray ORDER_ITEMS { get; set; }
 
@@ -45,13 +46,58 @@ namespace RestService.models
         /// 
         /// </summary>
         /// <returns></returns>
-        public List<OrderItems> GetOrderItems()
+        public List<TimeLine> GetOrderTimeline(JArray orderTimelineJArray)
         {
-            List<OrderItems> items = (ORDER_ITEMS).Select(x => new OrderItems
+            List<TimeLine> items = null;
+            if (orderTimelineJArray != null)
             {
-                ORDER_ITEM_ID = (int)x["ORDER_ITEM_ID"],
-                ORDER_ID = (int)x["ORDER_ID"]
-            }).ToList();
+                items = (orderTimelineJArray).Select(x => new TimeLine
+                {
+                    TRACKING_ID = (int) x["TRACKING_ID"],
+                    STATUS = (string) x["STATUS"]
+                }).ToList();
+            }
+
+            return items;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public List<OrderItems> GetOrderItems(JArray orderItemsJArray)
+        {
+            List<OrderItems> items = null;
+            if (orderItemsJArray != null)
+            {
+                var children = orderItemsJArray.Children();
+
+                foreach (var child in children)
+                {
+                    var h = child.Children<JProperty>();
+                }
+                /*
+                items = (orderItemsJArray.Children()).Select(x => new OrderItems
+                {
+                    ORDER_ITEM_ID = (int)x["ORDER_ITEM_ID"],
+                    ORDER_ID = (int)x["ORDER_ID"]
+                }).ToList();*/
+            }
+
+            return items;
+        }
+
+        public List<OrderItems> GetOrderDetails(JArray orderItemsJArray)
+        {
+            List<OrderItems> items = null;
+            if (orderItemsJArray != null)
+            {
+                items = (orderItemsJArray).Select(x => new OrderItems
+                {
+                    ORDER_ITEM_ID = (int)x["ORDER_ITEM_ID"],
+                    ORDER_ID = (int)x["ORDER_ID"]
+                }).ToList();
+            }
 
             return items;
         }
