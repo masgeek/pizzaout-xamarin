@@ -82,7 +82,9 @@ namespace RestService.models
 
                 foreach (var itemProperty in itemProperties)
                 {
-                    var t = itemProperty.Value;
+                    var th = itemProperty.Name;
+                    var t = itemProperties[th];
+                        Console.WriteLine(t.ToString());
                 }
             }
 

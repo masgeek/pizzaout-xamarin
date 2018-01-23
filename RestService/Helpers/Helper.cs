@@ -5,9 +5,11 @@ namespace RestService
     public class Helper
     {
         public static string SCHEME = "http://";
-        private static string BASE_URL = "pizzaout.so/"; //live url
-        //private static string BASE_URL = "pizza.tsobu.co.ke/"; //test url
-                        
+        //private static string BASE_URL = "pizzaout.so/"; //live url
+        private static String BASE_URL = "41.89.65.170:81/pizza/";
+        //private static String BASE_URL = "192.168.100.14/pizza/";
+                                                         //private static string BASE_URL = "pizza.tsobu.co.ke/"; //test url
+
         private static string API_ENDPOINT = "api/";
 
         /// <summary>
