@@ -67,7 +67,7 @@ namespace RestService.models
         /// 
         /// </summary>
         /// <returns></returns>
-        public List<OrderItems> GetOrderItems(JArray orderItemsJArray)
+        public List<OrderItems> GetOrderItems(JArray orderItemsJArray,string filterName = "ORDER_ITEMS")
         {
             List<OrderItems> items = null;
             if (orderItemsJArray == null) return null;
@@ -78,14 +78,18 @@ namespace RestService.models
             {
                 var itemProperties = child.Children<JProperty>();
 
-                List<JToken> properties = itemProperties.Select(o => o.Value).ToList();
+                List<JToken> properties = itemProperties
+                    .Where(f=>f.Name.Equals(filterName))
+                    .Select(o => o.Value)
+                    .ToList();
 
-                foreach (var itemProperty in itemProperties)
+                /*foreach (var itemProperty in itemProperties)
                 {
                     var th = itemProperty.Name;
                     var t = itemProperties[th];
                         Console.WriteLine(t.ToString());
-                }
+                }*/
+                Console.WriteLine(properties.ToString());
             }
 
            
