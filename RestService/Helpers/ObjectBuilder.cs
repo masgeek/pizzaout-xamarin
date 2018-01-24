@@ -17,13 +17,15 @@ namespace RestService.Helpers
         /// <returns></returns>
         public static Orders BuildOrderObject(IRestResponse response)
         {
-            var token = JToken.Parse(response.Content); //validate if its object or array
-
             Orders result = null;
-            if (!(token is JObject)) return null;
-        
             try
             {
+                var token = JToken.Parse(response.Content); //validate if its object or array
+
+         
+            if (!(token is JObject)) return null;
+        
+        
                 result = JsonConvert.DeserializeObject<Orders>(response.Content);
             }
             catch (Exception ex)
@@ -41,14 +43,17 @@ namespace RestService.Helpers
         /// <returns></returns>
         public static List<Orders> BuildOrdersObjectArr(IRestResponse response)
         {
-            var token = JToken.Parse(response.Content); //validate if its object or array
-
-            //JArray test = null;
             List<Orders> result = null;
-            if (!(token is JArray)) return null;
-        
+
             try
             {
+                var token = JToken.Parse(response.Content); //validate if its object or array
+
+            //JArray test = null;
+      
+            if (!(token is JArray)) return null;
+        
+          
                 result = JsonConvert.DeserializeObject<List<Orders>>(response.Content);
                 //test = JsonConvert.DeserializeObject<JArray>(response.Content);
             }

@@ -34,7 +34,7 @@ namespace TestConsole
                     foreach (var order in orders)
                     {
                         //Console.WriteLine(order.GetOrderTimeline(order.ORDER_TIMELINE));
-                        Console.WriteLine(order.GetOrderItems(order.ORDER_DETAILS));
+                       order.GetOrderItems(order.ORDER_DETAILS);
                     }
                 }
 

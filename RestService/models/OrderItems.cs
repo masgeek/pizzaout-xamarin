@@ -18,6 +18,6 @@ namespace RestService.models
         public string OPTIONS{ get; set; }
         public string  NOTES { get; set; }
         public DateTime CREATED_AT{ get; set; }
-        public DateTime UPDATED_AT{ get; set; }
+        public string UPDATED_AT{ get; set; }
 }
 }
