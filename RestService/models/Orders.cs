@@ -28,18 +28,7 @@ namespace RestService.models
         public string ORDER_STATUS { get; set; }
 
         public string NOTES { get; set; }
-        //public Rider riderModel;
-        //public AddressModel addressModelModel;
-        //public Location locationModel;
-        // public Payment paymentModel;
-
-        //public OrderItems OrderItems { get; set; }
-
-        //public string ORDER_ITEMS { get; set; }
-        //public List<OrderItems> LOCATION { get; set; }
-        //public List <OrderItems> ORDER_ITEMS { get; set; }
-
-        //public List<TimeLine> ORDER_TIMELINE { get; set; }
+  
         public JArray ORDER_DETAILS { get; set; }
         public JArray ORDER_TIMELINE { get; set; }
         public JArray ORDER_ITEMS { get; set; }
@@ -56,7 +45,8 @@ namespace RestService.models
                 items = (orderTimelineJArray).Select(x => new TimeLine
                 {
                     TRACKING_ID = (int) x["TRACKING_ID"],
-                    STATUS = (string) x["STATUS"]
+                    STATUS = (string) x["STATUS"],
+                    USER_VISIBLE = (bool)x["USER_VISIBLE"]
                 }).ToList();
             }
 
@@ -81,11 +71,11 @@ namespace RestService.models
                 foreach (var property in properties)
                 {
                     OrderItems item = property.ToObject<OrderItems>();
-                    //add tto list array
+                    //add to list array
                     items.Add(item);
                 }
 
-                Console.WriteLine(items.ToString());
+                Console.WriteLine(items.Count);
            
             return items;
         }
@@ -113,18 +103,21 @@ namespace RestService.models
         /// <returns></returns>
         protected List<JToken> GetSubArray(JEnumerable<JToken> children, string filterName)
         {
-            List<JToken> properties = null;
+            List<JToken> properties = new List<JToken>();
+        
             foreach (var child in children)
             {
                 var itemProperties = child.Children<JProperty>();
 
-                properties = itemProperties
+                var jToken = itemProperties
                     .Where(f => f.Name.Equals(filterName))
                     .Select(o => o.Value)
-                    .ToList();
+                    .FirstOrDefault();
+
+                properties.Add(jToken);
             }
 
-            Console.WriteLine("List countt is "+properties.Count());
+            Console.WriteLine("List count is "+properties.Count());
             return properties;
         }
     }
