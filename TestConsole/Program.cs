@@ -61,7 +61,7 @@ namespace TestConsole
                     foreach (var categoryItem in categoryItemList)
                     {
                         Console.WriteLine(categoryItem.MENU_ITEM_NAME);
-                        Console.WriteLine(categoryItem.MENU_ITEM_DESC);
+                        //Console.WriteLine(categoryItem.MENU_ITEM_DESC);
 
                       var sizes =  categoryItem.GetSizes(categoryItem.SIZES);
                        //order.GetOrderItems(order.ORDER_DETAILS);
@@ -76,16 +76,17 @@ namespace TestConsole
         {
             var user = new User
             {
-                USERNAME = "fatelord",
+                USERNAME = "fatelordb",
                 OTHER_NAMES = "Sammy",
                 SURNAME = "Weko",
                 ACCOUNT_STATUS = 1,
-                USER_TYPE = 2,
+                USER_TYPE = 1,
+                LOCATION_ID = 1,
                 ADDRESS = "TEST",
-                EMAIL = "barsamms@gmail.com",
+                EMAIL = "sammy@gmail.com",
                 MOBILE_NO = "0733333",
-                PASSWORD = "123"
-               
+                PASSWORD = "123",
+                RESET_TOKEN = Guid.NewGuid().ToString()
             };
 
             Dictionary<string, object> userRegisterPost = new Dictionary<string, object>
@@ -97,7 +98,8 @@ namespace TestConsole
                 {"LOCATION_ID", user.LOCATION_ID},
                 {"USER_NAME", user.USERNAME},
                 {"USER_TYPE", user.USER_TYPE},
-                {"PASSWORD", user.PASSWORD}
+                {"PASSWORD", user.PASSWORD},
+                {"RESET_TOKEN",user.RESET_TOKEN}
             };
 
 

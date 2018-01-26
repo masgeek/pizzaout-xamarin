@@ -40,6 +40,7 @@ namespace RestService.models
         public String USERNAME { get; set; }
         public String ADDRESS { get; set; }
 
+        public String RESET_TOKEN { get; set; }
         public String PASSWORD { get; set; }
     }
 }
