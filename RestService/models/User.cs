@@ -30,7 +30,8 @@ namespace RestService.models
         public int USER_ID { get; set; }
         public int ACCOUNT_STATUS { get; set; }
 
-        public int ACCOUNT_TYPE_ID { get; set; }
+        public int USER_TYPE { get; set; }
+        public int LOCATION_ID { get; set; }
 
         public String SURNAME { get; set; }
         public String OTHER_NAMES { get; set; }
@@ -38,5 +39,7 @@ namespace RestService.models
         public String MOBILE_NO { get; set; }
         public String USERNAME { get; set; }
         public String ADDRESS { get; set; }
+
+        public String PASSWORD { get; set; }
     }
 }

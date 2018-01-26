@@ -53,9 +53,30 @@ namespace RestService
             return restResponse;
         }
 
-        public void PostRequest(string endpoint)
+        public async Task<IRestResponse> PostRequest(string endpoint, Dictionary<string, object> objectToUpdate)
         {
-            request = new RestRequest(endpoint, Method.POST);
+            IRestResponse response = null;
+            var cancellationTokenSource = new CancellationTokenSource();
+
+            request = new RestRequest(SetEndPoint(endpoint), Method.POST)
+            {
+                RequestFormat = DataFormat.Json,
+                AlwaysMultipartFormData = true
+            };
+
+            //request.AddParameter("text/json", json, ParameterType.RequestBody);
+            //request.AddJsonBody(json);
+           foreach (var pair in objectToUpdate)
+            {
+                request.AddParameter(pair.Key, pair.Value);
+            }
+
+            if (client != null)
+            {
+                response = await client.ExecuteTaskAsync(request, cancellationTokenSource.Token);
+            }
+
+            return response;
         }
 
         public void PutRequest(string endpoint)

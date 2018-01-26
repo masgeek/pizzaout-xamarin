@@ -19,7 +19,8 @@ namespace TestConsole
             rest = RestServiceFactory.Instance;
 
            // CallOrderRest();
-            CallMenuCategoriesRest();
+           // CallMenuCategoriesRest();
+            RegisterUserRest();
 
             Console.ReadLine();
         }
@@ -71,7 +72,40 @@ namespace TestConsole
             }
         }
 
+        private static async void RegisterUserRest()
+        {
+            var user = new User
+            {
+                USERNAME = "fatelord",
+                OTHER_NAMES = "Sammy",
+                SURNAME = "Weko",
+                ACCOUNT_STATUS = 1,
+                USER_TYPE = 2,
+                ADDRESS = "TEST",
+                EMAIL = "barsamms@gmail.com",
+                MOBILE_NO = "0733333",
+                PASSWORD = "123"
+               
+            };
 
+            Dictionary<string, object> userRegisterPost = new Dictionary<string, object>
+            {
+                {"SURNAME", user.SURNAME},
+                {"OTHER_NAMES", user.OTHER_NAMES},
+                {"MOBILE", user.MOBILE_NO},
+                {"EMAIL", user.EMAIL},
+                {"LOCATION_ID", user.LOCATION_ID},
+                {"USER_NAME", user.USERNAME},
+                {"USER_TYPE", user.USER_TYPE},
+                {"PASSWORD", user.PASSWORD}
+            };
+
+
+            IRestResponse restResponse = await rest.PostRequest("v1/users/register",userRegisterPost);
+
+            Console.WriteLine(restResponse.Content);
+
+        }
         private static async void CallOrderRest()
         {
             IRestResponse restResponse = await rest.GetRequest("v1/orders");
