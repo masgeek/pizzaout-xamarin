@@ -106,10 +106,10 @@ namespace TestConsole
 
             IRestResponse restResponse = await rest.PostRequest("v1/users/register",userRegisterPost);
 
-           var UserModel = ObjectBuilder.BuildUserObject(restResponse);
-            if (UserModel != null)
+           var userModel = ObjectBuilder.BuildUserList(restResponse);
+            if (userModel != null)
             {
-                Console.WriteLine(UserModel.USERNAME);
+                //Console.WriteLine(userModel[0].USERNAME);
             }
 
         }
