@@ -78,14 +78,14 @@ namespace TestConsole
             {
                 USERNAME = "fatelordb",
                 OTHER_NAMES = "Sammy",
-                SURNAME = "Weko",
-                ACCOUNT_STATUS = 1,
+                SURNAME = "Barasa",
+                USER_STATUS = (int)User.ACCOUNT_STATUS.ACTIVE, //user is active or not
                 USER_TYPE = 1,
                 LOCATION_ID = 1,
                 ADDRESS = "TEST",
                 EMAIL = "sammy@gmail.com",
                 MOBILE_NO = "0733333",
-                PASSWORD = "123",
+                PASSWORD = "123456",
                 RESET_TOKEN = Guid.NewGuid().ToString()
             };
 
@@ -99,13 +99,18 @@ namespace TestConsole
                 {"USER_NAME", user.USERNAME},
                 {"USER_TYPE", user.USER_TYPE},
                 {"PASSWORD", user.PASSWORD},
-                {"RESET_TOKEN",user.RESET_TOKEN}
+                {"RESET_TOKEN",user.RESET_TOKEN},
+                {"USER_STATUS",user.USER_STATUS}
             };
 
 
             IRestResponse restResponse = await rest.PostRequest("v1/users/register",userRegisterPost);
 
-            Console.WriteLine(restResponse.Content);
+           var UserModel = ObjectBuilder.BuildUserObject(restResponse);
+            if (UserModel != null)
+            {
+                Console.WriteLine(UserModel.USERNAME);
+            }
 
         }
         private static async void CallOrderRest()

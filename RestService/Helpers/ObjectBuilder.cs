@@ -149,5 +149,45 @@ namespace RestService.Helpers
             return result;
         }
         #endregion menu catgory items
+
+        #region Build user object
+        public static User BuildUserObject(IRestResponse response)
+        {
+            User userObject = null;
+            try
+            {
+                var token = JToken.Parse(response.Content); //validate if its object or array
+
+                if (!(token is JObject)) return null;
+                userObject = JsonConvert.DeserializeObject<User>(response.Content);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+            }
+
+            return userObject;
+        }
+
+        public static List<User> BuildUserList(IRestResponse response)
+        {
+            List<User> userList = null;
+
+            try
+            {
+                var token = JToken.Parse(response.Content); //validate if its object or array
+
+                if (!(token is JArray)) return null;
+
+                userList = JsonConvert.DeserializeObject<List<User>>(response.Content);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            return userList;
+        }
+        #endregion Building os user object
     }
 }

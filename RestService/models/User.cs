@@ -27,8 +27,16 @@ namespace RestService.models
     [SuppressMessage("ReSharper", "InconsistentNaming")]
     public class User
     {
+        public enum ACCOUNT_STATUS
+
+        {
+            DEACTIVATED = 0,
+            ACTIVE = 1,
+        };
+
         public int USER_ID { get; set; }
-        public int ACCOUNT_STATUS { get; set; }
+
+        public int USER_STATUS { get; set; }
 
         public int USER_TYPE { get; set; }
         public int LOCATION_ID { get; set; }
