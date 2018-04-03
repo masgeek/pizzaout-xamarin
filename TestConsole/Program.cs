@@ -18,10 +18,10 @@ namespace TestConsole
         {
             rest = RestServiceFactory.Instance;
 
-           // CallOrderRest();
-           // CallMenuCategoriesRest();
-            RegisterUserRest();
-
+             CallOrderRest();
+             CallMenuCategoriesRest();
+            //RegisterUserRest();
+            //Console.WriteLine("Hello sammy i am here");
             Console.ReadLine();
         }
 
