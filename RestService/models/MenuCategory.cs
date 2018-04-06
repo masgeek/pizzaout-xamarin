@@ -4,7 +4,7 @@ using System.Text;
 
 namespace RestService.models
 {
-    public class MenuCategories
+    public class MenuCategory
     {
         public int MENU_CAT_ID { get; set; }
 

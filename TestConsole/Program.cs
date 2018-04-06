@@ -12,35 +12,78 @@ namespace TestConsole
 {
     class Program
     {
-        private static RestServiceFactory rest;
-
+        private static RestServiceFactory _rest;
+        static int userId = 72;
         static void Main()
         {
-            rest = RestServiceFactory.Instance;
+            _rest = RestServiceFactory.Instance;
 
-             CallOrderRest();
-             CallMenuCategoriesRest();
+             //CallOrderRest();
+            // CallMenuCategoriesRest();
             //RegisterUserRest();
+
+            //GetCartItems(userId);
+            GetOrderHistory(userId);
             //Console.WriteLine("Hello sammy i am here");
             Console.ReadLine();
         }
 
-        private static async void CallMenuCategoriesRest()
+        private static async void GetOrderHistory(int userId)
         {
-            IRestResponse restResponse = await rest.GetRequest("v1/menucategories");
+            IRestResponse restResponse = await _rest.GetRequest($"v1/my-cart/{userId}/items");
             if (restResponse != null)
             {
-                List<MenuCategories> menuCategories = ObjectBuilder.BuildMenuCategoryList(restResponse);
+                List<CartItem> cartItemList = ObjectBuilder.BuildCartItemList(restResponse);
+
+                if (cartItemList != null)
+                {
+                    foreach (var cartItem in cartItemList)
+                    {
+                        Console.WriteLine(cartItem.ITEM_PRICE);
+                    }
+                }
+
+                Console.WriteLine("Press any key to exit");
+            }
+        }
+
+
+        private static async void GetCartItems(int userId)
+        {
+            IRestResponse restResponse = await _rest.GetRequest($"v1/my-cart/{userId}/items");
+            if (restResponse != null)
+            {
+                List<CartItem> cartItemList = ObjectBuilder.BuildCartItemList(restResponse);
+
+                if (cartItemList != null)
+                {
+                    foreach (var cartItem in cartItemList)
+                    {
+                       Console.WriteLine(cartItem.ITEM_PRICE);
+                    }
+                }
+
+                Console.WriteLine("Press any key to exit");
+            }
+        }
+
+
+        private static async void CallMenuCategoriesRest()
+        {
+            IRestResponse restResponse = await _rest.GetRequest("v1/menucategories");
+            if (restResponse != null)
+            {
+                List<MenuCategory> menuCategories = ObjectBuilder.BuildMenuCategoryList(restResponse);
 
                 if (menuCategories != null)
                 {
                     foreach (var menuCategory in menuCategories)
                     {
-                        Console.WriteLine(menuCategory.MENU_CAT_NAME);
+                       // Console.WriteLine(menuCategory.MENU_CAT_NAME);
                         // Console.WriteLine(menuCategory.MENU_CAT_IMAGE);
                         //order.GetOrderItems(order.ORDER_DETAILS);
                         //get teh items under this menu
-                        Console.WriteLine("----------------------------------");
+                        //Console.WriteLine("----------------------------------");
                         CallMenuCategoryItemsRest(menuCategory.MENU_CAT_ID);
                     }
                 }
@@ -51,13 +94,14 @@ namespace TestConsole
 
         private static async void CallMenuCategoryItemsRest(int menuCategoryMenuCatId)
         {
-            IRestResponse restResponse = await rest.GetRequest("v1/menuitems/"+menuCategoryMenuCatId+"/cat-item");
+            IRestResponse restResponse = await _rest.GetRequest($"v1/menuitems/{menuCategoryMenuCatId}/cat-item");
             if (restResponse != null)
             {
-                List<MenuCategoryItems> categoryItemList = ObjectBuilder.BuildCategoryItemList(restResponse);
+                List<MenuCategoryItem> categoryItemList = ObjectBuilder.BuildCategoryItemList(restResponse);
 
                 if (categoryItemList != null)
                 {
+                    Console.WriteLine("------------------------------");
                     foreach (var categoryItem in categoryItemList)
                     {
                         Console.WriteLine(categoryItem.MENU_ITEM_NAME);
@@ -68,7 +112,7 @@ namespace TestConsole
                     }
                 }
 
-                Console.WriteLine("------------------------------");
+                //Console.WriteLine("------------------------------");
             }
         }
 
@@ -104,7 +148,7 @@ namespace TestConsole
             };
 
 
-            IRestResponse restResponse = await rest.PostRequest("v1/users/register",userRegisterPost);
+            IRestResponse restResponse = await _rest.PostRequest("v1/users/register",userRegisterPost);
 
            var userModel = ObjectBuilder.BuildUserList(restResponse);
             if (userModel != null)
@@ -113,12 +157,13 @@ namespace TestConsole
             }
 
         }
+
         private static async void CallOrderRest()
         {
-            IRestResponse restResponse = await rest.GetRequest("v1/orders");
+            IRestResponse restResponse = await _rest.GetRequest("v1/orders");
             if (restResponse != null)
             {
-                List<Orders> orders = ObjectBuilder.BuildOrdersList(restResponse);
+                List<Order> orders = ObjectBuilder.BuildOrdersList(restResponse);
 
                 if (orders != null)
                 {

@@ -17,9 +17,9 @@ namespace RestService.Helpers
         /// </summary>
         /// <param name="response"></param>
         /// <returns></returns>
-        public static Orders BuildOrderObject(IRestResponse response)
+        public static Order BuildOrderObject(IRestResponse response)
         {
-            Orders result = null;
+            Order result = null;
             try
             {
                 var token = JToken.Parse(response.Content); //validate if its object or array
@@ -28,7 +28,7 @@ namespace RestService.Helpers
                 if (!(token is JObject)) return null;
 
 
-                result = JsonConvert.DeserializeObject<Orders>(response.Content);
+                result = JsonConvert.DeserializeObject<Order>(response.Content);
             }
             catch (Exception ex)
             {
@@ -43,9 +43,9 @@ namespace RestService.Helpers
         /// </summary>
         /// <param name="response"></param>
         /// <returns></returns>
-        public static List<Orders> BuildOrdersList(IRestResponse response)
+        public static List<Order> BuildOrdersList(IRestResponse response)
         {
-            List<Orders> result = null;
+            List<Order> result = null;
 
             try
             {
@@ -54,7 +54,7 @@ namespace RestService.Helpers
                 if (!(token is JArray)) return null;
 
 
-                result = JsonConvert.DeserializeObject<List<Orders>>(response.Content);
+                result = JsonConvert.DeserializeObject<List<Order>>(response.Content);
             }
             catch (Exception ex)
             {
@@ -68,15 +68,15 @@ namespace RestService.Helpers
 
         #region menu catgories
 
-        public static MenuCategories BuildCategoryObject(IRestResponse response)
+        public static MenuCategory BuildCategoryObject(IRestResponse response)
         {
-            MenuCategories result = null;
+            MenuCategory result = null;
             try
             {
                 var token = JToken.Parse(response.Content); //validate if its object or array
            
                 if (!(token is JObject)) return null;
-                result = JsonConvert.DeserializeObject<MenuCategories>(response.Content);
+                result = JsonConvert.DeserializeObject<MenuCategory>(response.Content);
             }
             catch (Exception ex)
             {
@@ -86,9 +86,9 @@ namespace RestService.Helpers
             return result;
         }
 
-        public static List<MenuCategories> BuildMenuCategoryList(IRestResponse response)
+        public static List<MenuCategory> BuildMenuCategoryList(IRestResponse response)
         {
-            List<MenuCategories> result = null;
+            List<MenuCategory> result = null;
 
             try
             {
@@ -97,7 +97,7 @@ namespace RestService.Helpers
                 if (!(token is JArray)) return null;
 
 
-                result = JsonConvert.DeserializeObject<List<MenuCategories>>(response.Content);
+                result = JsonConvert.DeserializeObject<List<MenuCategory>>(response.Content);
             }
             catch (Exception ex)
             {
@@ -108,17 +108,17 @@ namespace RestService.Helpers
         }
         #endregion menu categories
 
-        #region menu catgory items
+        #region menu category items
 
-        public static MenuCategoryItems BuildCategoryItemObject(IRestResponse response)
+        public static MenuCategoryItem BuildCategoryItemObject(IRestResponse response)
         {
-            MenuCategoryItems result = null;
+            MenuCategoryItem result = null;
             try
             {
                 var token = JToken.Parse(response.Content); //validate if its object or array
 
                 if (!(token is JObject)) return null;
-                result = JsonConvert.DeserializeObject<MenuCategoryItems>(response.Content);
+                result = JsonConvert.DeserializeObject<MenuCategoryItem>(response.Content);
             }
             catch (Exception ex)
             {
@@ -128,9 +128,9 @@ namespace RestService.Helpers
             return result;
         }
 
-        public static List<MenuCategoryItems> BuildCategoryItemList(IRestResponse response)
+        public static List<MenuCategoryItem> BuildCategoryItemList(IRestResponse response)
         {
-            List<MenuCategoryItems> result = null;
+            List<MenuCategoryItem> result = null;
 
             try
             {
@@ -139,7 +139,7 @@ namespace RestService.Helpers
                 if (!(token is JArray)) return null;
 
 
-                result = JsonConvert.DeserializeObject<List<MenuCategoryItems>>(response.Content);
+                result = JsonConvert.DeserializeObject<List<MenuCategoryItem>>(response.Content);
             }
             catch (Exception ex)
             {
@@ -189,5 +189,47 @@ namespace RestService.Helpers
             return userList;
         }
         #endregion Building os user object
+
+        #region cart items
+
+        public static CartItem BuildCartItemObject(IRestResponse response)
+        {
+            CartItem result = null;
+            try
+            {
+                var token = JToken.Parse(response.Content); //validate if its object or array
+
+                if (!(token is JObject)) return null;
+                result = JsonConvert.DeserializeObject<CartItem>(response.Content);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+            }
+
+            return result;
+        }
+
+        public static List<CartItem> BuildCartItemList(IRestResponse response)
+        {
+            List<CartItem> result = null;
+
+            try
+            {
+                var token = JToken.Parse(response.Content); //validate if its object or array
+
+                if (!(token is JArray)) return null;
+
+
+                result = JsonConvert.DeserializeObject<List<CartItem>>(response.Content);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            return result;
+        }
+        #endregion cart items
     }
 }

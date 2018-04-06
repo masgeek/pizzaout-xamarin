@@ -4,7 +4,7 @@ using System.Text;
 
 namespace RestService.models
 {
-    public class ItemSizes
+    public class ItemSize
     {
         public int ITEM_TYPE_ID { get; set; }
         public int MENU_ITEM_ID { get; set; }

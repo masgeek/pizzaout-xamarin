@@ -10,7 +10,7 @@ using SimpleJson;
 namespace RestService.models
 {
     [SuppressMessage("ReSharper", "InconsistentNaming")]
-    public class Orders
+    public class Order
     {
 
         public int ORDER_ID { get; set; }
@@ -57,9 +57,9 @@ namespace RestService.models
         /// 
         /// </summary>
         /// <returns></returns>
-        public List<OrderItems> GetOrderItems(JArray orderItemsJArray, string filterName = "ORDER_ITEMS")
+        public List<OrderItem> GetOrderItems(JArray orderItemsJArray, string filterName = "ORDER_ITEMS")
         {
-            List<OrderItems> items = new List<OrderItems>();
+            List<OrderItem> items = new List<OrderItem>();
 
             if (orderItemsJArray == null) return null;
 
@@ -70,7 +70,7 @@ namespace RestService.models
                 //loop through the arrray list
                 foreach (var property in properties)
                 {
-                    OrderItems item = property.ToObject<OrderItems>();
+                    OrderItem item = property.ToObject<OrderItem>();
                     //add to list array
                     items.Add(item);
                 }
@@ -80,12 +80,12 @@ namespace RestService.models
             return items;
         }
 
-        public List<OrderItems> GetOrderDetails(JArray orderItemsJArray)
+        public List<OrderItem> GetOrderDetails(JArray orderItemsJArray)
         {
-            List<OrderItems> items = new List<OrderItems>();
+            List<OrderItem> items = new List<OrderItem>();
             if (orderItemsJArray == null) return null;
 
-            items = (orderItemsJArray).Select(x => new OrderItems
+            items = (orderItemsJArray).Select(x => new OrderItem
             {
                 ORDER_ITEM_ID = (int) x["ORDER_ITEM_ID"],
                 ORDER_ID = (int) x["ORDER_ID"]

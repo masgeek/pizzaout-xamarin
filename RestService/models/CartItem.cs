@@ -6,7 +6,7 @@ using System.Text;
 namespace RestService.models
 {
     [SuppressMessage("ReSharper", "InconsistentNaming")]
-    public class CartItems
+    public class CartItem
     {
         public int CART_ITEM_ID { get; set; }
 
@@ -26,6 +26,6 @@ namespace RestService.models
 
         public DateTime UPDATED_AT { get; set; }
 
-        public MenuCategoryItems MENU_CAT_ITEM { get; set; }
+        public MenuCategoryItem MENU_CAT_ITEM { get; set; }
     }
 }

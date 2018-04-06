@@ -6,7 +6,7 @@ using System.Text;
 namespace RestService.models
 {
     [SuppressMessage("ReSharper", "InconsistentNaming")]
-    public class OrderItems
+    public class OrderItem
     {
         public int ORDER_ITEM_ID { get; set; }
         public int ORDER_ID { get; set; }

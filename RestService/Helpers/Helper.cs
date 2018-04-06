@@ -1,17 +1,15 @@
-﻿using System;
-
-namespace RestService
+﻿namespace RestService.Helpers
 {
     public class Helper
     {
-        public static string SCHEME = "http://";
-        private static string BASE_URL = "pizzaout.so/"; //live url
+        public static string UriScheme = "https://";
+        //private static string BASE_URL = "pizzaout.so/"; //live url
         //private static String BASE_URL = "41.89.65.170:81/pizza/";
         //private static String BASE_URL = "pizza.tsobu.co.ke/";
         //private static String BASE_URL = "192.168.100.14/pizza/";
-        //private static string BASE_URL = "pizza.tsobu.co.ke/"; //test url
+        private const string BaseUrl = "pizza.tsobu.co.ke/"; //test url
 
-        private static string API_ENDPOINT = "api/";
+        private const string ApiEndpoint = "api/";
 
         /// <summary>
         /// Create the full api enpoint url
@@ -19,7 +17,7 @@ namespace RestService
         /// <returns></returns>
         public static string API_URL()
         {
-            return SCHEME + BASE_URL + API_ENDPOINT;
+            return UriScheme + BaseUrl + ApiEndpoint;
         }
 
         /// <summary>

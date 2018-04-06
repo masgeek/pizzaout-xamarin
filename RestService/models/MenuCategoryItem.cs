@@ -6,7 +6,7 @@ using Newtonsoft.Json.Linq;
 
 namespace RestService.models
 {
-    public class MenuCategoryItems
+    public class MenuCategoryItem
     {
         public int MENU_ITEM_ID { get; set; }
         public int MENU_CAT_ID { get; set; }
@@ -33,12 +33,12 @@ namespace RestService.models
         /// </summary>
         /// <param name="sizesJArray"></param>
         /// <returns></returns>
-        public List<ItemSizes> GetSizes(JArray sizesJArray)
+        public List<ItemSize> GetSizes(JArray sizesJArray)
         {
-            List<ItemSizes> itemSizes = null;
+            List<ItemSize> itemSizes = null;
             if (sizesJArray != null)
             {
-                itemSizes = (sizesJArray).Select(x => new ItemSizes
+                itemSizes = (sizesJArray).Select(x => new ItemSize
                 {
                     ITEM_TYPE_ID = (int)x["ITEM_TYPE_ID"],
                     MENU_ITEM_ID = (int)x["MENU_ITEM_ID"],

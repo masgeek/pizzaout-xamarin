@@ -4,6 +4,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using RestService.Helpers;
 using RestService.models;
 using RestSharp;
 namespace RestService
