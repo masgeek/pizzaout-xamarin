@@ -1,8 +1,8 @@
-﻿{
+{
   "images": [
     {
-	  "filename": "Second.pdf",
-      "idiom": "universal"
+      "idiom": "universal",
+      "filename": "Second.pdf"
     },
     {
       "scale": "1x",
@@ -28,26 +28,18 @@
       "idiom": "iphone"
     },
     {
-      "subtype": "retina4",
       "scale": "2x",
-      "idiom": "iphone"
+      "idiom": "iphone",
+      "subtype": "retina4"
     },
     {
       "scale": "3x",
       "idiom": "iphone"
-    },
-    {
-      "idiom": "ipad"
-    },
-    {
-      "scale": "1x",
-      "idiom": "ipad"
-    },
-    {
-      "scale": "2x",
-      "idiom": "ipad"
     }
   ],
+  "properties": {
+    "template-rendering-intent": ""
+  },
   "info": {
     "version": 1,
     "author": "xcode"

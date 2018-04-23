@@ -31,13 +31,6 @@
         </view>
     </objects>
     <resources>
-        <image name="icons/apron.png" width="512" height="512"/>
-        <image name="icons/artichoke.png" width="512" height="512"/>
-        <image name="icons/avocado.png" width="512" height="512"/>
-        <image name="icons/bacon.png" width="512" height="512"/>
-        <image name="icons/banana.png" width="512" height="512"/>
-        <image name="icons/beer-1.png" width="512" height="512"/>
-        <image name="icons/beer-2.png" width="512" height="512"/>
         <image name="icons/beer.png" width="512" height="512"/>
         <image name="icons/bell-pepper.png" width="512" height="512"/>
         <image name="icons/birthday-cake.png" width="512" height="512"/>
@@ -125,5 +118,6 @@
         <image name="icons/whisk.png" width="512" height="512"/>
         <image name="icons/wine-glass-1.png" width="512" height="512"/>
         <image name="icons/wine-glass.png" width="512" height="512"/>
+        <image name="pizza.png" width="48" height="48"/>
     </resources>
 </document>

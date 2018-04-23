@@ -7,14 +7,23 @@
 using Foundation;
 using System;
 using System.CodeDom.Compiler;
+using UIKit;
 
 namespace PizzaOut
 {
-    [Register ("FirstViewController")]
-    partial class FirstViewController
+    [Register ("MenuViewController")]
+    partial class MenuViewController
     {
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UITabBarItem tabCart { get; set; }
+
         void ReleaseDesignerOutlets ()
         {
+            if (tabCart != null) {
+                tabCart.Dispose ();
+                tabCart = null;
+            }
         }
     }
 }

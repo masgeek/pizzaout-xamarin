@@ -58,23 +58,46 @@
     <ConsolePause>false</ConsolePause>
     <CodesignKey>iPhone Developer</CodesignKey>
   </PropertyGroup>
+  <PropertyGroup Condition=" '$(RunConfiguration)' == 'Default' ">
+    <AppExtensionDebugBundleId />
+  </PropertyGroup>
   <ItemGroup>
+    <Compile Include="CartViewController.cs" />
+    <Compile Include="CartViewController.designer.cs">
+      <DependentUpon>CartViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LoginViewController.cs" />
+    <Compile Include="LoginViewController.designer.cs">
+      <DependentUpon>LoginViewController.cs</DependentUpon>
+    </Compile>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
+    <Compile Include="SignUpViewController.cs" />
+    <Compile Include="SignUpViewController.designer.cs">
+      <DependentUpon>SignUpViewController.cs</DependentUpon>
+    </Compile>
     <None Include="GettingStarted.Xamarin" />
     <None Include="Info.plist" />
+    <Compile Include="MenuViewController.cs" />
+    <Compile Include="MenuViewController.designer.cs">
+      <DependentUpon>MenuViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OrderHistoryViewController.cs" />
+    <Compile Include="OrderHistoryViewController.designer.cs">
+      <DependentUpon>OrderHistoryViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OrdersViewController.cs" />
+    <Compile Include="OrdersViewController.designer.cs">
+      <DependentUpon>OrdersViewController.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <InterfaceDefinition Include="Resources\LaunchScreen.xib" />
+    <InterfaceDefinition Include="Login.storyboard" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FirstViewController.cs" />
-    <Compile Include="FirstViewController.designer.cs">
-      <DependentUpon>FirstViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="SecondViewController.cs" />
-    <Compile Include="SecondViewController.designer.cs">
-      <DependentUpon>SecondViewController.cs</DependentUpon>
-    </Compile>
+    <ImageAsset Include="Resources\Images.xcassets\Second.imageset\Second.pdf">
+      <Visible>false</Visible>
+    </ImageAsset>
     <InterfaceDefinition Include="Main.storyboard" />
     <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Contents.json">
       <Visible>false</Visible>
@@ -88,9 +111,6 @@
     <ImageAsset Include="Resources\Images.xcassets\Second.imageset\Contents.json">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Resources\Images.xcassets\Second.imageset\Second.pdf">
-      <Visible>false</Visible>
-    </ImageAsset>
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -100,101 +120,8 @@
     <Reference Include="Xamarin.iOS" />
   </ItemGroup>
   <ItemGroup>
+    <BundleResource Include="bread-1.png" />
     <Content Include="Entitlements.plist" />
-    <BundleResource Include="icons\apron.png" />
-    <BundleResource Include="icons\artichoke.png" />
-    <BundleResource Include="icons\avocado.png" />
-    <BundleResource Include="icons\bacon.png" />
-    <BundleResource Include="icons\banana.png" />
-    <BundleResource Include="icons\beer-1.png" />
-    <BundleResource Include="icons\beer-2.png" />
-    <BundleResource Include="icons\beer.png" />
-    <BundleResource Include="icons\bell-pepper.png" />
-    <BundleResource Include="icons\birthday-cake.png" />
-    <BundleResource Include="icons\blender.png" />
-    <BundleResource Include="icons\bread-1.png" />
-    <BundleResource Include="icons\bread.png" />
-    <BundleResource Include="icons\broccoli.png" />
-    <BundleResource Include="icons\burger.png" />
-    <BundleResource Include="icons\burrito.png" />
-    <BundleResource Include="icons\cabbage.png" />
-    <BundleResource Include="icons\carrot.png" />
-    <BundleResource Include="icons\champagne.png" />
-    <BundleResource Include="icons\cheese-burger.png" />
-    <BundleResource Include="icons\cheese.png" />
-    <BundleResource Include="icons\cherries.png" />
-    <BundleResource Include="icons\chicken-leg.png" />
-    <BundleResource Include="icons\cinnamon-roll.png" />
-    <BundleResource Include="icons\cleaver.png" />
-    <BundleResource Include="icons\coffee-1.png" />
-    <BundleResource Include="icons\coffee.png" />
-    <BundleResource Include="icons\corkscrew.png" />
-    <BundleResource Include="icons\corncob.png" />
-    <BundleResource Include="icons\crab.png" />
-    <BundleResource Include="icons\cutlery.png" />
-    <BundleResource Include="icons\doughnut.png" />
-    <BundleResource Include="icons\drink.png" />
-    <BundleResource Include="icons\eggplant.png" />
-    <BundleResource Include="icons\energy-drink.png" />
-    <BundleResource Include="icons\fish.png" />
-    <BundleResource Include="icons\french-fries.png" />
-    <BundleResource Include="icons\fried-egg-1.png" />
-    <BundleResource Include="icons\fried-egg.png" />
-    <BundleResource Include="icons\frozen-yogurt.png" />
-    <BundleResource Include="icons\glass.png" />
-    <BundleResource Include="icons\grapes.png" />
-    <BundleResource Include="icons\hot-dog.png" />
-    <BundleResource Include="icons\jelly.png" />
-    <BundleResource Include="icons\ketchup.png" />
-    <BundleResource Include="icons\kettle.png" />
-    <BundleResource Include="icons\kiwi.png" />
-    <BundleResource Include="icons\ladle.png" />
-    <BundleResource Include="icons\lemon.png" />
-    <BundleResource Include="icons\lemonade-1.png" />
-    <BundleResource Include="icons\lemonade.png" />
-    <BundleResource Include="icons\lobster.png" />
-    <BundleResource Include="icons\masher.png" />
-    <BundleResource Include="icons\milk-bottle.png" />
-    <BundleResource Include="icons\muffin.png" />
-    <BundleResource Include="icons\mussel.png" />
-    <BundleResource Include="icons\olive-oil.png" />
-    <BundleResource Include="icons\olives.png" />
-    <BundleResource Include="icons\onion.png" />
-    <BundleResource Include="icons\orange.png" />
-    <BundleResource Include="icons\pancakes.png" />
-    <BundleResource Include="icons\pear.png" />
-    <BundleResource Include="icons\pie.png" />
-    <BundleResource Include="icons\pineapple.png" />
-    <BundleResource Include="icons\pizza-cutter.png" />
-    <BundleResource Include="icons\pizza.png" />
-    <BundleResource Include="icons\pumpkin.png" />
-    <BundleResource Include="icons\radish.png" />
-    <BundleResource Include="icons\rice.png" />
-    <BundleResource Include="icons\roast-chicken.png" />
-    <BundleResource Include="icons\rolling-pin.png" />
-    <BundleResource Include="icons\salad.png" />
-    <BundleResource Include="icons\salt.png" />
-    <BundleResource Include="icons\sandwich.png" />
-    <BundleResource Include="icons\shrimp.png" />
-    <BundleResource Include="icons\skewer.png" />
-    <BundleResource Include="icons\soda-1.png" />
-    <BundleResource Include="icons\soda-2.png" />
-    <BundleResource Include="icons\soda-3.png" />
-    <BundleResource Include="icons\soda.png" />
-    <BundleResource Include="icons\soup.png" />
-    <BundleResource Include="icons\spaghetti.png" />
-    <BundleResource Include="icons\steak.png" />
-    <BundleResource Include="icons\strawberry.png" />
-    <BundleResource Include="icons\sushi-1.png" />
-    <BundleResource Include="icons\sushi.png" />
-    <BundleResource Include="icons\tomato.png" />
-    <BundleResource Include="icons\vinegar.png" />
-    <BundleResource Include="icons\water-1.png" />
-    <BundleResource Include="icons\water.png" />
-    <BundleResource Include="icons\watermelon.png" />
-    <BundleResource Include="icons\whisk.png" />
-    <BundleResource Include="icons\wine-glass-1.png" />
-    <BundleResource Include="icons\wine-glass.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

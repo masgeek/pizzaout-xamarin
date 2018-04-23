@@ -7,11 +7,12 @@
 using Foundation;
 using System;
 using System.CodeDom.Compiler;
+using UIKit;
 
 namespace PizzaOut
 {
-    [Register ("SecondViewController")]
-    partial class SecondViewController
+    [Register ("OrdersViewController")]
+    partial class OrdersViewController
     {
         void ReleaseDesignerOutlets ()
         {
