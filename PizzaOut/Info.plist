@@ -40,6 +40,6 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>UIMainStoryboardFile</key>
-	<string>Login</string>
+	<string>Main</string>
 </dict>
 </plist>

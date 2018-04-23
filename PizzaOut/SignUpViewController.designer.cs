@@ -18,6 +18,10 @@ namespace PizzaOut
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIButton btnBack { get; set; }
 
+        [Action ("BtnBack_TouchUpInside:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void BtnBack_TouchUpInside (UIKit.UIButton sender);
+
         void ReleaseDesignerOutlets ()
         {
             if (btnBack != null) {

@@ -9,5 +9,13 @@ namespace PizzaOut
         public SignUpViewController (IntPtr handle) : base (handle)
         {
         }
+
+        partial void BtnBack_TouchUpInside(UIButton sender)
+        {
+            UIStoryboard board = UIStoryboard.FromName("Main", null);
+            UIViewController ctrl = (UIViewController)board.InstantiateViewController("TabViewController");
+            ctrl.ModalTransitionStyle = UIModalTransitionStyle.CrossDissolve;
+            this.PresentViewController(ctrl, true, null);
+        }
     }
 }
