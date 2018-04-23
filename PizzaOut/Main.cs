@@ -1,6 +1,6 @@
 ﻿using UIKit;
 
-namespace PizzaOut.IOS
+namespace PizzaOut
 {
 	public class Application
 	{

@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("PizzaOut.IOS")]
+[assembly: AssemblyTitle("PizzaOut")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("WEYLAND YUTANI")]
-[assembly: AssemblyProduct("PizzaOut.IOS")]
+[assembly: AssemblyProduct("PizzaOut")]
 [assembly: AssemblyCopyright("Copyright © WEYLAND YUTANI 2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("12697170-cec9-44a4-b382-b85cef9b748f")]
+[assembly: Guid("63bd9b5d-7ad2-48fd-8970-62c130b844c9")]
 
 // Version information for an assembly consists of the following four values:
 //
