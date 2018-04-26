@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using RestService;
+
+using PizzaData.models;
+using PizzaData.Rest;
 using RestService.Helpers;
-using RestService.models;
 using RestSharp;
 
 namespace TestConsole
@@ -23,7 +21,9 @@ namespace TestConsole
             //RegisterUserRest();
 
             //GetCartItems(userId);
-            GetOrderHistory(userId);
+            //GetOrderHistory(userId);
+
+            LoginUserRest("fatelord","andalite6");
             //Console.WriteLine("Hello sammy i am here");
             Console.ReadLine();
         }
@@ -116,6 +116,32 @@ namespace TestConsole
             }
         }
 
+        private static async void LoginUserRest(string username,string password)
+        {
+            var user = new User
+            {
+                USERNAME = username,
+
+                PASSWORD = password,
+            };
+
+            Dictionary<string, object> userRegisterPost = new Dictionary<string, object>
+            {
+                {"USER_NAME", user.USERNAME},
+                {"PASSWORD", user.PASSWORD},
+            };
+
+
+            IRestResponse restResponse = await _rest.PostRequest("v1/users/login", userRegisterPost);
+
+            var userModel = ObjectBuilder.BuildUserObject(restResponse);
+            if (userModel != null)
+            {
+                Console.WriteLine(userModel.USERNAME);
+            }
+
+        }
+
         private static async void RegisterUserRest()
         {
             var user = new User
@@ -123,9 +149,9 @@ namespace TestConsole
                 USERNAME = "fatelordb",
                 OTHER_NAMES = "Sammy",
                 SURNAME = "Barasa",
-                USER_STATUS = (int)User.ACCOUNT_STATUS.ACTIVE, //user is active or not
-                USER_TYPE = 1,
-                LOCATION_ID = 1,
+                USER_STATUS =true, //(bool)User.ACCOUNT_STATUS.ACTIVE, //user is active or not
+                USER_TYPE = "1",
+                LOCATION_ID = "1",
                 ADDRESS = "TEST",
                 EMAIL = "sammy@gmail.com",
                 MOBILE_NO = "0733333",

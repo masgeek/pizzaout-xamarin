@@ -1,16 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{BBDCE2C7-C070-4D94-9A9B-4CC7F10A58F1}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>TestConsole</RootNamespace>
-    <AssemblyName>TestConsole</AssemblyName>
+    <ProjectGuid>{DEE2F297-5541-4A50-9B41-1B1CC7299BF4}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PizzaData</RootNamespace>
+    <AssemblyName>PizzaData</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -22,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -39,10 +38,6 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.ValueTuple, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.ValueTuple.4.4.0\lib\net461\System.ValueTuple.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -52,18 +47,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="Helpers\Helper.cs" />
+    <Compile Include="Helpers\ObjectBuilder.cs" />
+    <Compile Include="models\CartItem.cs" />
+    <Compile Include="models\ItemSize.cs" />
+    <Compile Include="models\MenuCategory.cs" />
+    <Compile Include="models\MenuCategoryItem.cs" />
+    <Compile Include="models\Order.cs" />
+    <Compile Include="models\OrderItem.cs" />
+    <Compile Include="models\TimeLine.cs" />
+    <Compile Include="models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Rest\RestServiceFactory.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\PizzaData\PizzaData.csproj">
-      <Project>{dee2f297-5541-4a50-9b41-1b1cc7299bf4}</Project>
-      <Name>PizzaData</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

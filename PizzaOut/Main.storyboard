@@ -116,9 +116,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="icons/muffin.png" width="512" height="512"/>
-        <image name="icons/mussel.png" width="512" height="512"/>
-        <image name="icons/olive-oil.png" width="512" height="512"/>
         <image name="icons/olives.png" width="512" height="512"/>
         <image name="icons/onion.png" width="512" height="512"/>
         <image name="icons/orange.png" width="512" height="512"/>
