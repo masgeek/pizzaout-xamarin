@@ -28,7 +28,18 @@ namespace RestService.models
         public string ORDER_STATUS { get; set; }
 
         public string NOTES { get; set; }
-  
+        //public Rider riderModel;
+        //public AddressModel addressModelModel;
+        //public Location locationModel;
+        // public Payment paymentModel;
+
+        //public OrderItems OrderItems { get; set; }
+
+        //public string ORDER_ITEMS { get; set; }
+        //public List<OrderItems> LOCATION { get; set; }
+        //public List <OrderItems> ORDER_ITEMS { get; set; }
+
+        //public List<TimeLine> ORDER_TIMELINE { get; set; }
         public JArray ORDER_DETAILS { get; set; }
         public JArray ORDER_TIMELINE { get; set; }
         public JArray ORDER_ITEMS { get; set; }
@@ -45,8 +56,7 @@ namespace RestService.models
                 items = (orderTimelineJArray).Select(x => new TimeLine
                 {
                     TRACKING_ID = (int) x["TRACKING_ID"],
-                    STATUS = (string) x["STATUS"],
-                    USER_VISIBLE = (bool)x["USER_VISIBLE"]
+                    STATUS = (string) x["STATUS"]
                 }).ToList();
             }
 
@@ -57,32 +67,32 @@ namespace RestService.models
         /// 
         /// </summary>
         /// <returns></returns>
-        public List<OrderItems> GetOrderItems(JArray orderItemsJArray, string filterName = "ORDER_ITEMS")
+        public List<OrderItems> GetOrderItems(JArray orderItemsJArray)
         {
-            List<OrderItems> items = new List<OrderItems>();
-
+            List<OrderItems> items = null;
             if (orderItemsJArray == null) return null;
 
-            JEnumerable<JToken> children = orderItemsJArray.Children();
+            var children = orderItemsJArray.Children();
 
-            List<JToken> properties = GetSubArray(children, filterName);
+            foreach (var child in children)
+            {
+                var itemProperties = child.Children<JProperty>();
 
-                //loop through the arrray list
-                foreach (var property in properties)
+                List<JToken> properties = itemProperties.Select(o => o.Value).ToList();
+
+                foreach (var itemProperty in itemProperties)
                 {
-                    OrderItems item = property.ToObject<OrderItems>();
-                    //add to list array
-                    items.Add(item);
+                    var t = itemProperty.Value;
                 }
+            }
 
-                Console.WriteLine(items.Count);
            
             return items;
         }
 
         public List<OrderItems> GetOrderDetails(JArray orderItemsJArray)
         {
-            List<OrderItems> items = new List<OrderItems>();
+            List<OrderItems> items = null;
             if (orderItemsJArray == null) return null;
 
             items = (orderItemsJArray).Select(x => new OrderItems
@@ -93,32 +103,6 @@ namespace RestService.models
 
 
             return items;
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="children"></param>
-        /// <param name="filterName"></param>
-        /// <returns></returns>
-        protected List<JToken> GetSubArray(JEnumerable<JToken> children, string filterName)
-        {
-            List<JToken> properties = new List<JToken>();
-        
-            foreach (var child in children)
-            {
-                var itemProperties = child.Children<JProperty>();
-
-                var jToken = itemProperties
-                    .Where(f => f.Name.Equals(filterName))
-                    .Select(o => o.Value)
-                    .FirstOrDefault();
-
-                properties.Add(jToken);
-            }
-
-            Console.WriteLine("List count is "+properties.Count());
-            return properties;
         }
     }
 }
