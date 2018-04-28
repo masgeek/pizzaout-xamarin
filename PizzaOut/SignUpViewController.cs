@@ -1,7 +1,9 @@
+using Foundation;
 using System;
+using System.CodeDom.Compiler;
 using UIKit;
 
-namespace PizzaOut
+namespace LoginBestPractice.iOS
 {
 	partial class SignUpViewController : UIViewController
 	{
@@ -18,16 +20,13 @@ namespace PizzaOut
             var appDelegate = UIApplication.SharedApplication.Delegate as AppDelegate;
 
             //Get an instance of our MainStoryboard.storyboard
-            if (appDelegate != null)
-            {
-                var mainStoryboard = appDelegate.MainStoryboard;
+            var mainStoryboard = appDelegate.MainStoryboard;
 
-                //Get an instance of our MainTabBarViewController
-                var mainTabBarViewController = appDelegate.GetViewController(mainStoryboard, "MainTabBarController");
+            //Get an instance of our MainTabBarViewController
+            var mainTabBarViewController = appDelegate.GetViewController(mainStoryboard, "MainTabBarController");
 
-                //Set the MainTabBarViewController as our RootViewController
-                appDelegate.SetRootViewController(mainTabBarViewController, true);
-            }
+            //Set the MainTabBarViewController as our RootViewController
+            appDelegate.SetRootViewController(mainTabBarViewController, true);
         }
 
         partial void CancelButton_TouchUpInside(UIButton sender)

@@ -4,7 +4,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
     <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <ProjectGuid>{D77FB131-3CC2-45DC-9655-887A450D32AE}</ProjectGuid>
+    <ProjectGuid>{84563AF5-67F4-46D6-B49C-BF8D718F3C64}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>PizzaOut</RootNamespace>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
@@ -90,18 +90,15 @@
     <AppExtensionDebugBundleId />
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\..\..\XAMARIN PROJECTS\pizza-out-xamarin\packages\Newtonsoft.Json.11.0.2\lib\netstandard2.0\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="RestSharp, Version=106.2.2.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
-      <HintPath>..\..\..\XAMARIN PROJECTS\pizza-out-xamarin\packages\RestSharp.106.2.2\lib\netstandard2.0\RestSharp.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="Xamarin.iOS" />
   </ItemGroup>
   <ItemGroup>
+    <ImageAsset Include="Images.xcassets\LaunchImages.launchimage\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
     <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Contents.json">
       <Visible>false</Visible>
     </ImageAsset>
@@ -113,17 +110,14 @@
   <ItemGroup>
     <None Include="Info.plist" />
     <None Include="Entitlements.plist" />
-    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataManager\RestActions.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <Compile Include="LoginPageViewController.cs" />
     <Compile Include="LoginPageViewController.designer.cs">
       <DependentUpon>LoginPageViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="OfflineData\SqlLiteDataStore.cs" />
     <Compile Include="TabPage2ViewController.cs" />
     <Compile Include="TabPage2ViewController.designer.cs">
       <DependentUpon>TabPage2ViewController.cs</DependentUpon>
@@ -132,12 +126,6 @@
     <Compile Include="SignUpViewController.designer.cs">
       <DependentUpon>SignUpViewController.cs</DependentUpon>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\XAMARIN PROJECTS\pizza-out-xamarin\PizzaData\PizzaData.csproj">
-      <Project>{dee2f297-5541-4a50-9b41-1b1cc7299bf4}</Project>
-      <Name>PizzaData</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

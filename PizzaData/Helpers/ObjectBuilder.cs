@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using PizzaData.models;
 using RestSharp;
 
-namespace RestService.Helpers
+namespace PizzaData.Helpers
 {
     public class ObjectBuilder
     {
