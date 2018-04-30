@@ -1,36 +1,87 @@
 using System;
-
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using PizzaData.Helpers;
+using PizzaData.models;
+using PizzaData.Rest;
+using PizzaOut.DataManager;
+using RestSharp;
 using UIKit;
 
-namespace LoginBestPractice.iOS
+namespace PizzaOut
 {
 	partial class LoginPageViewController : UIViewController
 	{
         //Create an event when a authentication is successful
         public event EventHandler OnLoginSuccess;
+	    private string username, password;
 
-		public LoginPageViewController (IntPtr handle) : base (handle)
-		{
+	    private readonly RestActions _restActions;
+	    private User userModel;
+
+
+        public LoginPageViewController(IntPtr handle) : base(handle)
+	    {
+	        _restActions = new RestActions();
+            userModel = new User();
         }
 
-        partial void LoginButton_TouchUpInside(UIButton sender)
+
+        public override void ViewDidLoad()
+	    {
+	        base.ViewDidLoad();
+
+	        UserNameTextView.Text = "fatelord";
+	        PasswordTextView.Text = "andalite6";
+
+    
+            //set buton click actions
+	        BtnLogin.TouchUpInside += async (object sender, EventArgs e) => { await BtnLogin_TouchUpInside(sender); };
+	    }
+
+        private async Task BtnLogin_TouchUpInside(object sender)
         {
             //Validate our Username & Password.
             //This is usually a web service call.
-            if(IsUserNameValid() && IsPasswordValid())
+            try
             {
-                //We have successfully authenticated a the user,
-                //Now fire our OnLoginSuccess Event.
-                if(OnLoginSuccess != null)
+                if (IsUserNameValid() && IsPasswordValid())
                 {
-                    OnLoginSuccess(sender, new EventArgs());
+                    username = UserNameTextView.Text.Trim();
+                    password = PasswordTextView.Text.Trim();
+
+                    //We have successfully authenticated a the user,
+                    //Now fire our OnLoginSuccess Event.
+
+                    userModel = await _restActions.LoginUserRest(username, password);
+
+                    if (userModel == null)
+                    {
+                    }
+                    else
+                    {
+                        //new UIAlertView("Login Successful", "Welcome back human", null, "OK", null).Show();
+                        if (OnLoginSuccess != null)
+                        {
+
+                            OnLoginSuccess(sender, new EventArgs());
+                        }
+                    }
+
+    
+                }
+                else
+                {
+                    new UIAlertView("Login Error", "Bad user name or password", null, "OK", null).Show();
                 }
             }
-            else
+            catch (Exception ex)
             {
-                new UIAlertView("Login Error", "Bad user name or password", null, "OK", null).Show();
+                Console.WriteLine(ex.StackTrace);
             }
         }
+
+
 
         private bool IsUserNameValid()
         {

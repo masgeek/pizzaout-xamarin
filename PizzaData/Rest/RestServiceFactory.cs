@@ -21,7 +21,7 @@ namespace PizzaData.Rest
         RestClient client;
         RestRequest request;
 
-        RestServiceFactory()
+        public RestServiceFactory()
         {
             // Initialize.
             client = new RestClient(_baseUrl);

@@ -1,6 +1,6 @@
-// WARNING
+﻿// WARNING
 //
-// This file has been generated automatically by Xamarin Studio from the outlets and
+// This file has been generated automatically by Visual Studio from the outlets and
 // actions declared in your storyboard file.
 // Manual changes to this file will not be maintained.
 //
@@ -9,49 +9,48 @@ using System;
 using System.CodeDom.Compiler;
 using UIKit;
 
-namespace LoginBestPractice.iOS
+namespace PizzaOut
 {
-	[Register ("LoginPageViewController")]
-	partial class LoginPageViewController
-	{
-		[Outlet]
-		[GeneratedCode ("iOS Designer", "1.0")]
-		UIButton LoginButton { get; set; }
+    [Register ("LoginPageViewController")]
+    partial class LoginPageViewController
+    {
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton BtnLogin { get; set; }
 
-		[Outlet]
-		[GeneratedCode ("iOS Designer", "1.0")]
-		UITextField PasswordTextView { get; set; }
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UITextField PasswordTextView { get; set; }
 
-		[Outlet]
-		[GeneratedCode ("iOS Designer", "1.0")]
-		UIButton SignUpButton { get; set; }
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton SignUpButton { get; set; }
 
-		[Outlet]
-		[GeneratedCode ("iOS Designer", "1.0")]
-		UITextField UserNameTextView { get; set; }
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UITextField UserNameTextView { get; set; }
 
-		[Action ("LoginButton_TouchUpInside:")]
-		[GeneratedCode ("iOS Designer", "1.0")]
-		partial void LoginButton_TouchUpInside (UIButton sender);
+        void ReleaseDesignerOutlets ()
+        {
+            if (BtnLogin != null) {
+                BtnLogin.Dispose ();
+                BtnLogin = null;
+            }
 
-		void ReleaseDesignerOutlets ()
-		{
-			if (LoginButton != null) {
-				LoginButton.Dispose ();
-				LoginButton = null;
-			}
-			if (PasswordTextView != null) {
-				PasswordTextView.Dispose ();
-				PasswordTextView = null;
-			}
-			if (SignUpButton != null) {
-				SignUpButton.Dispose ();
-				SignUpButton = null;
-			}
-			if (UserNameTextView != null) {
-				UserNameTextView.Dispose ();
-				UserNameTextView = null;
-			}
-		}
-	}
+            if (PasswordTextView != null) {
+                PasswordTextView.Dispose ();
+                PasswordTextView = null;
+            }
+
+            if (SignUpButton != null) {
+                SignUpButton.Dispose ();
+                SignUpButton = null;
+            }
+
+            if (UserNameTextView != null) {
+                UserNameTextView.Dispose ();
+                UserNameTextView = null;
+            }
+        }
+    }
 }

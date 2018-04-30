@@ -120,14 +120,14 @@ namespace TestConsole
         {
             var user = new User
             {
-                USERNAME = username,
+                USER_NAME = username,
 
                 PASSWORD = password,
             };
 
             Dictionary<string, object> userRegisterPost = new Dictionary<string, object>
             {
-                {"USER_NAME", user.USERNAME},
+                {"USER_NAME", user.USER_NAME},
                 {"PASSWORD", user.PASSWORD},
             };
 
@@ -137,7 +137,7 @@ namespace TestConsole
             var userModel = ObjectBuilder.BuildUserObject(restResponse);
             if (userModel != null)
             {
-                Console.WriteLine(userModel.USERNAME);
+                Console.WriteLine(userModel.USER_NAME);
             }
 
         }
@@ -146,7 +146,7 @@ namespace TestConsole
         {
             var user = new User
             {
-                USERNAME = "fatelordb",
+                USER_NAME = "fatelordb",
                 OTHER_NAMES = "Sammy",
                 SURNAME = "Barasa",
                 USER_STATUS =true, //(bool)User.ACCOUNT_STATUS.ACTIVE, //user is active or not
@@ -166,7 +166,7 @@ namespace TestConsole
                 {"MOBILE", user.MOBILE_NO},
                 {"EMAIL", user.EMAIL},
                 {"LOCATION_ID", user.LOCATION_ID},
-                {"USER_NAME", user.USERNAME},
+                {"USER_NAME", user.USER_NAME},
                 {"USER_TYPE", user.USER_TYPE},
                 {"PASSWORD", user.PASSWORD},
                 {"RESET_TOKEN",user.RESET_TOKEN},
@@ -179,7 +179,7 @@ namespace TestConsole
            var userModel = ObjectBuilder.BuildUserList(restResponse);
             if (userModel != null)
             {
-                //Console.WriteLine(userModel[0].USERNAME);
+                //Console.WriteLine(userModel[0].USER_NAME);
             }
 
         }

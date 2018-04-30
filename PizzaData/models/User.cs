@@ -44,10 +44,10 @@ namespace PizzaData.models
         public string EMAIL { get; set; }
         public string MOBILE_NO { get; set; }
 
-        public string USERNAME { get; set; }
+        public string USER_NAME { get; set; }
         public string PASSWORD { get; set; }
         public string ADDRESS { get; set; }
         
-        public string RESET_TOKEN { get; set; }
+        //public string RESET_TOKEN { get; set; }
     }
 }
