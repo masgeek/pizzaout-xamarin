@@ -1,10 +1,11 @@
 ﻿using System;
-
 using Foundation;
-using PizzaOut;
+using Microsoft.AppCenter;
+using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
 using UIKit;
 
-namespace LoginBestPractice.iOS
+namespace PizzaOut
 {
     [Register("AppDelegate")]
     public partial class AppDelegate : UIApplicationDelegate
@@ -50,9 +51,12 @@ namespace LoginBestPractice.iOS
         //Override FinishedLaunching. This executes after the app has started.
         public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
         {
+            //set teh crash analytics
+            AppCenter.Start("cfa8f1ba-443f-4136-a786-1b8ceabf07d8", typeof(Analytics), typeof(Crashes));
+
             //isAuthenticated can be used for an auto-login feature, you'll have to implement this
             //as you see fit or get rid of the if statement if you want.
-            if(isAuthenticated)
+            if (isAuthenticated)
             {
                 //We are already authenticated, so go to the main tab bar controller;
                 var tabBarController = GetViewController(MainStoryboard, "MainTabBarController");
@@ -66,6 +70,7 @@ namespace LoginBestPractice.iOS
                 SetRootViewController(loginViewController, false);
             }
                 
+            
             return true;
         }
 

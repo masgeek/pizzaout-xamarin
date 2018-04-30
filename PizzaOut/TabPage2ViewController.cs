@@ -1,8 +1,7 @@
 using System;
-using PizzaOut;
 using UIKit;
 
-namespace LoginBestPractice.iOS
+namespace PizzaOut
 {
 	partial class TabPage2ViewController : UIViewController
 	{

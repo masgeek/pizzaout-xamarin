@@ -48,6 +48,6 @@ namespace PizzaData.models
         public string PASSWORD { get; set; }
         public string ADDRESS { get; set; }
         
-        //public string RESET_TOKEN { get; set; }
+        public string RESET_TOKEN { get; set; }
     }
 }
