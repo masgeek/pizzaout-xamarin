@@ -55,24 +55,19 @@ namespace PizzaOut
 
                     userModel = await _restActions.LoginUserRest(username, password);
 
-                    if (userModel == null)
-                    {
-                    }
-                    else
+                    if (userModel != null)
                     {
                         //new UIAlertView("Login Successful", "Welcome back human", null, "OK", null).Show();
-                        if (OnLoginSuccess != null)
-                        {
-
-                            OnLoginSuccess(sender, new EventArgs());
-                        }
+                        OnLoginSuccess?.Invoke(sender, new EventArgs());
                     }
 
     
                 }
                 else
                 {
+#pragma warning disable 618
                     new UIAlertView("Login Error", "Bad user name or password", null, "OK", null).Show();
+#pragma warning restore 618
                 }
             }
             catch (Exception ex)
