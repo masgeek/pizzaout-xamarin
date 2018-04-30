@@ -138,12 +138,17 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomViews\TableSource.cs" />
     <Compile Include="DataManager\RestActions.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <Compile Include="LoginPageViewController.cs" />
     <Compile Include="LoginPageViewController.designer.cs">
       <DependentUpon>LoginPageViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OurMenuViewController.cs" />
+    <Compile Include="OurMenuViewController.designer.cs">
+      <DependentUpon>OurMenuViewController.cs</DependentUpon>
     </Compile>
     <Compile Include="TabPage2ViewController.cs" />
     <Compile Include="TabPage2ViewController.designer.cs">
@@ -160,5 +165,6 @@
       <Name>PizzaData</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

@@ -7,7 +7,8 @@ namespace PizzaOut
 	{
 		public SignUpViewController (IntPtr handle) : base (handle)
 		{
-        }
+		   
+		}
 
         //This assumes we have successfully create a new user account
         //Naturally, you'll add your logic here, but we're ignoring

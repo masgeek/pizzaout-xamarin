@@ -10,7 +10,7 @@ namespace PizzaOut
     [Register("AppDelegate")]
     public partial class AppDelegate : UIApplicationDelegate
     {
-        private bool isAuthenticated = false;
+        private bool isAuthenticated = true;
 
         public override UIWindow Window
         {
@@ -51,9 +51,9 @@ namespace PizzaOut
         //Override FinishedLaunching. This executes after the app has started.
         public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
         {
-            //set teh crash analytics
+            //set the crash analytics
             AppCenter.Start("cfa8f1ba-443f-4136-a786-1b8ceabf07d8", typeof(Analytics), typeof(Crashes));
-
+            AppCenter.LogLevel = LogLevel.Verbose;
             //isAuthenticated can be used for an auto-login feature, you'll have to implement this
             //as you see fit or get rid of the if statement if you want.
             if (isAuthenticated)
@@ -69,8 +69,8 @@ namespace PizzaOut
                 loginViewController.OnLoginSuccess += LoginViewController_OnLoginSuccess;
                 SetRootViewController(loginViewController, false);
             }
-                
-            
+
+            Analytics.TrackEvent("Application started logged in status is "+isAuthenticated);
             return true;
         }
 
