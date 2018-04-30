@@ -19,10 +19,7 @@ namespace PizzaOut
         }
 		
         //Public property to access our MainStoryboard.storyboard file
-        public UIStoryboard MainStoryboard
-        {
-            get { return UIStoryboard.FromName("MainStoryboard", NSBundle.MainBundle); }
-        }
+        public UIStoryboard MainStoryboard => UIStoryboard.FromName("MainStoryboard", NSBundle.MainBundle);
 
         //Creates an instance of viewControllerName from storyboard
         public UIViewController GetViewController(UIStoryboard storyboard, string viewControllerName)
@@ -70,7 +67,7 @@ namespace PizzaOut
                 SetRootViewController(loginViewController, false);
             }
 
-            Analytics.TrackEvent("Application started logged in status is "+isAuthenticated);
+            //Analytics.TrackEvent("Application started logged in status is "+isAuthenticated);
             return true;
         }
 

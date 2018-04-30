@@ -91,6 +91,12 @@
     <AppExtensionDebugBundleId />
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FFImageLoading, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xamarin.FFImageLoading.2.3.6\lib\Xamarin.iOS10\FFImageLoading.dll</HintPath>
+    </Reference>
+    <Reference Include="FFImageLoading.Platform, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xamarin.FFImageLoading.2.3.6\lib\Xamarin.iOS10\FFImageLoading.Platform.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.AppCenter, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AppCenter.1.6.0\lib\Xamarin.iOS10\Microsoft.AppCenter.dll</HintPath>
     </Reference>
@@ -118,6 +124,9 @@
     <Reference Include="System" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
+    <Reference Include="WebP.Touch, Version=1.0.6628.22311, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebP.Touch.1.0.8\lib\Xamarin.iOS10\WebP.Touch.dll</HintPath>
+    </Reference>
     <Reference Include="Xamarin.iOS" />
   </ItemGroup>
   <ItemGroup>
@@ -138,8 +147,22 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CustomViews\TableSource.cs" />
+    <Compile Include="DataManager\ImageLoader.cs" />
+    <Compile Include="MenuCatCell.cs" />
+    <Compile Include="MenuCatCell.designer.cs">
+      <DependentUpon>MenuCatCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MenuCatItemsController.cs" />
+    <Compile Include="MenuCatItemsController.designer.cs">
+      <DependentUpon>MenuCatItemsController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OurMenuNavigationController.cs" />
+    <Compile Include="OurMenuNavigationController.designer.cs">
+      <DependentUpon>OurMenuNavigationController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TableViews\MenuCatTableSource.cs" />
     <Compile Include="DataManager\RestActions.cs" />
+    <Compile Include="DataManager\UserSession.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <Compile Include="LoginPageViewController.cs" />
@@ -165,6 +188,8 @@
       <Name>PizzaData</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <BundleResource Include="pizza.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

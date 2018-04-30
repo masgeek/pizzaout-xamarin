@@ -22,7 +22,7 @@ namespace PizzaOut
             var mainStoryboard = appDelegate.MainStoryboard;
 
             //Get an instance of our MainTabBarViewController
-            var mainTabBarViewController = appDelegate.GetViewController(mainStoryboard, "MainTabBarController");
+            var mainTabBarViewController = appDelegate.GetViewController(mainStoryboard, "SignUpViewController");
 
             //Set the MainTabBarViewController as our RootViewController
             appDelegate.SetRootViewController(mainTabBarViewController, true);

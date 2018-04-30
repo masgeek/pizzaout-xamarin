@@ -7,25 +7,22 @@
 using Foundation;
 using System;
 using System.CodeDom.Compiler;
+using UIKit;
 
 namespace PizzaOut
 {
-    [Register ("TabPage2ViewController")]
-    partial class TabPage2ViewController
+    [Register ("MenuCatItemsController")]
+    partial class MenuCatItemsController
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIButton LogOutButton { get; set; }
-
-        [Action ("LogOutButton_TouchUpInside:")]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        partial void LogOutButton_TouchUpInside (UIKit.UIButton sender);
+        UIKit.UITableView menuCatItemsTable { get; set; }
 
         void ReleaseDesignerOutlets ()
         {
-            if (LogOutButton != null) {
-                LogOutButton.Dispose ();
-                LogOutButton = null;
+            if (menuCatItemsTable != null) {
+                menuCatItemsTable.Dispose ();
+                menuCatItemsTable = null;
             }
         }
     }

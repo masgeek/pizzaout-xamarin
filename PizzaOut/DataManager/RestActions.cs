@@ -70,5 +70,15 @@ namespace PizzaOut.DataManager
            return userModel;
 
         }
+
+        public async Task<List<MenuCategory>> GetMenuCategories()
+        {
+            _restResponse = await _rest.GetRequest("v1/menucategories");
+
+            List<MenuCategory> menuCategoryList = ObjectBuilder.BuildMenuCategoryList(_restResponse);
+
+            return menuCategoryList;
+
+        }
     }
 }
