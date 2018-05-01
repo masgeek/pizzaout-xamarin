@@ -14,18 +14,20 @@ namespace PizzaOut.TableViews
         private readonly List<MenuCategory> _menuCategories;
         private string cellIdentifier = "MenuCatCell"; // set in the Storyboard
 
-        OurMenuViewController owner;
+        readonly OurMenuViewController _owner;
+
+        private string controllerName = "MenuCatItemsViewController";
 
         public MenuCatTableSource(List<MenuCategory> items,OurMenuViewController _owner)
         {
             _menuCategories = items;
-            owner = _owner;
+            this._owner = _owner;
         }
 
 
         public override UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath)
         {
-            // in a Storyboard, Dequeue will ALWAYS return a cell,
+            // in a Storyboard, Dequeue will Always return a cell,
             //var cell = tableView.DequeueReusableCell(cellIdentifier) as MenuCatCell;
             var menuCat = _menuCategories[indexPath.Row];
 
@@ -42,7 +44,7 @@ namespace PizzaOut.TableViews
             cell.TextLabel.Text = menuCat.MENU_CAT_NAME;
             ImageLoader.LoadImage(menuCat.MENU_CAT_IMAGE).Into(cell.ImageView); //load the url image into the image view
 
-            //add accessory
+            //--- add accessory ---//
             cell.Accessory = UITableViewCellAccessory.DisclosureIndicator;
             return cell;
         }
@@ -60,20 +62,18 @@ namespace PizzaOut.TableViews
       
         public override void RowSelected(UITableView tableView, Foundation.NSIndexPath indexPath)
         {
-            var menuCat = _menuCategories[indexPath.Row];
+            var menuCat = GetItem(indexPath.Row);
 
             tableView.DeselectRow(indexPath, true);
 
             // create the view controller for your initial view - using storyboard, code, etc
-            MenuCatItemsViewController catItemsViewController =
-                owner.Storyboard.InstantiateViewController("MenuCatItemsViewController") as MenuCatItemsViewController;
-            //Here you pass the data from the registerViewController to the secondViewController
-            if (catItemsViewController != null)
-            {
-                catItemsViewController.SetSelectedItem(menuCat);
+            MenuCatItemsViewController catItemsViewController = _owner.Storyboard.InstantiateViewController(controllerName) as MenuCatItemsViewController;
 
-                owner.NavigationController.PushViewController(catItemsViewController, true);
-            }
+            //Here you pass the data from the registerViewController to the secondViewController
+            if (catItemsViewController == null) return;
+
+            catItemsViewController.SetSelectedItem(menuCat);
+            _owner.NavigationController.PushViewController(catItemsViewController, true);
         }
 
     }
