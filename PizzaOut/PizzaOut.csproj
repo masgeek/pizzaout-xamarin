@@ -160,9 +160,9 @@
     <Compile Include="MenuCatItemCell.designer.cs">
       <DependentUpon>MenuCatItemCell.cs</DependentUpon>
     </Compile>
-    <Compile Include="MenuCatItemsController.cs" />
-    <Compile Include="MenuCatItemsController.designer.cs">
-      <DependentUpon>MenuCatItemsController.cs</DependentUpon>
+    <Compile Include="MenuCatItemsViewController_old.cs" />
+    <Compile Include="MenuCatItemsViewController_old.designer.cs">
+      <DependentUpon>MenuCatItemsViewController_old.cs</DependentUpon>
     </Compile>
     <Compile Include="TableViews\MenuCatItemTableSource.cs" />
     <Compile Include="TableViews\MenuCatTableSource.cs" />

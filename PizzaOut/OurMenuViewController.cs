@@ -43,7 +43,8 @@ namespace PizzaOut
             _menuCategories = await LoadMenuCategories();
             if (_menuCategories != null)
             {
-                _tableSource = new MenuCatTableSource(_menuCategories,this);
+     
+               _tableSource = new MenuCatTableSource(_menuCategories,this);
                 menuTableView.Source = _tableSource; //assign the table data source
 
                 //reload the data

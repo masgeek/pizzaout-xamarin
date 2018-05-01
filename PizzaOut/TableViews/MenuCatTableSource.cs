@@ -63,7 +63,31 @@ namespace PizzaOut.TableViews
             var menuCat = _menuCategories[indexPath.Row];
 
             tableView.DeselectRow(indexPath, true);
-            owner.NavigationController.PushViewController(new MenuCatItemsController(menuCat), true);
+
+            // create the view controller for your initial view - using storyboard, code, etc
+            //var first = new UIViewController("MenuCatItemsViewController");
+            // var controller = this.Storyboard.InstantiateViewController("MenuCatItemsViewController");
+
+            //Instantialte the Storyboard Object
+            UIStoryboard storyboard = UIStoryboard.FromName("MainStoryboard", null);
+
+            //Instantiate the ViewController you want to navigate to.
+            //Make sure you have set the Storyboard ID for this ViewController in your storyboard file.
+            //Put this Storyboard ID in place of the TargetViewControllerName in below line. 
+            UIViewController vcInstance = (UIViewController)storyboard.InstantiateViewController("MenuCatItemsViewController");
+
+            //Create an instance of our AppDelegate
+            var appDelegate = UIApplication.SharedApplication.Delegate as AppDelegate;
+
+            //Get an instance of our MainStoryboard.storyboard
+            var mainStoryboard = appDelegate.MainStoryboard;
+
+            //Get an instance of our MainTabBarViewController
+            var mainTabBarViewController = appDelegate.GetViewController(mainStoryboard, "MenuCatItemsViewController");
+
+
+            //owner.NavigationController.PushViewController(new MenuCatItemsViewController(menuCat), true);
+            owner.NavigationController.PushViewController(mainTabBarViewController, true);
         }
 
     }
