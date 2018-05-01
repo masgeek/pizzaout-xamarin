@@ -152,14 +152,19 @@
     <Compile Include="MenuCatCell.designer.cs">
       <DependentUpon>MenuCatCell.cs</DependentUpon>
     </Compile>
+    <Compile Include="MenuCatiItemNavigationController.cs" />
+    <Compile Include="MenuCatiItemNavigationController.designer.cs">
+      <DependentUpon>MenuCatiItemNavigationController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MenuCatItemCell.cs" />
+    <Compile Include="MenuCatItemCell.designer.cs">
+      <DependentUpon>MenuCatItemCell.cs</DependentUpon>
+    </Compile>
     <Compile Include="MenuCatItemsController.cs" />
     <Compile Include="MenuCatItemsController.designer.cs">
       <DependentUpon>MenuCatItemsController.cs</DependentUpon>
     </Compile>
-    <Compile Include="OurMenuNavigationController.cs" />
-    <Compile Include="OurMenuNavigationController.designer.cs">
-      <DependentUpon>OurMenuNavigationController.cs</DependentUpon>
-    </Compile>
+    <Compile Include="TableViews\MenuCatItemTableSource.cs" />
     <Compile Include="TableViews\MenuCatTableSource.cs" />
     <Compile Include="DataManager\RestActions.cs" />
     <Compile Include="DataManager\UserSession.cs" />

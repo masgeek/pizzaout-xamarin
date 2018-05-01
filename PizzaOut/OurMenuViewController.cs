@@ -16,7 +16,7 @@ namespace PizzaOut
         private List<MenuCategory> _menuCategories;
 
         private MenuCatTableSource _tableSource;
-        private RestActions restActions;
+        private readonly RestActions restActions;
 
         public OurMenuViewController (IntPtr handle) : base (handle)
         {
@@ -43,7 +43,7 @@ namespace PizzaOut
             _menuCategories = await LoadMenuCategories();
             if (_menuCategories != null)
             {
-                _tableSource = new MenuCatTableSource(_menuCategories);
+                _tableSource = new MenuCatTableSource(_menuCategories,this);
                 menuTableView.Source = _tableSource; //assign the table data source
 
                 //reload the data

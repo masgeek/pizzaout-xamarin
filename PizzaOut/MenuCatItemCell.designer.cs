@@ -11,19 +11,11 @@ using UIKit;
 
 namespace PizzaOut
 {
-    [Register ("MenuCatItemsController")]
-    partial class MenuCatItemsController
+    [Register ("MenuCatItemCell")]
+    partial class MenuCatItemCell
     {
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UITableView menuCatItemTableView { get; set; }
-
         void ReleaseDesignerOutlets ()
         {
-            if (menuCatItemTableView != null) {
-                menuCatItemTableView.Dispose ();
-                menuCatItemTableView = null;
-            }
         }
     }
 }

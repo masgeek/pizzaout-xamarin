@@ -14,11 +14,12 @@ namespace PizzaOut.TableViews
         private readonly List<MenuCategory> _menuCategories;
         private string cellIdentifier = "MenuCatCell"; // set in the Storyboard
 
+        OurMenuViewController owner;
 
-
-        public MenuCatTableSource(List<MenuCategory> items)
+        public MenuCatTableSource(List<MenuCategory> items,OurMenuViewController _owner)
         {
             _menuCategories = items;
+            owner = _owner;
         }
 
 
@@ -56,34 +57,14 @@ namespace PizzaOut.TableViews
             return _menuCategories[id];
         }
 
-       /* public override void AccessoryButtonTapped(UITableView tableView, NSIndexPath indexPath)
-        {
-            UIAlertController okAlertController = UIAlertController.Create("DetailDisclosureButton Touched", _menuCategories[indexPath.Row].MENU_CAT_NAME, UIAlertControllerStyle.Alert);
-            okAlertController.AddAction(UIAlertAction.Create("OK", UIAlertActionStyle.Default, null));
-            owner.PresentViewController(okAlertController, true, null);
-
-            tableView.DeselectRow(indexPath, true);
-        }*/
+      
         public override void RowSelected(UITableView tableView, Foundation.NSIndexPath indexPath)
         {
-            //new UIAlertView("Row Selected", _menuCategories[indexPath.Row].MENU_CAT_NAME, null, "OK", null).Show();
+            var menuCat = _menuCategories[indexPath.Row];
 
-            //tableView.DeselectRow(indexPath, true); // iOS convention is to remove the highlight
-
-            //launch the selected menu categories view
-            //Create an instance of our AppDelegate
-            //var appDelegate = UIApplication.SharedApplication.Delegate as AppDelegate;
-
-            //Get an instance of our MainStoryboard.storyboard
-           // var mainStoryboard = appDelegate.MainStoryboard;
-
-            //Get an instance of our MainTabBarViewController
-           // var mainTabBarViewController = appDelegate.GetViewController(mainStoryboard, "SignUpViewController");
-
-            //Set the MainTabBarViewController as our RootViewController
-           // appDelegate.SetRootViewController(mainTabBarViewController, true);
-
-
+            tableView.DeselectRow(indexPath, true);
+            owner.NavigationController.PushViewController(new MenuCatItemsController(menuCat), true);
         }
+
     }
 }

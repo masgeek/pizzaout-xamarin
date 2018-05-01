@@ -11,8 +11,8 @@ using UIKit;
 
 namespace PizzaOut
 {
-    [Register ("OurMenuNavigationController")]
-    partial class OurMenuNavigationController
+    [Register ("MenuCatiItemNavigationController")]
+    partial class MenuCatiItemNavigationController
     {
         void ReleaseDesignerOutlets ()
         {
