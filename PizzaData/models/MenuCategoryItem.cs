@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using Newtonsoft.Json.Linq;
 
 namespace PizzaData.models
@@ -43,7 +44,7 @@ namespace PizzaData.models
                     MENU_ITEM_ID = (int)x["MENU_ITEM_ID"],
                     ITEM_TYPE_SIZE = (string)x["ITEM_TYPE_SIZE"],
                     PRICE = (double)x["PRICE"],
-                    AVAILABLE = (bool)x["AVAILABLE"],
+                    AVAILABLE = (string)x["AVAILABLE"],
                 }).ToList();
             }
 

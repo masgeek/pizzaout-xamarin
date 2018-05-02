@@ -68,23 +68,20 @@ namespace PizzaOut.TableViews
 
         public override void RowSelected(UITableView tableView, Foundation.NSIndexPath indexPath)
         {
-            var menuCat = GetItem(indexPath.Row);
+            var selectedItem = GetItem(indexPath.Row);
 
             tableView.DeselectRow(indexPath, true);
 
-            
-            var itemSizes = menuCat.GetSizes(menuCat.SIZES);
-
-            var h = itemSizes;
-
             // create the view controller for your initial view - using storyboard, code, etc
             ItemDetailsViewController itemDetailsViewController = _owner.Storyboard.InstantiateViewController(controllerName) as ItemDetailsViewController;
+            if (itemDetailsViewController != null)
+            {
 
-            //Here you pass the data from the registerViewController to the secondViewController
-            if (itemDetailsViewController == null) return;
-
-            //itemDetailsViewController.SetSelectedItem(menuCat);
-            _owner.NavigationController.PushViewController(itemDetailsViewController, true);
+                //Here you pass the data from the registerViewController to the secondViewController
+                itemDetailsViewController.SetSelectedItem(selectedItem);
+                //itemDetailsViewController.SetSelectedItem(menuCat);
+                _owner.NavigationController.PushViewController(itemDetailsViewController, true);
+            }
         }
 
 
