@@ -16,7 +16,12 @@ namespace PizzaOut.DataManager
         /// <returns></returns>
         public static string GetUserId()
         {
-            return "2";
+            return "10";
+        }
+
+        public static bool IsLoggedIn()
+        {
+            return true;
         }
     }
 }

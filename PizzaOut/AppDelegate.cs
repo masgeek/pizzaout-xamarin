@@ -3,6 +3,7 @@ using Foundation;
 using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
+using PizzaOut.DataManager;
 using UIKit;
 
 namespace PizzaOut
@@ -10,7 +11,7 @@ namespace PizzaOut
     [Register("AppDelegate")]
     public partial class AppDelegate : UIApplicationDelegate
     {
-        private bool isAuthenticated = true;
+        private bool isAuthenticated = false;
 
         public override UIWindow Window
         {
@@ -53,6 +54,7 @@ namespace PizzaOut
             AppCenter.LogLevel = LogLevel.Verbose;
             //isAuthenticated can be used for an auto-login feature, you'll have to implement this
             //as you see fit or get rid of the if statement if you want.
+            isAuthenticated = UserSession.IsLoggedIn();
             if (isAuthenticated)
             {
                 //We are already authenticated, so go to the main tab bar controller;

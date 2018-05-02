@@ -88,5 +88,15 @@ namespace PizzaOut.DataManager
 
             return menuCategoryList;
         }
+
+
+        public async Task<CartItem> ItemAlreadyInCart(int itemTypeId,int userId)
+        {
+            _restResponse = await _rest.GetRequest("v1/my-cart/" + itemTypeId + "/in-cart/"+userId);
+
+            CartItem cartItemObject = ObjectBuilder.BuildCartItemObject(_restResponse);
+
+            return cartItemObject;
+        }
     }
 }

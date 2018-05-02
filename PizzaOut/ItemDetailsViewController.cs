@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Reflection.Emit;
+using System.Threading.Tasks;
 using FFImageLoading;
 using PizzaData.models;
 using PizzaOut.DataManager;
@@ -13,6 +14,7 @@ namespace PizzaOut
 {
     public partial class ItemDetailsViewController : UIViewController
     {
+        private RestActions restActions;
         private MenuCategoryItem _categoryItem;
         private int _selectedQuantity = 1, _sizeIndex = 0;
         private string _selectedSize = null;
@@ -26,6 +28,7 @@ namespace PizzaOut
         public void SetSelectedItem(MenuCategoryItem categoryItem)
         {
             this._categoryItem = categoryItem;
+            restActions = new RestActions();
         }
 
         public override void ViewDidLoad()
@@ -86,6 +89,15 @@ namespace PizzaOut
 
             _selectedSize = size.ITEM_TYPE_SIZE;
             sizeValue.Text = _selectedSize;
+        }
+
+        /// <summary>
+        /// Checks if the cart already has items
+        /// </summary>
+        private async Task itemAlreadyInCart(int itemTypeId,int userId)
+        {
+            var cartItems = await restActions.ItemAlreadyInCart(itemTypeId,userId);
+
         }
     }
 }
