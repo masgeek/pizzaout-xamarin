@@ -12,12 +12,14 @@ namespace PizzaOut.TableViews
 {
     public class MenuCatItemTableSource:UITableViewSource
     {
+        readonly MenuCatItemsViewController _owner;
         public List<MenuCategoryItem> CategoryItems;
         private string cellIdentifier = "MenuCatItemCell"; // set in the Storyboard
-
-        public MenuCatItemTableSource(List<MenuCategoryItem> _categoryItems)
+        private string controllerName = "ItemDetailsViewController";
+        public MenuCatItemTableSource(List<MenuCategoryItem> categoryItems, MenuCatItemsViewController owner)
         {
-            this.CategoryItems = _categoryItems;
+            this.CategoryItems = categoryItems;
+            this._owner = owner;
         }
 
         public override UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath)
@@ -53,5 +55,39 @@ namespace PizzaOut.TableViews
         {
             return CategoryItems.Count();
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="indexPathRow"></param>
+        /// <returns></returns>
+        private MenuCategoryItem GetItem(int indexPathRow)
+        {
+            return CategoryItems[indexPathRow];
+        }
+
+        public override void RowSelected(UITableView tableView, Foundation.NSIndexPath indexPath)
+        {
+            var menuCat = GetItem(indexPath.Row);
+
+            tableView.DeselectRow(indexPath, true);
+
+            
+            var itemSizes = menuCat.GetSizes(menuCat.SIZES);
+
+            var h = itemSizes;
+
+            // create the view controller for your initial view - using storyboard, code, etc
+            ItemDetailsViewController itemDetailsViewController = _owner.Storyboard.InstantiateViewController(controllerName) as ItemDetailsViewController;
+
+            //Here you pass the data from the registerViewController to the secondViewController
+            if (itemDetailsViewController == null) return;
+
+            //itemDetailsViewController.SetSelectedItem(menuCat);
+            _owner.NavigationController.PushViewController(itemDetailsViewController, true);
+        }
+
+
     }
+
 }

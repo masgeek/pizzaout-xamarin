@@ -43,7 +43,7 @@ namespace PizzaOut
 
             if (_menuCategoriesItems != null)
             {
-                _tableSource = new MenuCatItemTableSource(_menuCategoriesItems);
+                _tableSource = new MenuCatItemTableSource(_menuCategoriesItems,this);
                 if (menuCatItemTableView != null)
                 {
                     menuCatItemTableView.Source = _tableSource; //assign the table data source

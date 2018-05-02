@@ -11,6 +11,6 @@ namespace PizzaData.models
 
         public double PRICE { get; set; }
 
-        public string AVAILABLE { get; set; }
+        public bool AVAILABLE { get; set; }
     }
 }

@@ -148,6 +148,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataManager\ImageLoader.cs" />
+    <Compile Include="ItemDetailsViewController.cs" />
+    <Compile Include="ItemDetailsViewController.designer.cs">
+      <DependentUpon>ItemDetailsViewController.cs</DependentUpon>
+    </Compile>
     <Compile Include="MenuCatCell.cs" />
     <Compile Include="MenuCatCell.designer.cs">
       <DependentUpon>MenuCatCell.cs</DependentUpon>
@@ -163,10 +167,6 @@
     <Compile Include="MenuCatItemsViewController.cs" />
     <Compile Include="MenuCatItemsViewController.designer.cs">
       <DependentUpon>MenuCatItemsViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="MenuCatItemsViewController_old.cs" />
-    <Compile Include="MenuCatItemsViewController_old.designer.cs">
-      <DependentUpon>MenuCatItemsViewController_old.cs</DependentUpon>
     </Compile>
     <Compile Include="TableViews\MenuCatItemTableSource.cs" />
     <Compile Include="TableViews\MenuCatTableSource.cs" />

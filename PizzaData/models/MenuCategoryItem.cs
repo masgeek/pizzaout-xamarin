@@ -43,11 +43,26 @@ namespace PizzaData.models
                     MENU_ITEM_ID = (int)x["MENU_ITEM_ID"],
                     ITEM_TYPE_SIZE = (string)x["ITEM_TYPE_SIZE"],
                     PRICE = (double)x["PRICE"],
-                    AVAILABLE = (string)x["AVAILABLE"],
+                    AVAILABLE = (bool)x["AVAILABLE"],
                 }).ToList();
             }
 
             return itemSizes;
+        }
+
+        /// <summary>
+        /// Create a dropdown of teh max quantity a single customer can order
+        /// </summary>
+        /// <param name="maxQty"></param>
+        /// <returns></returns>
+        public List<int> GetMaxQuantity(int maxQty)
+        {
+            List<int> maxQuantityList = null;
+            for (int qty = 0; qty < maxQty; qty = qty + 1)
+            {
+               maxQuantityList.Add(qty);
+            }
+            return maxQuantityList;
         }
     }
 }

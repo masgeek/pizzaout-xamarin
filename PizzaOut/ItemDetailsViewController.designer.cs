@@ -11,8 +11,8 @@ using UIKit;
 
 namespace PizzaOut
 {
-    [Register ("MenuCatItemsController")]
-    partial class MenuCatItemsViewController_old
+    [Register ("ItemDetailsViewController")]
+    partial class ItemDetailsViewController
     {
         void ReleaseDesignerOutlets ()
         {
