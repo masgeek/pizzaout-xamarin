@@ -24,10 +24,6 @@ namespace PizzaOut
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UITextView lblItemDesc { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UILabel lblItemName { get; set; }
 
         [Outlet]
@@ -38,9 +34,29 @@ namespace PizzaOut
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UILabel quantityValue { get; set; }
 
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIStepper sizeStepper { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel sizeValue { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel totalCost { get; set; }
+
+        [Action ("ItemSizeChangedEvent:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void ItemSizeChangedEvent (UIKit.UIStepper sender);
+
         [Action ("QuantityChangedEvent:")]
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void QuantityChangedEvent (UIKit.UIStepper sender);
+
+        [Action ("SizeChangedEvent:")]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        partial void SizeChangedEvent (UIKit.UIStepper sender);
 
         void ReleaseDesignerOutlets ()
         {
@@ -52,11 +68,6 @@ namespace PizzaOut
             if (itemImage != null) {
                 itemImage.Dispose ();
                 itemImage = null;
-            }
-
-            if (lblItemDesc != null) {
-                lblItemDesc.Dispose ();
-                lblItemDesc = null;
             }
 
             if (lblItemName != null) {
@@ -72,6 +83,21 @@ namespace PizzaOut
             if (quantityValue != null) {
                 quantityValue.Dispose ();
                 quantityValue = null;
+            }
+
+            if (sizeStepper != null) {
+                sizeStepper.Dispose ();
+                sizeStepper = null;
+            }
+
+            if (sizeValue != null) {
+                sizeValue.Dispose ();
+                sizeValue = null;
+            }
+
+            if (totalCost != null) {
+                totalCost.Dispose ();
+                totalCost = null;
             }
         }
     }
