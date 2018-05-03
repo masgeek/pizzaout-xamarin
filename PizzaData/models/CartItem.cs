@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
+using Newtonsoft.Json.Linq;
 
 namespace PizzaData.models
 {
@@ -16,11 +17,14 @@ namespace PizzaData.models
 
 
         public long CART_TIMESTAMP { get; set; }
+
         public double ITEM_PRICE { get; set; }
 
         public double SUB_TOTAL { get; set; }
 
         public string ITEM_SIZE { get; set; }
+
+      
 
         public DateTime CREATED_AT { get; set; }
 

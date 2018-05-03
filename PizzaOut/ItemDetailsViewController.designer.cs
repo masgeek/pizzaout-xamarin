@@ -7,6 +7,7 @@
 using Foundation;
 using System;
 using System.CodeDom.Compiler;
+using System.Threading.Tasks;
 using UIKit;
 
 namespace PizzaOut
@@ -49,10 +50,6 @@ namespace PizzaOut
         [Action ("ItemSizeChangedEvent:")]
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void ItemSizeChangedEvent (UIKit.UIStepper sender);
-
-        [Action ("QuantityChangedEvent:")]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        partial void QuantityChangedEvent (UIKit.UIStepper sender);
 
         [Action ("SizeChangedEvent:")]
         [GeneratedCode ("iOS Designer", "1.0")]

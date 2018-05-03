@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Microsoft.AppCenter.Analytics;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using PizzaData.models;
@@ -198,7 +199,9 @@ namespace PizzaData.Helpers
             {
                 var token = JToken.Parse(response.Content); //validate if its object or array
 
-                var h = token;
+
+                
+               Analytics.TrackEvent(token.ToString());
                 if (!(token is JObject)) return null;
                 result = JsonConvert.DeserializeObject<CartItem>(response.Content);
             }

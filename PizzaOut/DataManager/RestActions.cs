@@ -134,10 +134,18 @@ namespace PizzaOut.DataManager
 
 
 
-        public async Task<CartItem> ItemAlreadyInCart(int itemTypeId,int userId)
+        public async Task<CartItem> ItemAlreadyInCart(CartItem queryCartItem)
         {
-            _restResponse = await _rest.GetRequest("v1/my-cart/" + itemTypeId + "/in-cart/"+userId);
+ 
+        
+            Dictionary<string, object> cartPost = new Dictionary<string, object>
+            {
+                {"ITEM_TYPE_SIZE",queryCartItem.ITEM_SIZE},
+            };
 
+            _restResponse = await _rest.PostRequest("v1/my-cart/" + queryCartItem.ITEM_TYPE_ID + "/in-cart/"+ queryCartItem.USER_ID,cartPost);
+
+            //var j = _restResponse;
             CartItem cartItemObject = ObjectBuilder.BuildCartItemObject(_restResponse);
 
             return cartItemObject;

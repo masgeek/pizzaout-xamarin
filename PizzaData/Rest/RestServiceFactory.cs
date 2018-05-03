@@ -52,7 +52,7 @@ namespace PizzaData.Rest
             return restResponse;
         }
 
-        public async Task<IRestResponse> PostRequest(string endpoint, Dictionary<string, object> objectToUpdate)
+        public async Task<IRestResponse> PostRequest(string endpoint, Dictionary<string, object> postObject)
         {
             IRestResponse response = null;
             var cancellationTokenSource = new CancellationTokenSource();
@@ -65,7 +65,7 @@ namespace PizzaData.Rest
 
             //request.AddParameter("text/json", json, ParameterType.RequestBody);
             //request.AddJsonBody(json);
-           foreach (var pair in objectToUpdate)
+           foreach (var pair in postObject)
             {
                 request.AddParameter(pair.Key, pair.Value);
             }
@@ -77,6 +77,7 @@ namespace PizzaData.Rest
 
             return response;
         }
+
 
         public void PutRequest(string endpoint)
         {

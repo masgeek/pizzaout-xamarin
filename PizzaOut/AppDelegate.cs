@@ -2,6 +2,7 @@
 using Foundation;
 using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Analytics.iOS.Bindings;
 using Microsoft.AppCenter.Crashes;
 using PizzaOut.DataManager;
 using UIKit;
@@ -52,6 +53,7 @@ namespace PizzaOut
             //set the crash analytics
             AppCenter.Start("cfa8f1ba-443f-4136-a786-1b8ceabf07d8", typeof(Analytics), typeof(Crashes));
             AppCenter.LogLevel = LogLevel.Verbose;
+            MSAnalytics.SetEnabled(true);
             //isAuthenticated can be used for an auto-login feature, you'll have to implement this
             //as you see fit or get rid of the if statement if you want.
             isAuthenticated = UserSession.IsLoggedIn();

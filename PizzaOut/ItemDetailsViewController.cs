@@ -22,6 +22,8 @@ namespace PizzaOut
         private double _itemsSubTotal = 0.0,_itemPrice = 0.0;
         private int _userId;
         private int _itemTypeId;
+        private bool itemExists;
+
         public ItemDetailsViewController (IntPtr handle) : base (handle)
         {
         }
@@ -47,24 +49,44 @@ namespace PizzaOut
             quantityValue.Text = _selectedQuantity.ToString();
 
             //set the default values
-            ComputeSizeAndCost(0, _sizes);
+            sizeStepper.MinimumValue = 0;
+            sizeStepper.MaximumValue = _sizes.Count - 1; //set the maximum value based on sizes list decrease by one
+
+            quantityStepper.MinimumValue = 1;
+            quantityStepper.MaximumValue = _categoryItem.MAX_QTY; //set the maximum value
+
+            ComputeSizeAndCost(0, _sizes[_sizeIndex]);
 
             //sizeStepper.Value = _selectedQuantity;
             quantityStepper.Value = _selectedQuantity;
 
-            sizeStepper.ValueChanged += SizeStepper_ValueChanged;
+            sizeStepper.ValueChanged += async (object sender, EventArgs e) =>
+                {
+                    await SizeStepperValueChanged(sender, e);
+                };
 
+            quantityStepper.ValueChanged += async (object sender, EventArgs e) =>
+            {
+                await QuantityStepperValueChanged(sender, e);
+            };
             //click action for add to cart
             btnAddToCart.TouchUpInside += async (object sender, EventArgs e) =>
                 {
-                    //this.NavigationController.PopViewController(true);
-                    AddItemToCart();
+                    
+                    var itemAdded = await AddItemToCart();
+
+                    if (itemAdded)
+                    {
+                        //close the view and go back
+                        //this.NavigationController.PopViewController(true);
+                    }
                 };
         }
 
-        private async Task AddItemToCart()
+        private async Task<bool> AddItemToCart()
         {
             //v1/my-cart
+            CartItem cart;
             var cartItem = new CartItem
             {
                 USER_ID = _userId,
@@ -75,58 +97,115 @@ namespace PizzaOut
                 QUANTITY = _selectedQuantity,
                 CART_TIMESTAMP = Helper.GetTimeStamp()
             };
+            if (itemExists)
+            {
+                //let us update teh cart
+                cart = await restActions.UpdateCartItem(cartItem);
+            }
+            else
+            {
+                cart = await restActions.AddCartItem(cartItem);
+            }
 
-            var cart = await restActions.AddCartItem(cartItem);
-
+            return cart != null;
         }
 
 
-        private void SizeStepper_ValueChanged(object sender, EventArgs e)
+        private async Task SizeStepperValueChanged(object sender, EventArgs e)
         {
-        
-            sizeStepper.MinimumValue = 0;
-            sizeStepper.MaximumValue = _sizes.Count-1; //set the maximum value based on sizes list decrease by one
+       
             sizeValue.Text = _selectedSize;
             _sizeIndex = (int)sizeStepper.Value;
-            ComputeSizeAndCost(_sizeIndex,_sizes);
+
+
+            //check if the item is already in the cart
+            if (_sizeIndex < 0)
+            {
+                _sizeIndex = 0;
+            }
+            var size = _sizes[_sizeIndex];
+
+            itemExists = false; //set the item exosts flag to false so we can recheck the cart
+            await ComputeSizeAndCost(_sizeIndex, size);
         }
 
-        partial void QuantityChangedEvent(UIStepper sender)
+        private async Task QuantityStepperValueChanged(object sender, EventArgs e)
         {
-            quantityStepper.MinimumValue = 1;
-            quantityStepper.MaximumValue = _categoryItem.MAX_QTY; //set the maximum value
             _selectedQuantity = (int) quantityStepper.Value;
             quantityValue.Text = _selectedQuantity.ToString();
-            ComputeSizeAndCost(_sizeIndex, _sizes);
+
+            if (_sizeIndex < 0)
+            {
+                _sizeIndex = 0;
+            }
+            var size = _sizes[_sizeIndex];
+
+            await ComputeSizeAndCost(_sizeIndex, size);
         }
 
 
-        private void ComputeSizeAndCost(int index, List<ItemSize> itemSizes)
+        private async Task ComputeSizeAndCost(int index, ItemSize size)
         {
-            if (index < 0)
-            {
-                index = 0;
-            }
-            var size = itemSizes[index];
-
             _itemPrice = size.PRICE;
+            _itemTypeId = size.ITEM_TYPE_ID;
             //compute the cost
-            _itemsSubTotal =_itemPrice * _selectedQuantity;
+            _itemsSubTotal = _itemPrice * _selectedQuantity;
 
             //totalCost.Text = String.Format("{0:C}", totalItemCost);//totalItemCost.ToString();
             totalCost.Text = _itemsSubTotal.ToString("C", CultureInfo.CreateSpecificCulture("en-US"));
 
             _selectedSize = size.ITEM_TYPE_SIZE;
             sizeValue.Text = _selectedSize;
+
+
+            await ItemAlreadyInCart(size);
+
+
         }
+
 
         /// <summary>
         /// Checks if the cart already has items
         /// </summary>
-        private async Task itemAlreadyInCart(int itemTypeId,int userId)
+        private async Task ItemAlreadyInCart(ItemSize item)
         {
-            var cartItems = await restActions.ItemAlreadyInCart(itemTypeId,userId);
+            CartItem queryCartItem = new CartItem
+            {
+                ITEM_TYPE_ID = item.ITEM_TYPE_ID,
+                ITEM_SIZE = item.ITEM_TYPE_SIZE,
+                USER_ID = _userId
+            };
 
+
+            if (!itemExists)
+            {
+                var cartItems = await restActions.ItemAlreadyInCart(queryCartItem);
+                if (cartItems != null)
+                {
+                    itemExists = true;
+
+                    _selectedQuantity = cartItems.QUANTITY;
+                    _itemPrice = cartItems.ITEM_PRICE;
+                    _itemTypeId = cartItems.ITEM_TYPE_ID;
+                    //compute the cost
+                    _itemsSubTotal = _itemPrice * _selectedQuantity;
+
+                    //totalCost.Text = String.Format("{0:C}", totalItemCost);//totalItemCost.ToString();
+                    totalCost.Text = _itemsSubTotal.ToString("C", CultureInfo.CreateSpecificCulture("en-US"));
+
+                    // _selectedSize = cartItems.ITEM_SIZE;
+                    // sizeValue.Text = _selectedSize;
+
+                    quantityValue.Text = cartItems.QUANTITY.ToString();
+                    quantityStepper.Value = _selectedQuantity;
+
+                    btnAddToCart.SetTitle("Update Cart", UIControlState.Normal);
+                }
+            }
+            else
+            {
+                btnAddToCart.SetTitle("Add to Cart", UIControlState.Normal);
+            }
         }
     }
 }
