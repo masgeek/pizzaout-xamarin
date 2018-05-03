@@ -14,9 +14,9 @@ namespace PizzaOut.DataManager
         /// Get the id of the logged in user
         /// </summary>
         /// <returns></returns>
-        public static string GetUserId()
+        public static int GetUserId()
         {
-            return "10";
+            return 10;
         }
 
         public static bool IsLoggedIn()

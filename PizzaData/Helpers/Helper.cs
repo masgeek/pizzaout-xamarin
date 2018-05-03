@@ -1,13 +1,13 @@
-﻿namespace RestService.Helpers
+﻿using System;
+
+namespace RestService.Helpers
 {
     public class Helper
     {
-        public static string UriScheme = "http://";
-        private static string BaseUrl = "pizzaout.so/"; //live url
-        //private static String BASE_URL = "41.89.65.170:81/pizza/";
-        //private static String BASE_URL = "pizza.tsobu.co.ke/";
-        //private static String BASE_URL = "192.168.100.14/pizza/";
-        //private const string BaseUrl = "pizza.tsobu.co.ke/"; //test url
+        public static string UriScheme = "https://";
+        //private static string BaseUrl = "pizzaout.so/"; //live url
+        private const string BaseUrl = "pizza.tsobu.co.ke/"; //test url
+        //private static string BaseUrl = "192.168.100.4/pizza/"; //local test url
 
         private const string ApiEndpoint = "api/";
 
@@ -28,6 +28,13 @@
         private static string UssdToCallableUri(string ussd)
         {
             return ussd;
+        }
+
+        public static long GetTimeStamp()
+        {
+            var timeStamp = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
+
+            return timeStamp;
         }
     }
 }

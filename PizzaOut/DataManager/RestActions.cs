@@ -90,6 +90,50 @@ namespace PizzaOut.DataManager
         }
 
 
+        public async Task<CartItem> AddCartItem(CartItem cartItem)
+        {
+            Dictionary<string, object> cartPost = new Dictionary<string, object>
+            {
+                {"USER_ID", cartItem.USER_ID},
+                {"ITEM_TYPE_ID",cartItem.ITEM_TYPE_ID},
+                {"QUANTITY", cartItem.QUANTITY},
+                {"ITEM_PRICE", cartItem.ITEM_PRICE},
+                {"ITEM_TYPE_SIZE",cartItem.ITEM_SIZE},
+                {"CART_TIMESTAMP", cartItem.CART_TIMESTAMP},
+            };
+
+
+            _restResponse = await _rest.PostRequest("v1/my-cart", cartPost);
+
+            CartItem cartItemObject = ObjectBuilder.BuildCartItemObject(_restResponse);
+
+            return cartItemObject;
+
+        }
+
+        public async Task<CartItem> UpdateCartItem(CartItem cartItem)
+        {
+            Dictionary<string, object> cartPost = new Dictionary<string, object>
+            {
+                {"USER_ID", cartItem.USER_ID},
+                {"ITEM_TYPE_ID",cartItem.ITEM_TYPE_ID},
+                {"QUANTITY", cartItem.QUANTITY},
+                {"ITEM_PRICE", cartItem.ITEM_PRICE},
+                {"ITEM_TYPE_SIZE",cartItem.ITEM_SIZE},
+                {"CART_TIMESTAMP", cartItem.CART_TIMESTAMP},
+            };
+
+
+            _restResponse = await _rest.PostRequest("v1/my-cart/"+cartItem.CART_ITEM_ID, cartPost);
+
+            CartItem cartItemObject = ObjectBuilder.BuildCartItemObject(_restResponse);
+
+            return cartItemObject;
+
+        }
+
+
+
         public async Task<CartItem> ItemAlreadyInCart(int itemTypeId,int userId)
         {
             _restResponse = await _rest.GetRequest("v1/my-cart/" + itemTypeId + "/in-cart/"+userId);

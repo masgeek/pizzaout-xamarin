@@ -198,6 +198,7 @@ namespace PizzaData.Helpers
             {
                 var token = JToken.Parse(response.Content); //validate if its object or array
 
+                var h = token;
                 if (!(token is JObject)) return null;
                 result = JsonConvert.DeserializeObject<CartItem>(response.Content);
             }
