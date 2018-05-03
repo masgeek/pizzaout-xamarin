@@ -111,7 +111,7 @@ namespace PizzaOut.DataManager
 
         }
 
-        public async Task<CartItem> UpdateCartItem(CartItem cartItem)
+        public async Task<CartItem> UpdateCartItem(CartItem cartItem, int cartItemId)
         {
             Dictionary<string, object> cartPost = new Dictionary<string, object>
             {
@@ -124,7 +124,7 @@ namespace PizzaOut.DataManager
             };
 
 
-            _restResponse = await _rest.PostRequest("v1/my-cart/"+cartItem.CART_ITEM_ID, cartPost);
+            _restResponse = await _rest.PostRequest("v1/my-cart/"+cartItemId+"/update-cart", cartPost);
 
             CartItem cartItemObject = ObjectBuilder.BuildCartItemObject(_restResponse);
 

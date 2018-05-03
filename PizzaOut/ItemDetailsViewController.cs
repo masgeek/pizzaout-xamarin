@@ -22,6 +22,7 @@ namespace PizzaOut
         private double _itemsSubTotal = 0.0,_itemPrice = 0.0;
         private int _userId;
         private int _itemTypeId;
+        private int _cartItemId;
         private bool itemExists;
 
         public ItemDetailsViewController (IntPtr handle) : base (handle)
@@ -40,6 +41,8 @@ namespace PizzaOut
             base.ViewDidLoad();
             Title = _categoryItem.MENU_ITEM_NAME;
             _sizes = _categoryItem.GetSizes(_categoryItem.SIZES);
+
+            activityIndicator.StartAnimating();
 
             lblItemName.Text = _categoryItem.MENU_ITEM_NAME;
             //lblItemDesc.Text = _categoryItem.MENU_ITEM_DESC;
@@ -72,15 +75,18 @@ namespace PizzaOut
             //click action for add to cart
             btnAddToCart.TouchUpInside += async (object sender, EventArgs e) =>
                 {
-                    
+                    activityIndicator.StartAnimating();
                     var itemAdded = await AddItemToCart();
 
-                    if (itemAdded)
-                    {
-                        //close the view and go back
-                        //this.NavigationController.PopViewController(true);
-                    }
+                    activityIndicator.StopAnimating();
+                    if (!itemAdded) return;
+                    //resest the exists flag
+                    itemExists = false;
+                    //close the view and go back
+                    this.NavigationController.PopViewController(true);
                 };
+
+            activityIndicator.StopAnimating();
         }
 
         private async Task<bool> AddItemToCart()
@@ -99,13 +105,15 @@ namespace PizzaOut
             };
             if (itemExists)
             {
-                //let us update teh cart
-                cart = await restActions.UpdateCartItem(cartItem);
+                //let us update the cart
+            
+                cart = await restActions.UpdateCartItem(cartItem, _cartItemId);
             }
             else
             {
                 cart = await restActions.AddCartItem(cartItem);
             }
+
 
             return cart != null;
         }
@@ -157,8 +165,10 @@ namespace PizzaOut
             _selectedSize = size.ITEM_TYPE_SIZE;
             sizeValue.Text = _selectedSize;
 
-
-            await ItemAlreadyInCart(size);
+            if (!itemExists)
+            {
+                await ItemAlreadyInCart(size);
+            }
 
 
         }
@@ -179,14 +189,15 @@ namespace PizzaOut
 
             if (!itemExists)
             {
-                var cartItems = await restActions.ItemAlreadyInCart(queryCartItem);
-                if (cartItems != null)
+                var cartItem = await restActions.ItemAlreadyInCart(queryCartItem);
+                if (cartItem != null)
                 {
                     itemExists = true;
 
-                    _selectedQuantity = cartItems.QUANTITY;
-                    _itemPrice = cartItems.ITEM_PRICE;
-                    _itemTypeId = cartItems.ITEM_TYPE_ID;
+                    _cartItemId = cartItem.CART_ITEM_ID;
+                    _selectedQuantity = cartItem.QUANTITY;
+                    _itemPrice = cartItem.ITEM_PRICE;
+                    _itemTypeId = cartItem.ITEM_TYPE_ID;
                     //compute the cost
                     _itemsSubTotal = _itemPrice * _selectedQuantity;
 
@@ -196,10 +207,14 @@ namespace PizzaOut
                     // _selectedSize = cartItems.ITEM_SIZE;
                     // sizeValue.Text = _selectedSize;
 
-                    quantityValue.Text = cartItems.QUANTITY.ToString();
+                    quantityValue.Text = cartItem.QUANTITY.ToString();
                     quantityStepper.Value = _selectedQuantity;
 
                     btnAddToCart.SetTitle("Update Cart", UIControlState.Normal);
+                }
+                else
+                {
+                    btnAddToCart.SetTitle("Add to Cart", UIControlState.Normal);
                 }
             }
             else

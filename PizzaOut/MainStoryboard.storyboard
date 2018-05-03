@@ -438,7 +438,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="25567" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
-                                <rect key="frame" x="149" y="534" width="116" height="30"/>
+                                <rect key="frame" x="136" y="575" width="116" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Add to cart"/>
                             </button>
@@ -504,6 +504,10 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="32323" fixedFrame="YES" hidesWhenStopped="YES" hidden="YES">
+                                <rect key="frame" x="184" y="534" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                     </view>
                     <navigationItem title="Title" id="24592" key="navigationItem"/>
@@ -517,6 +521,7 @@
                         <outlet property="sizeValue" destination="29907" id="name-outlet-29907"/>
                         <outlet property="sizeStepper" destination="29905" id="name-outlet-29905"/>
                         <outlet property="totalCost" destination="32005" id="name-outlet-32005"/>
+                        <outlet property="activityIndicator" destination="32323" id="name-outlet-32323"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="24462" userLabel="First Responder" sceneMemberID="firstResponder"/>

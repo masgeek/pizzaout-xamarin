@@ -79,9 +79,33 @@ namespace PizzaData.Rest
         }
 
 
-        public void PutRequest(string endpoint)
+        public async Task<IRestResponse> PutRequest(string endpoint, Dictionary<string, object> postObject)
         {
-            request = new RestRequest(endpoint, Method.PUT);
+            IRestResponse response = null;
+            var cancellationTokenSource = new CancellationTokenSource();
+
+            var _endpoint = SetEndPoint(endpoint);
+
+            request = new RestRequest(_endpoint, Method.PUT)
+            {
+                RequestFormat = DataFormat.Json,
+                AlwaysMultipartFormData = true
+            };
+
+            //request.AddParameter("text/json", json, ParameterType.RequestBody);
+            //request.AddJsonBody(json);
+
+            foreach (var pair in postObject)
+            {
+                request.AddParameter(pair.Key, pair.Value);
+            }
+
+            if (client != null)
+            {
+                response = await client.ExecuteTaskAsync(request, cancellationTokenSource.Token);
+            }
+
+            return response;
         }
 
         public void DeleteRequest(string endpoint)

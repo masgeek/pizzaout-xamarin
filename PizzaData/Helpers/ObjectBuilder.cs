@@ -200,13 +200,14 @@ namespace PizzaData.Helpers
                 var token = JToken.Parse(response.Content); //validate if its object or array
 
 
-                
-               Analytics.TrackEvent(token.ToString());
+                var j = token;
+              //Analytics.TrackEvent(token.ToString());
                 if (!(token is JObject)) return null;
                 result = JsonConvert.DeserializeObject<CartItem>(response.Content);
             }
             catch (Exception ex)
             {
+                Analytics.TrackEvent(ex.Message);
                 Console.WriteLine(ex.StackTrace);
             }
 

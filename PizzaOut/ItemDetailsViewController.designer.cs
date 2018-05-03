@@ -17,6 +17,10 @@ namespace PizzaOut
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIActivityIndicatorView activityIndicator { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIButton btnAddToCart { get; set; }
 
         [Outlet]
@@ -57,6 +61,11 @@ namespace PizzaOut
 
         void ReleaseDesignerOutlets ()
         {
+            if (activityIndicator != null) {
+                activityIndicator.Dispose ();
+                activityIndicator = null;
+            }
+
             if (btnAddToCart != null) {
                 btnAddToCart.Dispose ();
                 btnAddToCart = null;
