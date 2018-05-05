@@ -24,6 +24,8 @@ namespace PizzaData.models
 
         public string ITEM_SIZE { get; set; }
 
+        public string ITEM_TYPE_SIZE { get; set; }
+
       
 
         public DateTime CREATED_AT { get; set; }

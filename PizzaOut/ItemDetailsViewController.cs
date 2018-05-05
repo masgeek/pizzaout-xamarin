@@ -25,7 +25,9 @@ namespace PizzaOut
         private int _cartItemId;
         private bool itemExists;
 
-        public ItemDetailsViewController (IntPtr handle) : base (handle)
+        public ItemDetailsViewController (IntPtr handle) : base(handle) { }
+
+        public ItemDetailsViewController()
         {
         }
 
@@ -210,7 +212,7 @@ namespace PizzaOut
                     quantityValue.Text = cartItem.QUANTITY.ToString();
                     quantityStepper.Value = _selectedQuantity;
 
-                    btnAddToCart.SetTitle("Update Cart", UIControlState.Normal);
+                    btnAddToCart.SetTitle("Update Cart", UIControlState.Highlighted);
                 }
                 else
                 {

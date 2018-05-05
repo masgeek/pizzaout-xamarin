@@ -31,7 +31,7 @@
         <!--Tab 1-->
         <scene sceneID="28">
             <objects>
-                <viewController id="23" sceneMemberID="viewController" customClass="CartViewController">
+                <viewController id="23" sceneMemberID="viewController" customClass="MyCartViewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="16"/>
                         <viewControllerLayoutGuide type="bottom" id="17"/>
@@ -41,24 +41,40 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="160">
-                                <rect key="frame" x="145" y="97" width="84" height="30"/>
+                                <rect key="frame" x="165" y="189" width="84" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="View Items">
                                     <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
-                                <connections>
-                                    <segue destination="152" kind="push" id="200"/>
-                                </connections>
+                                <connections/>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="34472" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
+                                <rect key="frame" x="172" y="133" width="69" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="34600" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
+                                <rect key="frame" x="160" y="93" width="95" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Order History" id="30"/>
+                    <tabBarItem key="tabBarItem" id="30" title="Cart"/>
                     <navigationItem key="navigationItem" title="Tab 1" id="90"/>
+                    <connections>
+                        <outlet property="lblTotal" destination="34472" id="name-outlet-34472"/>
+                        <outlet property="btnViewItems" destination="160" id="name-outlet-160"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="31" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1307" y="-741"/>
+            <point key="canvasLocation" x="1215" y="-774"/>
         </scene>
         <!--Tab 2-->
         <scene sceneID="32">
@@ -93,7 +109,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="35" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2252" y="211"/>
+            <point key="canvasLocation" x="2137" y="229"/>
         </scene>
         <!--Tab 1-->
         <scene sceneID="41">
@@ -111,7 +127,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="46" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="771" y="-728"/>
+            <point key="canvasLocation" x="591" y="-760"/>
         </scene>
         <!--Tab 2-->
         <scene sceneID="95">
@@ -134,8 +150,8 @@
         <!--Table View Controller-->
         <scene sceneID="151">
             <objects>
-                <tableViewController id="152" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="153">
+                <tableViewController id="152" sceneMemberID="viewController" customClass="CartItemsViewController" storyboardIdentifier="CartItemsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="153">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -147,6 +163,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections/>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -154,10 +171,13 @@
                             <outlet property="delegate" destination="152" id="155"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="cartItemsTable" destination="153" id="name-outlet-153"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="158" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2032" y="-661"/>
+            <point key="canvasLocation" x="1912" y="-754"/>
         </scene>
         <!--Login Page View Controller-->
         <scene sceneID="206">
@@ -544,7 +564,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="32648" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1390" y="246"/>
+            <point key="canvasLocation" x="1243" y="91"/>
         </scene>
     </scenes>
     <resources>

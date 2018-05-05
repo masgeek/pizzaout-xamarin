@@ -150,5 +150,14 @@ namespace PizzaOut.DataManager
 
             return cartItemObject;
         }
+
+        public async Task<List<CartItem>> GetCartItems(int userId)
+        {
+        
+            _restResponse = await _rest.GetRequest("v1/my-cart/" + userId + "/items");
+            var cartItemList = ObjectBuilder.BuildCartItemList(_restResponse);
+
+            return cartItemList;
+        }
     }
 }

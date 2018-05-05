@@ -148,6 +148,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CartItemsViewController.cs" />
+    <Compile Include="CartItemsViewController.designer.cs">
+      <DependentUpon>CartItemsViewController.cs</DependentUpon>
+    </Compile>
     <Compile Include="DataManager\ImageLoader.cs" />
     <Compile Include="ItemDetailsViewController.cs" />
     <Compile Include="ItemDetailsViewController.designer.cs">
@@ -169,6 +173,11 @@
     <Compile Include="MenuCatItemsViewController.designer.cs">
       <DependentUpon>MenuCatItemsViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="MyCartViewController.cs" />
+    <Compile Include="MyCartViewController.designer.cs">
+      <DependentUpon>MyCartViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TableViews\CartItemTableSource.cs" />
     <Compile Include="TableViews\MenuCatItemTableSource.cs" />
     <Compile Include="TableViews\MenuCatTableSource.cs" />
     <Compile Include="DataManager\RestActions.cs" />
