@@ -18,15 +18,17 @@ namespace PizzaOut
         UIActionSheet _deliveryAddressActionSheet,_deliveryTimeActionSheet;
 
         private RestActions restActions;
+        private Order _order;
         private List<CartItem> cartItemList;
         private string[] locationStingList,deliveryTimeList;
 
         private List<Location> locationList;
         private string controllerName = "CartItemsViewController";
 
-        private string deliveryLocation, deliveryTime, deliveryDate;
+        private string deliveryLocation=null, deliveryTime=null, deliveryDate = null;
 
-        private int selectedLocationId;
+        private int _selectedLocationId;
+        private long _cartTimestamp;
 
         private bool unapidOrder = false;
         public MyCartViewController (IntPtr handle) : base (handle)
@@ -40,6 +42,7 @@ namespace PizzaOut
 
             Title = "My Cart";
             restActions = new RestActions();
+
 
             cartItemList = await LoadCartItems(UserSession.GetUserId());
             locationStingList = await LoadLocationList();
@@ -84,7 +87,7 @@ namespace PizzaOut
 
                         btnDeliveryAddress.SetTitle(deliveryLocation, UIControlState.Normal);
 
-                       selectedLocationId = locationList
+                       _selectedLocationId = locationList
                             .Where(item => item.LOCATION_NAME == deliveryLocation)
                             .Select(item => item.LOCATION_ID)
                             .FirstOrDefault();
@@ -133,6 +136,7 @@ namespace PizzaOut
                     else
                     {
                         //create new order
+                        CreateOrderFromCart();
                     }
                 }
                 else
@@ -157,6 +161,7 @@ namespace PizzaOut
             foreach (CartItem cartItem in cartItems)
             {
                 total = total + (cartItem.ITEM_PRICE * cartItem.QUANTITY);
+                _cartTimestamp = cartItem.CART_TIMESTAMP;
             }
 
             lblTotal.Text = total.ToString("C", CultureInfo.CreateSpecificCulture("en-US"));
@@ -229,7 +234,7 @@ namespace PizzaOut
 
         private bool IsLocationSelected()
         {
-            return !String.IsNullOrEmpty(deliveryLocation.Trim());
+            return !String.IsNullOrEmpty(deliveryLocation);
         }
 
         private bool IsTimeSelected()
@@ -242,7 +247,7 @@ namespace PizzaOut
             return !String.IsNullOrEmpty(deliveryDate);
         }
 
-        private void CreateOrderFromCart()
+        private async Task CreateOrderFromCart()
         {
             /**
              *   delivery_date_time = String.format("%s %s:00", delivery_date, delivery_time);
@@ -255,17 +260,20 @@ namespace PizzaOut
                paramHash.put("PAYMENT_CHANNEL", "MOBILE");
              */
             //let us load the items for teh signed in user from the cart
-            string order_time = deliveryDate + deliveryTime;
+            DateTime myDate = DateTime.Parse(deliveryDate);
+            string orderTime = myDate.ToShortDateString() +" "+ deliveryTime+":00";
+
             Dictionary<string, object> orderDictionary = new Dictionary<string, object>
             {
                 {"USER_ID",UserSession.GetUserId()},
-                {"LOCATION_ID",selectedLocationId},
+                {"LOCATION_ID",_selectedLocationId},
                 {"CURRENCY",Helper.Currency()},
-                {"ORDER_TIME",deliveryTime},
-                {"CART_TIMESTAMP",UserSession.GetUserId()},
+                {"ORDER_TIME",orderTime},
+                {"CART_TIMESTAMP",_cartTimestamp},
                 {"PAYMENT_CHANNEL","MOBILE"},
             };
-            //var cartItemList = await restActions.CreateOrderFromCart(orderDictionary);
+
+            _order = await restActions.CreateOrderFromCart(orderDictionary);
         }
     }
 }

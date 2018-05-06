@@ -16,13 +16,18 @@ namespace PizzaData.models
         public int KITCHEN_ID { get; set; }
         public int CHEF_ID { get; set; }
         public int RIDER_ID { get; set; }
+
         public double ORDER_TOTAL { get; set; }
 
         public DateTime ORDER_DATE { get; set; }
         public DateTime CREATED_AT { get; set; }
         public DateTime UPDATED_AT { get; set; }
+
         public string PAYMENT_METHOD { get; set; }
         public string ORDER_STATUS { get; set; }
+
+        public string USSD_NUMBER { get; set; }
+        public bool ORDER_CREATED { get; set; }
 
         public string NOTES { get; set; }
   
