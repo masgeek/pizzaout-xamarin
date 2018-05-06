@@ -124,20 +124,13 @@ namespace PizzaOut
                 }
             };
 
-            btnPay.TouchUpInside += (e, s) =>
+            btnPay.TouchUpInside += async (e, s) =>
             {
                 //let us validate the data
                 if (IsLocationSelected()&&IsTimeSelected()&&IsDateSelected())
                 {
-                    if (unapidOrder)
-                    {
-                        //edit teh unpaid order
-                    }
-                    else
-                    {
                         //create new order
-                        CreateOrderFromCart();
-                    }
+                    await CreateOrderFromCart();
                 }
                 else
                 {
@@ -274,6 +267,18 @@ namespace PizzaOut
             };
 
             _order = await restActions.CreateOrderFromCart(orderDictionary);
+            OpenCheckout(_order);
+        }
+
+        private void OpenCheckout(Order order)
+        {
+            // create the view controller for your initial view - using storyboard, code, etc
+            PaymentConfirmationViewController paymentConfirmationViewController = this.Storyboard.InstantiateViewController("PaymentConfirmationViewController") as PaymentConfirmationViewController;
+            if (paymentConfirmationViewController != null)
+            {
+                paymentConfirmationViewController.SetOrderItems(order);
+                NavigationController.PushViewController(paymentConfirmationViewController, true);
+            }
         }
     }
 }

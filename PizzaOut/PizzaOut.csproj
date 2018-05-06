@@ -177,6 +177,10 @@
     <Compile Include="MyCartViewController.designer.cs">
       <DependentUpon>MyCartViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="PaymentConfirmationViewController.cs" />
+    <Compile Include="PaymentConfirmationViewController.designer.cs">
+      <DependentUpon>PaymentConfirmationViewController.cs</DependentUpon>
+    </Compile>
     <Compile Include="TableViews\CartItemTableSource.cs" />
     <Compile Include="TableViews\MenuCatItemTableSource.cs" />
     <Compile Include="TableViews\MenuCatTableSource.cs" />
