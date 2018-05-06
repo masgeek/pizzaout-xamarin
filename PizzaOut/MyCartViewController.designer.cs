@@ -16,7 +16,23 @@ namespace PizzaOut
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton btnDeliveryAddress { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton btnDeliveryTime { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton btnPay { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIButton btnViewItems { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIDatePicker dtDeliveryDate { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -24,9 +40,29 @@ namespace PizzaOut
 
         void ReleaseDesignerOutlets ()
         {
+            if (btnDeliveryAddress != null) {
+                btnDeliveryAddress.Dispose ();
+                btnDeliveryAddress = null;
+            }
+
+            if (btnDeliveryTime != null) {
+                btnDeliveryTime.Dispose ();
+                btnDeliveryTime = null;
+            }
+
+            if (btnPay != null) {
+                btnPay.Dispose ();
+                btnPay = null;
+            }
+
             if (btnViewItems != null) {
                 btnViewItems.Dispose ();
                 btnViewItems = null;
+            }
+
+            if (dtDeliveryDate != null) {
+                dtDeliveryDate.Dispose ();
+                dtDeliveryDate = null;
             }
 
             if (lblTotal != null) {

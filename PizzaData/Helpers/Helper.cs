@@ -36,5 +36,10 @@ namespace RestService.Helpers
 
             return timeStamp;
         }
+
+        public static string Currency()
+        {
+            return "USD";
+        }
     }
 }

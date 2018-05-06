@@ -131,7 +131,9 @@
     <Compile Include="Helpers\Helper.cs" />
     <Compile Include="Helpers\ObjectBuilder.cs" />
     <Compile Include="models\CartItem.cs" />
+    <Compile Include="models\DeliveryTime.cs" />
     <Compile Include="models\ItemSize.cs" />
+    <Compile Include="models\Location.cs" />
     <Compile Include="models\MenuCategory.cs" />
     <Compile Include="models\MenuCategoryItem.cs" />
     <Compile Include="models\Order.cs" />

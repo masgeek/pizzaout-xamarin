@@ -235,5 +235,49 @@ namespace PizzaData.Helpers
             return result;
         }
         #endregion cart items
+
+        #region Delivery location, time and date
+        public static List<Location> BuildLocationList(IRestResponse response)
+        {
+            List<Location> result = null;
+
+            try
+            {
+                var token = JToken.Parse(response.Content); //validate if its object or array
+
+                if (!(token is JArray)) return null;
+
+
+                result = JsonConvert.DeserializeObject<List<Location>>(response.Content);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            return result;
+        }
+
+        public static List<DeliveryTime> BuildDeliveryTimeList(IRestResponse response)
+        {
+            List<DeliveryTime> result = null;
+
+            try
+            {
+                var token = JToken.Parse(response.Content); //validate if its object or array
+
+                if (!(token is JArray)) return null;
+
+
+                result = JsonConvert.DeserializeObject<List<DeliveryTime>>(response.Content);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            return result;
+        }
+        #endregion
     }
 }

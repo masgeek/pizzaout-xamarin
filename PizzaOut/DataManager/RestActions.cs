@@ -159,5 +159,28 @@ namespace PizzaOut.DataManager
 
             return cartItemList;
         }
+
+        public async Task<Order> CreateOrderFromCart(Dictionary<string, object> orderDictionary)
+        {
+            _restResponse = await _rest.PostRequest("v1/my-cart/create-order",orderDictionary);
+
+            var cartItemList = ObjectBuilder.BuildOrderObject(_restResponse);
+
+            return cartItemList;
+        }
+
+        public async Task<List<Location>> GetDeliveryLocations()
+        {
+            _restResponse = await _rest.GetRequest("v1/locations");
+            var locationList = ObjectBuilder.BuildLocationList(_restResponse);
+            return locationList;
+        }
+
+        public async Task<List<DeliveryTime>> GetDeliveryTime()
+        {
+            _restResponse = await _rest.GetRequest("v1/delivery");
+            var deliveryTimeList = ObjectBuilder.BuildDeliveryTimeList(_restResponse);
+            return deliveryTimeList;
+        }
     }
 }
