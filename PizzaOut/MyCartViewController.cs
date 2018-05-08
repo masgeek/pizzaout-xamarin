@@ -61,13 +61,18 @@ namespace PizzaOut
             //set minimum date
             DateTime date = DateTime.Now;
             NSDate nsDate = (NSDate)DateTime.SpecifyKind(date, DateTimeKind.Local);
-            if (unpaidOrder)
-            {
-                var time24 = _order.ORDER_TIME;//.ToString("HH:mm:ss"); //"09:35:37"
-            }
-
             dtDeliveryDate.MinimumDate = nsDate;
             deliveryDate = nsDate.ToString(); //set as default date
+            if (unpaidOrder)
+            {
+                deliveryDate= _order.ORDER_TIME.ToString("dd/MM/yyyy"); //"09:35:37"
+
+                deliveryTime= _order.ORDER_TIME.ToString("HH:mm"); //"09:35:37"
+
+                dtDeliveryDate.Date = (NSDate)DateTime.SpecifyKind(_order.ORDER_TIME, DateTimeKind.Local);
+            }
+
+     
 
 
             btnViewItems.TouchUpInside += (e, s) =>
