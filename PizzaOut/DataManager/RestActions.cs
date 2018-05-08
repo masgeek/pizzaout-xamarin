@@ -43,7 +43,7 @@ namespace PizzaOut.DataManager
                 {"PASSWORD", user.PASSWORD},
                 {"RESET_TOKEN",user.RESET_TOKEN},
                 {"USER_STATUS",user.USER_STATUS},
-                {"RETURN_MODEL",1},
+                {"RETURN_MODEL","YES"},
             };
 
 

@@ -35,9 +35,18 @@ namespace PizzaOut
 
 	                if (user != null)
 	                {
-	                    DismissViewController(true, null); //close the view controller
+	                    if (user.USER_NAME != null)
+	                    {
+	                        ShowAlert("Registration Successfull",
+	                            "Welcome " + user.SURNAME + " Please proceed tologin and begin ordering");
+	                        DismissViewController(true, null); //close the view controller
+	                        return;
+	                    }
+
+	          
 	                }
-	            }
+	                ShowAlert("Registration not Successfull", "Unable to register, please try again");
+                }
 	        };
 
 	    }
