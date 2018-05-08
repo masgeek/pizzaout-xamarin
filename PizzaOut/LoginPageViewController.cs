@@ -16,14 +16,13 @@ namespace PizzaOut
         public event EventHandler OnLoginSuccess;
 	    private string username, password;
 
-	    private readonly RestActions _restActions;
-	    private User userModel;
+	    private RestActions _restActions;
+	    private User _userModel;
 
 
         public LoginPageViewController(IntPtr handle) : base(handle)
 	    {
-	        _restActions = new RestActions();
-            userModel = new User();
+	  
         }
 
 
@@ -31,7 +30,10 @@ namespace PizzaOut
 	    {
 	        base.ViewDidLoad();
 
-	        UserNameTextView.Text = "fatelord";
+	        _restActions = new RestActions();
+	        _userModel = new User();
+
+            UserNameTextView.Text = "fatelord";
 	        PasswordTextView.Text = "andalite6";
 
     
@@ -53,9 +55,9 @@ namespace PizzaOut
                     //We have successfully authenticated a the user,
                     //Now fire our OnLoginSuccess Event.
 
-                    userModel = await _restActions.LoginUserRest(username, password);
+                    _userModel = await _restActions.LoginUser(username, password);
 
-                    if (userModel != null)
+                    if (_userModel != null)
                     {
                         //new UIAlertView("Login Successful", "Welcome back human", null, "OK", null).Show();
                         OnLoginSuccess?.Invoke(sender, new EventArgs());

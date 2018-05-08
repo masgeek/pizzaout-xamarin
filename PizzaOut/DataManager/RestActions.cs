@@ -28,18 +28,31 @@ namespace PizzaOut.DataManager
         {
             _rest = new RestServiceFactory();
         }
-        /*public static RestActions GetInstance()
-        {
-            lock (myObject)
-            {
-                if (_restActions == null)
-                {
-                    _restActions = new RestActions();
 
-                }
-                return _restActions;
-            }
-        }*/
+        public async Task<User> RegisterUser(User user)
+        {
+            Dictionary<string, object> userRegisterPost = new Dictionary<string, object>
+            {
+                {"SURNAME", user.SURNAME},
+                {"OTHER_NAMES", user.OTHER_NAMES},
+                {"MOBILE", user.MOBILE_NO},
+                {"EMAIL", user.EMAIL},
+                {"LOCATION_ID", user.LOCATION_ID},
+                {"USER_NAME", user.USER_NAME},
+                {"USER_TYPE", user.USER_TYPE},
+                {"PASSWORD", user.PASSWORD},
+                {"RESET_TOKEN",user.RESET_TOKEN},
+                {"USER_STATUS",user.USER_STATUS},
+                {"RETURN_MODEL",1},
+            };
+
+
+            IRestResponse restResponse = await _rest.PostRequest("v1/users/register", userRegisterPost);
+
+            var userModel = ObjectBuilder.BuildUserObject(restResponse);
+            return userModel;
+
+        }
 
         /// <summary>
         /// Log in the user
@@ -47,7 +60,7 @@ namespace PizzaOut.DataManager
         /// <param name="username"></param>
         /// <param name="password"></param>
         /// <returns></returns>
-        public async Task<User> LoginUserRest(string username, string password)
+        public async Task<User> LoginUser(string username, string password)
         {
             User user = new User
             {

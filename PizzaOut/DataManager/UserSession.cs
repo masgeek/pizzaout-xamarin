@@ -21,7 +21,7 @@ namespace PizzaOut.DataManager
 
         public static bool IsLoggedIn()
         {
-            return true;
+            return false;
         }
     }
 }

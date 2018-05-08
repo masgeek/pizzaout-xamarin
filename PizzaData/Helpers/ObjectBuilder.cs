@@ -158,8 +158,20 @@ namespace PizzaData.Helpers
             {
                 var token = JToken.Parse(response.Content); //validate if its object or array
 
-                if (!(token is JObject)) return null;
-                userObject = JsonConvert.DeserializeObject<User>(response.Content);
+
+                if ((token is JArray))
+                {
+                    userObject = new User
+                    {
+                        HAS_ERRORS = true,
+                        ERROR_LIST = JsonConvert.DeserializeObject<List<ErrorModel>>(response.Content)
+                    };
+                }
+                else
+                {
+                    userObject = JsonConvert.DeserializeObject<User>(response.Content);
+                    userObject.HAS_ERRORS = false;
+                }
             }
             catch (Exception ex)
             {

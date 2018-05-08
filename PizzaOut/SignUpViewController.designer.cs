@@ -23,11 +23,27 @@ namespace PizzaOut
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UITextField EmailTextView { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UITextField OtherNamesTextView { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UITextField PasswordTextField { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UITextField PhoneTextView { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIButton SignUpButton { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UITextField SurNameTextView { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -36,10 +52,6 @@ namespace PizzaOut
         [Action ("CancelButton_TouchUpInside:")]
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void CancelButton_TouchUpInside (UIKit.UIButton sender);
-
-        [Action ("SignUpButton_TouchUpInside:")]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        partial void SignUpButton_TouchUpInside (UIKit.UIButton sender);
 
         void ReleaseDesignerOutlets ()
         {
@@ -53,14 +65,34 @@ namespace PizzaOut
                 ConfirmPasswordTextField = null;
             }
 
+            if (EmailTextView != null) {
+                EmailTextView.Dispose ();
+                EmailTextView = null;
+            }
+
+            if (OtherNamesTextView != null) {
+                OtherNamesTextView.Dispose ();
+                OtherNamesTextView = null;
+            }
+
             if (PasswordTextField != null) {
                 PasswordTextField.Dispose ();
                 PasswordTextField = null;
             }
 
+            if (PhoneTextView != null) {
+                PhoneTextView.Dispose ();
+                PhoneTextView = null;
+            }
+
             if (SignUpButton != null) {
                 SignUpButton.Dispose ();
                 SignUpButton = null;
+            }
+
+            if (SurNameTextView != null) {
+                SurNameTextView.Dispose ();
+                SurNameTextView = null;
             }
 
             if (UserNameTextView != null) {
