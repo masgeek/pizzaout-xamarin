@@ -7,7 +7,6 @@ using Foundation;
 using PizzaData.Helpers;
 using PizzaData.models;
 using PizzaData.Rest;
-using RestService.Helpers;
 using RestSharp;
 using UIKit;
 
@@ -73,6 +72,7 @@ namespace PizzaOut.DataManager
             {
                 {"USER_NAME", user.USER_NAME},
                 {"PASSWORD", user.PASSWORD},
+                {"RETURN_MODEL","YES"},
             };
 
 
@@ -194,6 +194,20 @@ namespace PizzaOut.DataManager
             _restResponse = await _rest.GetRequest("v1/delivery");
             var deliveryTimeList = ObjectBuilder.BuildDeliveryTimeList(_restResponse);
             return deliveryTimeList;
+        }
+
+        public async Task<List<Order>> LoadOrders(string orderUrl, string orderType)
+        {
+            Dictionary<string, object> orderPost = new Dictionary<string, object>
+            {
+                {"ORDER_TYPE",orderType},
+            };
+
+            _restResponse = await _rest.PostRequest(orderUrl, orderPost);
+
+            var orderList = ObjectBuilder.BuildOrdersList(_restResponse);
+
+            return orderList;
         }
     }
 }

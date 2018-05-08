@@ -175,7 +175,8 @@ namespace PizzaData.Helpers
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.StackTrace);
+                Console.WriteLine(ex.Message);
+                
             }
 
             return userObject;

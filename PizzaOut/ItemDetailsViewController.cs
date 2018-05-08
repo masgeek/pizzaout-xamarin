@@ -5,9 +5,9 @@ using System.Globalization;
 using System.Reflection.Emit;
 using System.Threading.Tasks;
 using FFImageLoading;
+using PizzaData.Helpers;
 using PizzaData.models;
 using PizzaOut.DataManager;
-using RestService.Helpers;
 using UIKit;
 
 namespace PizzaOut

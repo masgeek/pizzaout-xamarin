@@ -5,9 +5,9 @@ using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AppCenter;
+using PizzaData.Helpers;
 using PizzaData.models;
 using PizzaOut.DataManager;
-using RestService.Helpers;
 using UIKit;
 
 namespace PizzaOut
@@ -30,11 +30,18 @@ namespace PizzaOut
         private int _selectedLocationId;
         private long _cartTimestamp;
 
-        private bool unapidOrder = false;
+        private bool unpaidOrder = false;
         public MyCartViewController (IntPtr handle) : base (handle)
         {
+     
         }
 
+        public void SetOrderItems(Order order)
+        {
+            _order = order;
+            unpaidOrder = true;
+
+        }
         public override async void ViewDidLoad()
         {
        
@@ -54,8 +61,14 @@ namespace PizzaOut
             //set minimum date
             DateTime date = DateTime.Now;
             NSDate nsDate = (NSDate)DateTime.SpecifyKind(date, DateTimeKind.Local);
+            if (unpaidOrder)
+            {
+                var time24 = _order.ORDER_TIME;//.ToString("HH:mm:ss"); //"09:35:37"
+            }
+
             dtDeliveryDate.MinimumDate = nsDate;
             deliveryDate = nsDate.ToString(); //set as default date
+
 
             btnViewItems.TouchUpInside += (e, s) =>
             {
@@ -87,12 +100,7 @@ namespace PizzaOut
 
                         btnDeliveryAddress.SetTitle(deliveryLocation, UIControlState.Normal);
 
-                       _selectedLocationId = locationList
-                            .Where(item => item.LOCATION_NAME == deliveryLocation)
-                            .Select(item => item.LOCATION_ID)
-                            .FirstOrDefault();
-
-        
+                        _selectedLocationId = GetLocationId(locationList,deliveryLocation);
                     }
 
                     Console.WriteLine("{0} Clicked", args.ButtonIndex);
@@ -129,8 +137,16 @@ namespace PizzaOut
                 //let us validate the data
                 if (IsLocationSelected()&&IsTimeSelected()&&IsDateSelected())
                 {
-                        //create new order
-                    await CreateOrderFromCart();
+                    //create new order
+                    if (unpaidOrder)
+                    {
+                        //let us update the order and proceed
+                        OpenCheckout(_order);
+                    }
+                    else
+                    {
+                        await CreateOrderFromCart();
+                    }
                 }
                 else
                 {
@@ -141,11 +157,29 @@ namespace PizzaOut
             };
         }
 
+        private int GetLocationId(List<Location> locations,string _deliveryLocation)
+        {
+            int locationid = locationList
+                .Where(item => item.LOCATION_NAME == _deliveryLocation)
+                .Select(item => item.LOCATION_ID)
+                .FirstOrDefault();
+
+            return locationid;
+        }
+
         public override async void ViewDidAppear(bool animated)
         {
             base.ViewDidAppear(animated);
             //reload the data
-            cartItemList = await LoadCartItems(UserSession.GetUserId());
+            if (unpaidOrder)
+            {
+                double total = _order.ComputeOrderTotal();
+                lblTotal.Text = total.ToString("C", CultureInfo.CreateSpecificCulture("en-US"));
+            }
+            else
+            {
+                cartItemList = await LoadCartItems(UserSession.GetUserId());
+            }
         }
 
         private void ComputeTotal(List<CartItem> cartItems)
@@ -242,16 +276,6 @@ namespace PizzaOut
 
         private async Task CreateOrderFromCart()
         {
-            /**
-             *   delivery_date_time = String.format("%s %s:00", delivery_date, delivery_time);
-               paramHash = new HashMap<>();
-               paramHash.put("USER_ID", user_id);
-               paramHash.put("LOCATION_ID", String.valueOf(location_id));
-               paramHash.put("CURRENCY", getString(R.string.currency));
-               paramHash.put("ORDER_TIME", delivery_date_time);
-               paramHash.put("CART_TIMESTAMP", String.valueOf(cart_timestamp));
-               paramHash.put("PAYMENT_CHANNEL", "MOBILE");
-             */
             //let us load the items for teh signed in user from the cart
             DateTime myDate = DateTime.Parse(deliveryDate);
             string orderTime = myDate.ToShortDateString() +" "+ deliveryTime+":00";

@@ -33,17 +33,11 @@ namespace PizzaOut
                     //proceed to the registration logic
                     var user = await RegisterUserRest();
 
-	                if (user != null)
+	                if (user?.USER_NAME != null)
 	                {
-	                    if (user.USER_NAME != null)
-	                    {
-	                        ShowAlert("Registration Successfull",
-	                            "Welcome " + user.SURNAME + " Please proceed tologin and begin ordering");
-	                        DismissViewController(true, null); //close the view controller
-	                        return;
-	                    }
-
-	          
+	                    ShowAlert("Registration Successfull","Welcome " + user.SURNAME + " Please login and begin ordering");
+	                    DismissViewController(true, null); //close the view controller
+	                    return;
 	                }
 	                ShowAlert("Registration not Successfull", "Unable to register, please try again");
                 }
@@ -158,7 +152,7 @@ namespace PizzaOut
 	            USER_NAME = UserNameTextView.Text.Trim(),
 	            OTHER_NAMES = OtherNamesTextView.Text.Trim(),
 	            SURNAME = SurNameTextView.Text.Trim(),
-	            USER_STATUS = 0, //(bool)User.ACCOUNT_STATUS.ACTIVE, //user is active or not
+	            USER_STATUS = true, //(bool)User.ACCOUNT_STATUS.ACTIVE, //user is active or not
 	            USER_TYPE = "1", //1 indicates it is a customer
 	            LOCATION_ID = "1", //just a random location id
 	            ADDRESS = "N/A",

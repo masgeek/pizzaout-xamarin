@@ -152,10 +152,18 @@
     <Compile Include="CartItemsViewController.designer.cs">
       <DependentUpon>CartItemsViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="CartViewController.cs" />
+    <Compile Include="CartViewController.designer.cs">
+      <DependentUpon>CartViewController.cs</DependentUpon>
+    </Compile>
     <Compile Include="DataManager\ImageLoader.cs" />
     <Compile Include="ItemDetailsViewController.cs" />
     <Compile Include="ItemDetailsViewController.designer.cs">
       <DependentUpon>ItemDetailsViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LoginBestPractice.iOSViewController.cs" />
+    <Compile Include="LoginBestPractice.iOSViewController.designer.cs">
+      <DependentUpon>LoginBestPractice.iOSViewController.cs</DependentUpon>
     </Compile>
     <Compile Include="MenuCatCell.cs" />
     <Compile Include="MenuCatCell.designer.cs">
@@ -177,6 +185,14 @@
     <Compile Include="MyCartViewController.designer.cs">
       <DependentUpon>MyCartViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="OrdersViewController.cs" />
+    <Compile Include="OrdersViewController.designer.cs">
+      <DependentUpon>OrdersViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OrdersViewTableController.cs" />
+    <Compile Include="OrdersViewTableController.designer.cs">
+      <DependentUpon>OrdersViewTableController.cs</DependentUpon>
+    </Compile>
     <Compile Include="PaymentConfirmationViewController.cs" />
     <Compile Include="PaymentConfirmationViewController.designer.cs">
       <DependentUpon>PaymentConfirmationViewController.cs</DependentUpon>
@@ -196,6 +212,7 @@
     <Compile Include="OurMenuViewController.designer.cs">
       <DependentUpon>OurMenuViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="TableViews\OrderTablesSource.cs" />
     <Compile Include="TabPage2ViewController.cs" />
     <Compile Include="TabPage2ViewController.designer.cs">
       <DependentUpon>TabPage2ViewController.cs</DependentUpon>

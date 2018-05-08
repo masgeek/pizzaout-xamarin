@@ -28,7 +28,9 @@ namespace PizzaOut
 
                 lblOrderHeader.Text = "Pay for order number :" + _order.ORDER_ID;
                 txtOrderNumber.Text = _order.ORDER_ID.ToString();
-                txtOrderTotal.Text = _order.ORDER_TOTAL.ToString("C", CultureInfo.CreateSpecificCulture("en-US"));
+
+                var orderItems = _order.GetOrderItems(_order.ORDER_ITEMS);
+                txtOrderTotal.Text = _order.ComputeOrderTotal().ToString("C", CultureInfo.CreateSpecificCulture("en-US"));
             }
         }
     }

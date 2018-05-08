@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using PizzaData.Helpers;
 using PizzaData.models;
 using PizzaData.Rest;
-using RestService.Helpers;
 using RestSharp;
 
 namespace TestConsole

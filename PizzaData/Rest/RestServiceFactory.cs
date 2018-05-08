@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using RestService.Helpers;
+using PizzaData.Helpers;
 using RestSharp;
 
 namespace PizzaData.Rest

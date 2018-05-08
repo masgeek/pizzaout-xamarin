@@ -23,6 +23,8 @@ namespace PizzaData.models
         public DateTime CREATED_AT { get; set; }
         public DateTime UPDATED_AT { get; set; }
 
+        public DateTime ORDER_TIME { get; set; }
+
         public string PAYMENT_METHOD { get; set; }
         public string ORDER_STATUS { get; set; }
 
@@ -97,6 +99,26 @@ namespace PizzaData.models
             return items;
         }
 
+        /// <summary>
+        /// Get the total of all order items
+        /// </summary>
+        /// <returns>double orderTotal</returns>
+        public double ComputeOrderTotal()
+        {
+            double orderTotal = 20.0;
+            if (this.ORDER_DETAILS != null)
+            {
+                List<OrderItem> orderItem = GetOrderItems(ORDER_DETAILS);
+
+                foreach (var item in orderItem)
+                {
+                    double subtotal = item.QUANTITY * item.PRICE;
+                    orderTotal = orderTotal + subtotal;
+                }
+            }
+
+            return orderTotal;
+        }
         /// <summary>
         /// 
         /// </summary>

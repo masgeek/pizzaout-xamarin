@@ -31,7 +31,7 @@
         <!--Tab 1-->
         <scene sceneID="28">
             <objects>
-                <viewController id="23" sceneMemberID="viewController" customClass="MyCartViewController">
+                <viewController id="23" sceneMemberID="viewController" customClass="MyCartViewController" storyboardIdentifier="MyCartViewController" useStoryboardIdentifierAsRestorationIdentifier="YES">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="16"/>
                         <viewControllerLayoutGuide type="bottom" id="17"/>
@@ -106,7 +106,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="31" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1215" y="-774"/>
+            <point key="canvasLocation" x="1112" y="-781"/>
         </scene>
         <!--Tab 2-->
         <scene sceneID="32">
@@ -159,7 +159,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="46" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="591" y="-760"/>
+            <point key="canvasLocation" x="441" y="-822"/>
         </scene>
         <!--Tab 2-->
         <scene sceneID="95">
@@ -172,7 +172,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                     </navigationBar>
                     <connections>
-                        <segue id="32825" destination="32646" kind="relationship" relationship="rootViewController"/>
+                        <segue id="48986" destination="48785" kind="relationship" relationship="rootViewController"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="100" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -606,50 +606,6 @@
             </objects>
             <point key="canvasLocation" x="478" y="1333"/>
         </scene>
-        <scene sceneID="32645">
-            <objects>
-                <viewController id="32646" sceneMemberID="viewController" customClass="OrdersViewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="32643"/>
-                        <viewControllerLayoutGuide type="bottom" id="32644"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="32647">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="46510" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
-                                <rect key="frame" x="78" y="132" width="306" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="tintColor" colorSpace="calibratedRGB" red="0" green="0.52549019607843139" blue="1" alpha="1"/>
-                                <state key="normal" title="View Pending Orders"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="46511" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
-                                <rect key="frame" x="78" y="178" width="306" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="tintColor" colorSpace="calibratedRGB" red="0" green="0.52549019607843139" blue="1" alpha="1"/>
-                                <state key="normal" title="View Paid Orders"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="46512" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
-                                <rect key="frame" x="78" y="224" width="306" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="tintColor" colorSpace="calibratedRGB" red="0" green="0.52549019607843139" blue="1" alpha="1"/>
-                                <state key="normal" title="View Closed Orders"/>
-                            </button>
-                        </subviews>
-                    </view>
-                    <navigationItem title="Title" id="32824" key="navigationItem"/>
-                    <connections>
-                        <outlet property="OrdersViewController" destination="32647" id="name-outlet-32647"/>
-                        <outlet property="btnPendingOrders" destination="46510" id="name-outlet-46510"/>
-                        <outlet property="btnPaidOrders" destination="46511" id="name-outlet-46511"/>
-                        <outlet property="btnClosedOrders" destination="46512" id="name-outlet-46512"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="32648" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="884" y="179"/>
-        </scene>
         <scene sceneID="45118">
             <objects>
                 <viewController id="45119" sceneMemberID="viewController" customClass="PaymentConfirmationViewController" storyboardIdentifier="PaymentConfirmationViewController" useStoryboardIdentifierAsRestorationIdentifier="YES">
@@ -719,7 +675,7 @@
         </scene>
         <scene sceneID="46776">
             <objects>
-                <tableViewController id="46777" sceneMemberID="viewController">
+                <tableViewController id="46777" sceneMemberID="viewController" customClass="OrdersViewTableController" storyboardIdentifier="OrdersViewTableController" useStoryboardIdentifierAsRestorationIdentifier="YES">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="46778">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -739,10 +695,41 @@
                             <outlet property="delegate" destination="46777" id="46780"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="ordersTable" destination="46778" id="name-outlet-46778"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="46783" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1600" y="174"/>
+            <point key="canvasLocation" x="1503" y="186"/>
+        </scene>
+        <scene sceneID="48784">
+            <objects>
+                <viewController id="48785" sceneMemberID="viewController" customClass="OrdersViewController" storyboardIdentifier="OrdersViewController" useStoryboardIdentifierAsRestorationIdentifier="YES">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="48782"/>
+                        <viewControllerLayoutGuide type="bottom" id="48783"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="48786">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="50825" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
+                                <rect key="frame" x="16" y="180" width="382" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Unpaid Orders"/>
+                            </button>
+                        </subviews>
+                    </view>
+                    <navigationItem title="Title" id="48985" key="navigationItem"/>
+                    <connections>
+                        <outlet property="BtnUnpaidOrders" destination="50825" id="name-outlet-50825"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="48787" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="921" y="126"/>
         </scene>
     </scenes>
     <resources>

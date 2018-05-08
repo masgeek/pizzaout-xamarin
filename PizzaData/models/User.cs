@@ -36,7 +36,7 @@ namespace PizzaData.models
 
         public int USER_ID { get; set; }
 
-        public int USER_STATUS { get; set; }
+        public bool USER_STATUS { get; set; }
 
         public string USER_TYPE { get; set; }
         public string LOCATION_ID { get; set; }

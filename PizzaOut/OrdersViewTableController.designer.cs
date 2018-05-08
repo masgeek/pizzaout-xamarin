@@ -11,18 +11,18 @@ using UIKit;
 
 namespace PizzaOut
 {
-    [Register ("OrdersViewController")]
-    partial class OrdersViewController
+    [Register ("OrdersViewTableController")]
+    partial class OrdersViewTableController
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIButton BtnUnpaidOrders { get; set; }
+        UIKit.UITableView ordersTable { get; set; }
 
         void ReleaseDesignerOutlets ()
         {
-            if (BtnUnpaidOrders != null) {
-                BtnUnpaidOrders.Dispose ();
-                BtnUnpaidOrders = null;
+            if (ordersTable != null) {
+                ordersTable.Dispose ();
+                ordersTable = null;
             }
         }
     }
