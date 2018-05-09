@@ -39,7 +39,11 @@ namespace PizzaOut.TableViews
             cell.DetailTextLabel.Text = orderItem.ORDER_STATUS;
 
             //--- add accessory ---//
-            cell.Accessory = UITableViewCellAccessory.DetailButton;
+            if (orderItem.PAY_ORDER)
+            {
+                cell.Accessory = UITableViewCellAccessory.DetailButton;
+            }
+
             return cell;
         }
 
@@ -62,13 +66,17 @@ namespace PizzaOut.TableViews
             tableView.DeselectRow(indexPath, true);
 
             // create the view controller for your initial view - using storyboard, code, etc
-            MyCartViewController myCartViewController = _owner.Storyboard.InstantiateViewController("MyCartViewController") as MyCartViewController;
+            if (order.PAY_ORDER)
+            {
+                MyCartViewController myCartViewController =
+                    _owner.Storyboard.InstantiateViewController("MyCartViewController") as MyCartViewController;
 
-            //Here you pass the data from the registerViewController to the secondViewController
-            if (myCartViewController == null) return;
+                //Here you pass the data from the registerViewController to the secondViewController
+                if (myCartViewController == null) return;
 
-            myCartViewController.SetOrderItems(order);
-            _owner.NavigationController.PushViewController(myCartViewController, true);
+                myCartViewController.SetOrderItems(order);
+                _owner.NavigationController.PushViewController(myCartViewController, true);
+            }
         }
     }
 }

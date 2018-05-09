@@ -31,7 +31,9 @@ namespace PizzaData.models
         public string ORDER_STATUS { get; set; }
 
         public string USSD_NUMBER { get; set; }
+
         public bool ORDER_CREATED { get; set; }
+        public bool PAY_ORDER { get; set; }
 
         public string NOTES { get; set; }
 
