@@ -28,16 +28,20 @@ namespace PizzaOut
         }
 
 
-        public override async void ViewDidLoad()
+        public override void ViewDidLoad()
         {
             base.ViewDidLoad();
 
-            List<Order> orders = await LoadOrders(_orderUrl, _orderType);
+        }
 
+        public override async void ViewWillAppear(bool animated)
+        {
+            base.ViewWillAppear(animated);
             //set the orders table
+            List<Order> orders = await LoadOrders(_orderUrl, _orderType);
             if (orders != null)
             {
-                _tableSource = new OrderTablesSource(orders, this,_orderType);
+                _tableSource = new OrderTablesSource(orders, this, _orderType);
                 if (ordersTable != null)
                 {
                     ordersTable.Source = _tableSource; //assign the table data source
@@ -48,6 +52,13 @@ namespace PizzaOut
                     ordersTable.ReloadData();
                 }
             }
+        }
+
+        public override void ViewWillDisappear(bool animated)
+        {
+            base.ViewWillDisappear(animated);
+            ordersTable.Source = null;
+            ordersTable.ReloadData();
         }
 
         private async Task<List<Order>> LoadOrders(string orderUrl, string orderType)
