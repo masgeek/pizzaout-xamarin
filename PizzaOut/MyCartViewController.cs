@@ -32,6 +32,9 @@ namespace PizzaOut
 
         private NSDate currentNsDate;
         private bool unpaidOrder = false;
+
+        private double total = 0.0;
+        private double minprice = 11.00;
         public MyCartViewController (IntPtr handle) : base (handle)
         {
      
@@ -61,7 +64,7 @@ namespace PizzaOut
 
             //set minimum date
             DateTime date = DateTime.Now;
-           currentNsDate = (NSDate)DateTime.SpecifyKind(date, DateTimeKind.Utc);
+            currentNsDate = (NSDate) DateTime.SpecifyKind(date, DateTimeKind.Utc);
             deliveryDate = currentNsDate.ToString(); //set as default date
             if (unpaidOrder)
             {
@@ -72,7 +75,8 @@ namespace PizzaOut
                 deliveryLocation = _order.LOCATION.LOCATION_NAME;
                 _selectedLocationId = _order.LOCATION_ID;
 
-                NSDate _orderNsDate = (NSDate)DateTime.SpecifyKind(_order.ORDER_DATE_TIME, DateTimeKind.Utc); ;
+                NSDate _orderNsDate = (NSDate) DateTime.SpecifyKind(_order.ORDER_DATE_TIME, DateTimeKind.Utc);
+                ;
 
                 //set the current values
 
@@ -155,18 +159,30 @@ namespace PizzaOut
 
             btnPay.TouchUpInside += async (e, s) =>
             {
+                
                 //let us validate the data
                 if (IsLocationSelected()&&IsTimeSelected()&&IsDateSelected())
                 {
-                    //create new order
-                    if (unpaidOrder)
+                    //check minimum purchase price
+                    if (total >= minprice)
                     {
-                        //let us update the order and proceed
-                        OpenCheckout(_order);
+                        //create new order
+                        if (unpaidOrder)
+                        {
+                            //let us update the order and proceed
+                            OpenCheckout(_order);
+                        }
+                        else
+                        {
+                            await CreateOrderFromCart();
+                        }
                     }
                     else
                     {
-                        await CreateOrderFromCart();
+                        var least = minprice.ToString("C", CultureInfo.CreateSpecificCulture("en-US"));
+#pragma warning disable 618
+                        new UIAlertView("Minimum Price", $"Please make a purchase of at least {least} to be eligible for free delivery", null, "OK", null).Show();
+#pragma warning restore 618
                     }
                 }
                 else
@@ -194,7 +210,7 @@ namespace PizzaOut
             //reload the data
             if (unpaidOrder)
             {
-                double total = _order.ComputeOrderTotal();
+                total = _order.ComputeOrderTotal();
                 lblTotal.Text = total.ToString("C", CultureInfo.CreateSpecificCulture("en-US"));
             }
             else
@@ -205,7 +221,7 @@ namespace PizzaOut
 
         private void ComputeTotal(List<CartItem> cartItems)
         {
-            double total = 0.0;
+            total = 0.0; //reset the amount
             foreach (CartItem cartItem in cartItems)
             {
                 total = total + (cartItem.ITEM_PRICE * cartItem.QUANTITY);

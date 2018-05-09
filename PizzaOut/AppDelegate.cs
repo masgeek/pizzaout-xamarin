@@ -12,7 +12,7 @@ namespace PizzaOut
     [Register("AppDelegate")]
     public partial class AppDelegate : UIApplicationDelegate
     {
-        private bool isAuthenticated = false;
+        private bool _isAuthenticated = false;
 
         public override UIWindow Window
         {
@@ -56,8 +56,8 @@ namespace PizzaOut
             MSAnalytics.SetEnabled(true);
             //isAuthenticated can be used for an auto-login feature, you'll have to implement this
             //as you see fit or get rid of the if statement if you want.
-            isAuthenticated = UserSession.IsLoggedIn();
-            if (isAuthenticated)
+            _isAuthenticated = UserSession.IsLoggedIn();
+            if (_isAuthenticated)
             {
                 //We are already authenticated, so go to the main tab bar controller;
                 var tabBarController = GetViewController(MainStoryboard, "MainTabBarController");
@@ -67,8 +67,11 @@ namespace PizzaOut
             {
                 //User needs to log in, so show the Login View Controlller
                 var loginViewController = GetViewController(MainStoryboard, "LoginPageViewController") as LoginPageViewController;
-                loginViewController.OnLoginSuccess += LoginViewController_OnLoginSuccess;
-                SetRootViewController(loginViewController, false);
+                if (loginViewController != null)
+                {
+                    loginViewController.OnLoginSuccess += LoginViewController_OnLoginSuccess;
+                    SetRootViewController(loginViewController, false);
+                }
             }
 
             //Analytics.TrackEvent("Application started logged in status is "+isAuthenticated);

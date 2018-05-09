@@ -165,6 +165,7 @@
       <DependentUpon>CartViewController.cs</DependentUpon>
     </Compile>
     <Compile Include="DataManager\ImageLoader.cs" />
+    <Compile Include="DataManager\MessagingActions.cs" />
     <Compile Include="ItemDetailsViewController.cs" />
     <Compile Include="ItemDetailsViewController.designer.cs">
       <DependentUpon>ItemDetailsViewController.cs</DependentUpon>
