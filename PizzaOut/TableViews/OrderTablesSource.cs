@@ -43,6 +43,10 @@ namespace PizzaOut.TableViews
             {
                 cell.Accessory = UITableViewCellAccessory.DetailButton;
             }
+            else
+            {
+                cell.Accessory = UITableViewCellAccessory.None;
+            }
 
             return cell;
         }
