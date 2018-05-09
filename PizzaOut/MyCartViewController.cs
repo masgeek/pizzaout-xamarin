@@ -30,6 +30,7 @@ namespace PizzaOut
         private int _selectedLocationId;
         private long _cartTimestamp;
 
+        private NSDate currentNsDate;
         private bool unpaidOrder = false;
         public MyCartViewController (IntPtr handle) : base (handle)
         {
@@ -60,19 +61,30 @@ namespace PizzaOut
 
             //set minimum date
             DateTime date = DateTime.Now;
-            NSDate nsDate = (NSDate)DateTime.SpecifyKind(date, DateTimeKind.Local);
-            dtDeliveryDate.MinimumDate = nsDate;
-            deliveryDate = nsDate.ToString(); //set as default date
+           currentNsDate = (NSDate)DateTime.SpecifyKind(date, DateTimeKind.Utc);
+            deliveryDate = currentNsDate.ToString(); //set as default date
             if (unpaidOrder)
             {
-                deliveryDate= _order.ORDER_TIME.ToString("dd/MM/yyyy"); //"09:35:37"
+                deliveryDate = _order.ORDER_DATE_TIME.ToString("dd/MM/yyyy"); //"09:35:37"
 
-                deliveryTime= _order.ORDER_TIME.ToString("HH:mm"); //"09:35:37"
+                deliveryTime = _order.ORDER_TIME;
 
-                dtDeliveryDate.Date = (NSDate)DateTime.SpecifyKind(_order.ORDER_TIME, DateTimeKind.Local);
+                deliveryLocation = _order.LOCATION.LOCATION_NAME;
+                _selectedLocationId = _order.LOCATION_ID;
+
+                NSDate _orderNsDate = (NSDate)DateTime.SpecifyKind(_order.ORDER_DATE_TIME, DateTimeKind.Utc); ;
+
+                //set the current values
+
+                btnDeliveryAddress.SetTitle(deliveryLocation, UIControlState.Normal);
+                btnDeliveryTime.SetTitle(deliveryTime, UIControlState.Normal);
+                dtDeliveryDate.SetDate(_orderNsDate, true);
+                dtDeliveryDate.MaximumDate = _orderNsDate;
+
+                btnViewItems.Hidden = true;
             }
 
-     
+
 
 
             btnViewItems.TouchUpInside += (e, s) =>
@@ -90,7 +102,11 @@ namespace PizzaOut
 
             btnDeliveryTime.TouchUpInside += (e, s) => { _deliveryTimeActionSheet.ShowInView(View); };
 
-            dtDeliveryDate.ValueChanged += (e, s) => { deliveryDate = dtDeliveryDate.Date.ToString(); };
+            dtDeliveryDate.ValueChanged += (e, s) =>
+            {
+                dtDeliveryDate.MinimumDate = currentNsDate; //set minimum date to current date
+                deliveryDate = dtDeliveryDate.Date.ToString();
+            };
 
             _deliveryAddressActionSheet.Clicked += (btn_sender, args) =>
             {

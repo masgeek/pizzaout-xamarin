@@ -20,7 +20,15 @@ namespace PizzaOut
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel lblHelpLine { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UILabel lblOrderHeader { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel lblPaymentNumber { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -37,9 +45,19 @@ namespace PizzaOut
                 btnPayOrder = null;
             }
 
+            if (lblHelpLine != null) {
+                lblHelpLine.Dispose ();
+                lblHelpLine = null;
+            }
+
             if (lblOrderHeader != null) {
                 lblOrderHeader.Dispose ();
                 lblOrderHeader = null;
+            }
+
+            if (lblPaymentNumber != null) {
+                lblPaymentNumber.Dispose ();
+                lblPaymentNumber = null;
             }
 
             if (txtOrderNumber != null) {

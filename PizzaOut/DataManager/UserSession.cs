@@ -23,5 +23,10 @@ namespace PizzaOut.DataManager
         {
             return false;
         }
+
+        public static string HelpLine()
+        {
+            return "2040";
+        }
     }
 }

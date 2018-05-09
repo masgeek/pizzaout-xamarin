@@ -2,6 +2,7 @@
 using System;
 using System.Globalization;
 using PizzaData.models;
+using PizzaOut.DataManager;
 using UIKit;
 
 namespace PizzaOut
@@ -30,7 +31,15 @@ namespace PizzaOut
                 txtOrderNumber.Text = _order.ORDER_ID.ToString();
 
                 var orderItems = _order.GetOrderItems(_order.ORDER_ITEMS);
+
                 txtOrderTotal.Text = _order.ComputeOrderTotal().ToString("C", CultureInfo.CreateSpecificCulture("en-US"));
+                lblHelpLine.Text = $"Call us on {UserSession.HelpLine()}";
+                lblPaymentNumber.Text = "Payment Number is " + _order.USSD_NUMBER;
+
+                btnPayOrder.TouchUpInside += (e, s) =>
+                {
+                    //let us launch the dialler
+                };
             }
         }
     }

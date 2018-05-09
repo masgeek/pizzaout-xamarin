@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Newtonsoft.Json.Linq;
@@ -9,7 +10,7 @@ namespace PizzaData.models
     [SuppressMessage("ReSharper", "InconsistentNaming")]
     public class Order
     {
-
+        [Key]
         public int ORDER_ID { get; set; }
         public int USER_ID { get; set; }
         public int LOCATION_ID { get; set; }
@@ -22,8 +23,9 @@ namespace PizzaData.models
         public DateTime ORDER_DATE { get; set; }
         public DateTime CREATED_AT { get; set; }
         public DateTime UPDATED_AT { get; set; }
+        public DateTime ORDER_DATE_TIME { get; set; }
 
-        public DateTime ORDER_TIME { get; set; }
+        public string ORDER_TIME { get; set; }
 
         public string PAYMENT_METHOD { get; set; }
         public string ORDER_STATUS { get; set; }
@@ -32,7 +34,9 @@ namespace PizzaData.models
         public bool ORDER_CREATED { get; set; }
 
         public string NOTES { get; set; }
-  
+
+        public Location LOCATION { get; set; }
+
         public JArray ORDER_DETAILS { get; set; }
         public JArray ORDER_TIMELINE { get; set; }
         public JArray ORDER_ITEMS { get; set; }
@@ -105,7 +109,7 @@ namespace PizzaData.models
         /// <returns>double orderTotal</returns>
         public double ComputeOrderTotal()
         {
-            double orderTotal = 20.0;
+            double orderTotal = 0.0;
             if (this.ORDER_DETAILS != null)
             {
                 List<OrderItem> orderItem = GetOrderItems(ORDER_DETAILS);
