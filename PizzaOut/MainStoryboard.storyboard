@@ -697,7 +697,7 @@
         </scene>
         <scene sceneID="46776">
             <objects>
-                <tableViewController id="46777" sceneMemberID="viewController" customClass="OrdersViewTableController" storyboardIdentifier="OrdersViewTableController" useStoryboardIdentifierAsRestorationIdentifier="YES">
+                <tableViewController id="46777" sceneMemberID="viewController" customClass="OrdersViewTableController" storyboardIdentifier="OrdersViewTableController" useStoryboardIdentifierAsRestorationIdentifier="YES" hidesBottomBarWhenPushed="YES">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="46778">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -723,7 +723,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="46783" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1503" y="186"/>
+            <point key="canvasLocation" x="1485" y="179"/>
         </scene>
         <scene sceneID="48784">
             <objects>
@@ -751,7 +751,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="48787" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="921" y="126"/>
+            <point key="canvasLocation" x="1013" y="163"/>
         </scene>
     </scenes>
     <resources>
