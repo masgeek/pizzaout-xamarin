@@ -59,8 +59,11 @@ namespace PizzaOut
 
                     if (_userModel != null)
                     {
-                        //new UIAlertView("Login Successful", "Welcome back human", null, "OK", null).Show();
-                        OnLoginSuccess?.Invoke(sender, new EventArgs());
+                        UserSession.SetUserSession(_userModel);
+                        if (UserSession.IsLoggedIn())
+                        {
+                            OnLoginSuccess?.Invoke(sender, new EventArgs());
+                        }
                     }
 
     
@@ -91,3 +94,4 @@ namespace PizzaOut
         }
 	}
 }
+

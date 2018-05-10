@@ -28,6 +28,8 @@ namespace PizzaData.models
     [SuppressMessage("ReSharper", "InconsistentNaming")]
     public class User
     {
+
+
         public enum ACCOUNT_STATUS
         {
             DEACTIVATED = 0,
@@ -51,6 +53,9 @@ namespace PizzaData.models
         public string ADDRESS { get; set; }
         
         public string RESET_TOKEN { get; set; }
+        public string API_TOKEN { get; set; }
+
+        public string HELPLINE { get; set; }
 
         public bool HAS_ERRORS { get; set; }
 
