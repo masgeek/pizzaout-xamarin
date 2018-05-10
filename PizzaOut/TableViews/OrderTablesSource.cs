@@ -39,15 +39,8 @@ namespace PizzaOut.TableViews
             cell.DetailTextLabel.Text = orderItem.ORDER_STATUS;
 
             //--- add accessory ---//
-            if (orderItem.PAY_ORDER)
-            {
-                cell.Accessory = UITableViewCellAccessory.DetailButton;
-            }
-            else
-            {
-                cell.Accessory = UITableViewCellAccessory.None;
-            }
-
+            cell.Accessory = orderItem.PAY_ORDER ? UITableViewCellAccessory.DisclosureIndicator : UITableViewCellAccessory.DetailButton;
+        
             return cell;
         }
 
@@ -66,7 +59,7 @@ namespace PizzaOut.TableViews
         {
             Order order = GetItem(indexPath.Row);
 
-            
+
             tableView.DeselectRow(indexPath, true);
 
             // create the view controller for your initial view - using storyboard, code, etc
@@ -80,6 +73,10 @@ namespace PizzaOut.TableViews
 
                 myCartViewController.SetOrderItems(order);
                 _owner.NavigationController.PushViewController(myCartViewController, true);
+            }
+            else
+            {
+                //show the items in the order
             }
         }
     }
