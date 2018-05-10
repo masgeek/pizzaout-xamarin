@@ -1,4 +1,5 @@
 using System;
+using PizzaOut.DataManager;
 using UIKit;
 
 namespace PizzaOut
@@ -9,6 +10,7 @@ namespace PizzaOut
 		{
         }
 
+        
         //Implement a Logout Feature
         partial void LogOutButton_TouchUpInside(UIButton sender)
         {
@@ -24,6 +26,7 @@ namespace PizzaOut
             //Wire our event handler to show the MainTabBarController after we successfully logged in.
             loginPageViewController.OnLoginSuccess += (s, e) => 
             {
+                UserSession.UserLogout();
                 var tabBarController = appDelegate.GetViewController(mainStoryboard, "MainTabBarController");
                 appDelegate.SetRootViewController(tabBarController, true);
             };
