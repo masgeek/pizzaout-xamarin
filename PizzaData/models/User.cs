@@ -47,7 +47,7 @@ namespace PizzaData.models
         public string OTHER_NAMES { get; set; }
 
         public string EMAIL { get; set; }
-        public string MOBILE_NO { get; set; }
+        public string MOBILE { get; set; }
         public string USER_NAME { get; set; }
         public string PASSWORD { get; set; }
         public string ADDRESS { get; set; }

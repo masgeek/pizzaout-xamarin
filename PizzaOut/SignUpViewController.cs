@@ -157,7 +157,7 @@ namespace PizzaOut
 	            LOCATION_ID = "1", //just a random location id
 	            ADDRESS = "N/A",
 	            EMAIL = EmailTextView.Text.Trim(),
-	            MOBILE_NO = PhoneTextView.Text.Trim(),
+	            MOBILE = PhoneTextView.Text.Trim(),
 	            PASSWORD = PasswordTextField.Text.Trim(),
 	            RESET_TOKEN = Guid.NewGuid().ToString() //random guid
 	        };

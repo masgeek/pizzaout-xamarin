@@ -6,6 +6,7 @@ using FFImageLoading;
 using Foundation;
 using PizzaData.models;
 using PizzaOut.DataManager;
+using SDWebImage;
 using UIKit;
 
 namespace PizzaOut.TableViews
@@ -35,13 +36,14 @@ namespace PizzaOut.TableViews
             }
 
             cell.TextLabel.Text = menuCat.MENU_ITEM_NAME;
-            ImageLoader.LoadImage(menuCat.MENU_ITEM_IMAGE).Into(cell.ImageView); //load the url image into the image view
             cell.DetailTextLabel.Text = menuCat.MENU_ITEM_DESC;
-            
-            //ImageLoader.LoadImage(menuCat.MENU_CAT_IMAGE).Into(cell.ImageView); //load the url image into the image view
+            cell.ImageView.SetImage(
+                url: new NSUrl(menuCat.MENU_ITEM_IMAGE),
+                placeholder: UIImage.FromBundle("placeholder")
+            );
 
             //add accessory
-            cell.Accessory = UITableViewCellAccessory.DetailDisclosureButton;
+            cell.Accessory = UITableViewCellAccessory.DisclosureIndicator;
             return cell;
         }
 

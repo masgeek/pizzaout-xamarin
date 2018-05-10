@@ -34,7 +34,7 @@ namespace PizzaOut.DataManager
             {
                 {"SURNAME", user.SURNAME},
                 {"OTHER_NAMES", user.OTHER_NAMES},
-                {"MOBILE", user.MOBILE_NO},
+                {"MOBILE", user.MOBILE},
                 {"EMAIL", user.EMAIL},
                 {"LOCATION_ID", user.LOCATION_ID},
                 {"USER_NAME", user.USER_NAME},

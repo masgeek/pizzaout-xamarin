@@ -8,6 +8,7 @@ using FFImageLoading;
 using PizzaData.Helpers;
 using PizzaData.models;
 using PizzaOut.DataManager;
+using SDWebImage;
 using UIKit;
 
 namespace PizzaOut
@@ -38,17 +39,26 @@ namespace PizzaOut
             _userId = UserSession.GetUserId();
         }
 
+
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
             Title = _categoryItem.MENU_ITEM_NAME;
+        }
+
+        public override async void ViewWillAppear(bool animated)
+        {
+            base.ViewWillAppear(animated);
             _sizes = _categoryItem.GetSizes(_categoryItem.SIZES);
 
             activityIndicator.StartAnimating();
 
             lblItemName.Text = _categoryItem.MENU_ITEM_NAME;
             //lblItemDesc.Text = _categoryItem.MENU_ITEM_DESC;
-            ImageLoader.LoadImage(_categoryItem.MENU_ITEM_IMAGE).Into(itemImage);
+            itemImage.SetImage(
+                url: new NSUrl(_categoryItem.MENU_ITEM_IMAGE),
+                placeholder: UIImage.FromBundle("placeholder")
+            );
 
             //lblItemDesc.Editable = false;
             quantityValue.Text = _selectedQuantity.ToString();
@@ -60,7 +70,7 @@ namespace PizzaOut
             quantityStepper.MinimumValue = 1;
             quantityStepper.MaximumValue = _categoryItem.MAX_QTY; //set the maximum value
 
-            ComputeSizeAndCost(0, _sizes[_sizeIndex]);
+            await ComputeSizeAndCost(0, _sizes[_sizeIndex]);
 
             //sizeStepper.Value = _selectedQuantity;
             quantityStepper.Value = _selectedQuantity;
