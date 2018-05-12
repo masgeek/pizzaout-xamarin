@@ -46,60 +46,107 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="160">
-                                <rect key="frame" x="165" y="398" width="84" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="160">
+                                <rect key="frame" x="219" y="584" width="140" height="32"/>
                                 <color key="tintColor" red="0.0" green="0.52549019607843139" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="backgroundColor" colorSpace="calibratedRGB" red="0.94901960784313721" green="0.5490196078431373" blue="0.011764705882352941" alpha="1"/>
                                 <state key="normal" title="View Items">
-                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" customColorSpace="sRGB" cocoaTouchSystemColor="darkTextColor"/>
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute keyPath="layer.cornerRadius" type="number">
+                                        <real key="value" value="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <constraints>
+                                    <constraint id="87972" firstItem="160" firstAttribute="height" constant="32"/>
+                                </constraints>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="34472">
-                                <rect key="frame" x="172" y="133" width="69" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="34472">
+                                <rect key="frame" x="166" y="92" width="193" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
+                                <constraints>
+                                    <constraint id="85702" firstItem="34472" firstAttribute="width" constant="193"/>
+                                </constraints>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Total" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="34600">
-                                <rect key="frame" x="160" y="93" width="95" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="34600">
+                                <rect key="frame" x="16" y="92" width="101" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
+                                <constraints>
+                                    <constraint id="85697" firstItem="34600" firstAttribute="height" constant="21"/>
+                                    <constraint id="85701" firstItem="34600" firstAttribute="width" constant="101"/>
+                                </constraints>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="41979">
-                                <rect key="frame" x="86" y="162" width="241" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="41979">
+                                <rect key="frame" x="16" y="252" width="343" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <state key="normal" title="Delivery Address"/>
+                                <constraints>
+                                    <constraint id="86405" firstItem="41979" firstAttribute="height" constant="30"/>
+                                </constraints>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="41980">
-                                <rect key="frame" x="86" y="200" width="241" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="41980">
+                                <rect key="frame" x="16" y="305" width="343" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <state key="normal" title="Delivery  Time"/>
+                                <constraints>
+                                    <constraint id="86572" firstItem="41980" firstAttribute="height" constant="30"/>
+                                </constraints>
                             </button>
-                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="42316">
-                                <rect key="frame" x="47" y="238" width="281" height="152"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="42316">
+                                <rect key="frame" x="16" y="128" width="343" height="103"/>
                                 <date key="date" timeIntervalSinceReferenceDate="332704801.65417802">
                                     <!--2011-07-18 18:00:01 +0000-->
                                 </date>
+                                <constraints>
+                                    <constraint id="85705" firstItem="42316" firstAttribute="height" constant="103"/>
+                                </constraints>
                             </datePicker>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="44783">
-                                <rect key="frame" x="17" y="440" width="380" height="60"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.94901960784313721" green="0.35686274509803922" blue="0.058823529411764705" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="44783">
+                                <rect key="frame" x="16" y="584" width="140" height="32"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16" weight="semibold"/>
                                 <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <state key="normal" title="Tap to pay with mobile money"/>
+                                <color key="backgroundColor" colorSpace="calibratedRGB" red="0.94901960784313721" green="0.5490196078431373" blue="0.011764705882352941" alpha="1"/>
+                                <state key="normal" title="Tap to pay">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <real key="value" value="10"/>
+                                        <real key="value" value="3"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint id="85695" firstItem="34600" firstAttribute="leading" secondItem="29" secondAttribute="leadingMargin"/>
+                            <constraint id="85696" firstItem="34600" firstAttribute="top" secondItem="16" secondAttribute="bottom" constant="28"/>
+                            <constraint id="85698" firstItem="34472" firstAttribute="trailing" secondItem="29" secondAttribute="trailingMargin"/>
+                            <constraint id="85699" firstItem="34472" firstAttribute="top" secondItem="16" secondAttribute="bottom" constant="28"/>
+                            <constraint id="85700" firstItem="34472" firstAttribute="leading" secondItem="34600" secondAttribute="trailing" constant="49"/>
+                            <constraint id="85703" firstItem="42316" firstAttribute="trailing" secondItem="29" secondAttribute="trailingMargin"/>
+                            <constraint id="85704" firstItem="42316" firstAttribute="leading" secondItem="29" secondAttribute="leadingMargin"/>
+                            <constraint id="85706" firstItem="42316" firstAttribute="top" secondItem="34472" secondAttribute="bottom" constant="15"/>
+                            <constraint id="86403" firstItem="41979" firstAttribute="leading" secondItem="29" secondAttribute="leadingMargin"/>
+                            <constraint id="86404" firstItem="41979" firstAttribute="trailing" secondItem="29" secondAttribute="trailingMargin"/>
+                            <constraint id="86406" firstItem="41979" firstAttribute="top" secondItem="42316" secondAttribute="bottom" constant="21"/>
+                            <constraint id="86570" firstItem="41980" firstAttribute="leading" secondItem="29" secondAttribute="leadingMargin"/>
+                            <constraint id="86571" firstItem="41980" firstAttribute="trailing" secondItem="29" secondAttribute="trailingMargin"/>
+                            <constraint id="86573" firstItem="41980" firstAttribute="top" secondItem="41979" secondAttribute="bottom" constant="23"/>
+                            <constraint id="87967" firstItem="44783" firstAttribute="leading" secondItem="29" secondAttribute="leadingMargin"/>
+                            <constraint id="87968" firstItem="17" firstAttribute="top" secondItem="44783" secondAttribute="bottom" constant="7"/>
+                            <constraint id="87969" firstItem="160" firstAttribute="leading" secondItem="44783" secondAttribute="trailing" constant="63"/>
+                            <constraint id="87970" firstItem="160" firstAttribute="trailing" secondItem="29" secondAttribute="trailingMargin"/>
+                            <constraint id="87971" firstItem="17" firstAttribute="top" secondItem="160" secondAttribute="bottom" constant="7"/>
+                            <constraint id="87973" firstItem="44783" firstAttribute="height" secondItem="160" secondAttribute="height"/>
+                            <constraint id="87976" firstItem="44783" firstAttribute="width" secondItem="160" secondAttribute="width"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Cart" id="30"/>
                     <toolbarItems/>
@@ -259,7 +306,7 @@
                                 </constraints>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="313">
-                                <rect key="frame" x="18" y="450" width="343" height="30"/>
+                                <rect key="frame" x="18" y="450.5" width="343" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="tintColor" colorSpace="calibratedRGB" red="0" green="0.52549019607843139" blue="1" alpha="1"/>
                                 <state key="normal" title="Sign Up">
@@ -272,9 +319,8 @@
                                     <constraint id="73133" firstItem="313" firstAttribute="height" constant="30"/>
                                 </constraints>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="73422" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES" image="splashscreen">
-                                <rect key="frame" x="16" y="78" width="343" height="146"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="73422" translatesAutoresizingMaskIntoConstraints="NO" image="splashscreen">
+                                <rect key="frame" x="16" y="78" width="343" height="146.5"/>
                             </imageView>
                         </subviews>
                         <constraints>
@@ -291,6 +337,10 @@
                             <constraint id="73130" firstItem="313" firstAttribute="top" secondItem="213" secondAttribute="bottom" constant="40"/>
                             <constraint id="73131" firstItem="313" firstAttribute="leading" secondItem="208" secondAttribute="leadingMargin" constant="2"/>
                             <constraint id="73132" firstItem="313" firstAttribute="trailing" secondItem="208" secondAttribute="trailingMargin" constant="2"/>
+                            <constraint id="75094" firstItem="73422" firstAttribute="top" secondItem="204" secondAttribute="bottom" constant="58"/>
+                            <constraint id="75095" firstItem="73422" firstAttribute="leading" secondItem="208" secondAttribute="leadingMargin"/>
+                            <constraint id="75096" firstItem="73422" firstAttribute="trailing" secondItem="208" secondAttribute="trailingMargin"/>
+                            <constraint id="75097" firstItem="211" firstAttribute="top" secondItem="73422" secondAttribute="bottom" constant="41"/>
                         </constraints>
                         <color key="backgroundColor" colorSpace="calibratedRGB" red="1" green="1" blue="1" alpha="1"/>
                     </view>
@@ -325,7 +375,7 @@
                                     <constraint id="69807" firstItem="264" firstAttribute="height" constant="30"/>
                                 </constraints>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="265">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="265" misplaced="YES" ambiguous="YES">
                                 <rect key="frame" x="16" y="330" width="343" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
@@ -333,7 +383,7 @@
                                     <constraint id="70523" firstItem="265" firstAttribute="height" constant="30"/>
                                 </constraints>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confrim Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="266">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confrim Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="266" misplaced="YES" ambiguous="YES">
                                 <rect key="frame" x="16" y="380" width="343" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
@@ -342,17 +392,16 @@
                                 </constraints>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="267">
-                                <rect key="frame" x="16" y="617" width="120" height="30"/>
+                                <rect key="frame" x="16" y="427" width="343" height="30"/>
                                 <state key="normal" title="Register">
                                     <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <constraints>
-                                    <constraint id="68191" firstItem="267" firstAttribute="height" constant="30"/>
-                                    <constraint id="68198" firstItem="267" firstAttribute="width" constant="120"/>
+                                    <constraint id="74106" firstItem="267" firstAttribute="height" constant="30"/>
                                 </constraints>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="354">
-                                <rect key="frame" x="184" y="617" width="175" height="30"/>
+                                <rect key="frame" x="16" y="484" width="343" height="30"/>
                                 <state key="normal" title="Cancel">
                                     <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -360,8 +409,7 @@
                                     <action selector="CancelButton_TouchUpInside:" destination="260" eventType="touchUpInside" id="355"/>
                                 </connections>
                                 <constraints>
-                                    <constraint id="68199" firstItem="354" firstAttribute="width" constant="120"/>
-                                    <constraint id="68203" firstItem="354" firstAttribute="height" constant="30"/>
+                                    <constraint id="74111" firstItem="354" firstAttribute="height" constant="30"/>
                                 </constraints>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Surname" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="47138">
@@ -399,11 +447,6 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint id="68190" firstItem="267" firstAttribute="leading" secondItem="261" secondAttribute="leadingMargin"/>
-                            <constraint id="68197" firstItem="258" firstAttribute="top" secondItem="267" secondAttribute="bottom" constant="20"/>
-                            <constraint id="68200" firstItem="354" firstAttribute="leading" secondItem="267" secondAttribute="trailing" constant="48"/>
-                            <constraint id="68202" firstItem="354" firstAttribute="trailing" secondItem="261" secondAttribute="trailingMargin"/>
-                            <constraint id="68205" firstItem="258" firstAttribute="top" secondItem="354" secondAttribute="bottom" constant="20"/>
                             <constraint id="69804" firstItem="264" firstAttribute="leading" secondItem="261" secondAttribute="leadingMargin"/>
                             <constraint id="69805" firstItem="264" firstAttribute="trailing" secondItem="261" secondAttribute="trailingMargin"/>
                             <constraint id="69806" firstItem="264" firstAttribute="top" secondItem="257" secondAttribute="bottom" constant="60"/>
@@ -419,12 +462,14 @@
                             <constraint id="70516" firstItem="47141" firstAttribute="top" secondItem="47140" secondAttribute="bottom" constant="20"/>
                             <constraint id="70517" firstItem="47141" firstAttribute="leading" secondItem="261" secondAttribute="leadingMargin"/>
                             <constraint id="70518" firstItem="47141" firstAttribute="trailing" secondItem="261" secondAttribute="trailingMargin"/>
-                            <constraint id="70520" firstItem="265" firstAttribute="leading" secondItem="267" secondAttribute="leading"/>
-                            <constraint id="70521" firstItem="265" firstAttribute="trailing" secondItem="354" secondAttribute="trailing"/>
                             <constraint id="70522" firstItem="265" firstAttribute="top" secondItem="47141" secondAttribute="bottom" constant="20"/>
-                            <constraint id="71098" firstItem="266" firstAttribute="leading" secondItem="267" secondAttribute="leading"/>
-                            <constraint id="71099" firstItem="266" firstAttribute="trailing" secondItem="354" secondAttribute="trailing"/>
                             <constraint id="71101" firstItem="266" firstAttribute="top" secondItem="265" secondAttribute="bottom" constant="20"/>
+                            <constraint id="74104" firstItem="267" firstAttribute="leading" secondItem="261" secondAttribute="leadingMargin"/>
+                            <constraint id="74105" firstItem="267" firstAttribute="trailing" secondItem="261" secondAttribute="trailingMargin"/>
+                            <constraint id="74107" firstItem="267" firstAttribute="top" secondItem="266" secondAttribute="bottom" constant="17"/>
+                            <constraint id="74108" firstItem="354" firstAttribute="leading" secondItem="261" secondAttribute="leadingMargin"/>
+                            <constraint id="74109" firstItem="354" firstAttribute="trailing" secondItem="261" secondAttribute="trailingMargin"/>
+                            <constraint id="74110" firstItem="354" firstAttribute="top" secondItem="267" secondAttribute="bottom" constant="27"/>
                         </constraints>
                     </view>
                     <connections>
@@ -751,17 +796,20 @@
                                 </constraints>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="45363">
-                                <rect key="frame" x="16" y="596" width="342" height="52"/>
-                                <color key="backgroundColor" red="0.94901960784313721" green="0.35686274509803922" blue="0.058823529411764705" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="16" y="616" width="342" height="32"/>
+                                <color key="backgroundColor" colorSpace="calibratedRGB" red="0.94901960784313721" green="0.5490196078431373" blue="0.011764705882352941" alpha="1"/>
                                 <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <state key="normal" title="Tap to pay for order number :2277"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16" weight="semibold"/>
+                                <state key="normal" title="Tap to pay for order number :2277">
+                                    <color key="titleColor" colorSpace="calibratedRGB" red="0" green="0" blue="0" alpha="1"/>
+                                </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <real key="value" value="10"/>
+                                        <real key="value" value="3"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <constraints>
-                                    <constraint id="71828" firstItem="45363" firstAttribute="height" constant="52"/>
+                                    <constraint id="71828" firstItem="45363" firstAttribute="height" constant="32"/>
                                 </constraints>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Payment USSD" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="51185">
