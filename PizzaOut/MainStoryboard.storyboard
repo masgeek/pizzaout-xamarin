@@ -27,7 +27,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="27" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1484" y="-964"/>
+            <point key="canvasLocation" x="-1674" y="-999"/>
         </scene>
         <!--Tab 1-->
         <scene sceneID="28">
@@ -814,5 +814,7 @@
     </scenes>
     <resources>
         <image name="pizza.png" width="48" height="48"/>
+        <image name="pizzaplaceholder" width="343" height="343"/>
+        <image name="placeholder" width="343" height="343"/>
     </resources>
 </document>
