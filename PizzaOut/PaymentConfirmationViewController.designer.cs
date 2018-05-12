@@ -20,10 +20,6 @@ namespace PizzaOut
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UILabel lblHelpLine { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UILabel lblOrderHeader { get; set; }
 
         [Outlet]
@@ -43,11 +39,6 @@ namespace PizzaOut
             if (btnPayOrder != null) {
                 btnPayOrder.Dispose ();
                 btnPayOrder = null;
-            }
-
-            if (lblHelpLine != null) {
-                lblHelpLine.Dispose ();
-                lblHelpLine = null;
             }
 
             if (lblOrderHeader != null) {

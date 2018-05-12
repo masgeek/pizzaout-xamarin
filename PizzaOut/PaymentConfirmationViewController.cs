@@ -39,7 +39,7 @@ namespace PizzaOut
                 txtOrderTotal.Text = totalAmount.ToString("C", CultureInfo.CreateSpecificCulture("en-US"));
 
                 lblOrderHeader.Text = $"Pay for order number :{_order.ORDER_ID}";
-                lblHelpLine.Text = $"Call us on {UserSession.HelpLine()}";
+                //lblHelpLine.Text = $"Call us on {UserSession.HelpLine()}";
                 lblPaymentNumber.Text = $"Payment Number is :{_paymentUssd}";
 
                 btnPayOrder.SetTitle($"Tap to pay for order number :{_order.ORDER_ID}", UIControlState.Normal);
