@@ -141,19 +141,31 @@
     <Reference Include="Xamarin.iOS" />
   </ItemGroup>
   <ItemGroup>
+    <ImageAsset Include="Images.xcassets\LaunchImages.launchimage\iPad Landscape.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Images.xcassets\LaunchImages.launchimage\iPad Landscape@2x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Images.xcassets\LaunchImages.launchimage\iPad Portrait.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Images.xcassets\LaunchImages.launchimage\iPad Portrait@2x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Images.xcassets\LaunchImages.launchimage\iPhone Portrait-Retina 4.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Images.xcassets\LaunchImages.launchimage\iPhone Portrait@2x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Images.xcassets\splashimage.imageset\App Store-1024.png">
+      <Visible>false</Visible>
+    </ImageAsset>
     <ImageAsset Include="Images.xcassets\splashimage.imageset\Contents.json">
       <Visible>false</Visible>
     </ImageAsset>
     <ImageAsset Include="Images.xcassets\LaunchImages.launchimage\Contents.json">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Images.xcassets\splashimage.imageset\Icon-App-72x72@1x.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Images.xcassets\splashimage.imageset\Icon-App-76x76@2x.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Images.xcassets\splashimage.imageset\Icon-Small-50x50@2x.png">
       <Visible>false</Visible>
     </ImageAsset>
     <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Contents.json">
@@ -219,6 +231,8 @@
     <None Include="app.config" />
     <None Include="Info.plist" />
     <None Include="Entitlements.plist" />
+    <ITunesArtwork Include="iTunesArtwork" />
+    <ITunesArtwork Include="iTunesArtwork%402x" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

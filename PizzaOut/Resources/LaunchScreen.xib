@@ -13,7 +13,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PizzaOut" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4216" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
-                    <rect key="frame" x="8" y="278" width="464" height="32"/>
+                    <rect key="frame" x="8" y="190" width="464" height="32"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="28"/>
                     <nil key="textColor"/>
@@ -26,10 +26,6 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="4219" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES" image="splashimage">
-                    <rect key="frame" x="108" y="56" width="252" height="190"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                </imageView>
             </subviews>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -40,6 +36,6 @@
         <image name="pizza.png" width="48" height="48"/>
         <image name="pizzaplaceholder" width="343" height="343"/>
         <image name="placeholder" width="343" height="343"/>
-        <image name="splashimage" width="50" height="50"/>
+        <image name="splashimage" width="1024" height="1024"/>
     </resources>
 </document>
