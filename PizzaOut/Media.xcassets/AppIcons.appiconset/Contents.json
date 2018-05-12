@@ -3,12 +3,14 @@
     {
       "scale": "2x",
       "size": "20x20",
-      "idiom": "iphone"
+      "idiom": "iphone",
+      "filename": "iPhone Notification-20@2x.png"
     },
     {
       "scale": "3x",
       "size": "20x20",
-      "idiom": "iphone"
+      "idiom": "iphone",
+      "filename": "iPhone Notification-20@3x.png"
     },
     {
       "scale": "2x",
@@ -23,72 +25,86 @@
     {
       "scale": "2x",
       "size": "40x40",
-      "idiom": "iphone"
+      "idiom": "iphone",
+      "filename": "iPhone Spotlight-40@2x.png"
     },
     {
       "scale": "3x",
       "size": "40x40",
-      "idiom": "iphone"
+      "idiom": "iphone",
+      "filename": "iPhone Spotlight-40@3x.png"
     },
     {
       "scale": "2x",
       "size": "60x60",
-      "idiom": "iphone"
+      "idiom": "iphone",
+      "filename": "iPhone App-60@2x.png"
     },
     {
       "scale": "3x",
       "size": "60x60",
-      "idiom": "iphone"
+      "idiom": "iphone",
+      "filename": "iPhone App-60@3x.png"
     },
     {
       "scale": "1x",
       "size": "20x20",
-      "idiom": "ipad"
+      "idiom": "ipad",
+      "filename": "iPad Notifications-20.png"
     },
     {
       "scale": "2x",
       "size": "20x20",
-      "idiom": "ipad"
+      "idiom": "ipad",
+      "filename": "iPad Notifications-20@2x.png"
     },
     {
       "scale": "1x",
       "size": "29x29",
-      "idiom": "ipad"
+      "idiom": "ipad",
+      "filename": "iPad Settings-29.png"
     },
     {
       "scale": "2x",
       "size": "29x29",
-      "idiom": "ipad"
+      "idiom": "ipad",
+      "filename": "iPad Settings-29@2x.png"
     },
     {
       "scale": "1x",
       "size": "40x40",
-      "idiom": "ipad"
+      "idiom": "ipad",
+      "filename": "iPad Spotlight-40.png"
     },
     {
       "scale": "2x",
       "size": "40x40",
-      "idiom": "ipad"
+      "idiom": "ipad",
+      "filename": "iPad Spotlight-40@2x.png"
     },
     {
       "scale": "1x",
       "size": "76x76",
-      "idiom": "ipad"
+      "idiom": "ipad",
+      "filename": "iPad App-76.png"
     },
     {
       "scale": "2x",
       "size": "76x76",
-      "idiom": "ipad"
+      "idiom": "ipad",
+      "filename": "iPad App-76@2x.png"
     },
     {
       "scale": "2x",
       "size": "83.5x83.5",
-      "idiom": "ipad"
+      "idiom": "ipad",
+      "filename": "iPad Pro App-83.5@2x.png"
     },
     {
       "scale": "1x",
       "size": "1024x1024",
-      "idiom": "ios-marketing"
+      "idiom": "ios-marketing",
+      "filename": "App Store-1024.png"
     }
   ],
   "properties": {},

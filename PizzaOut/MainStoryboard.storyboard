@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="21">
     <device id="retina3_5" orientation="portrait">
         <adaptation id="fullscreen"/>
@@ -19,7 +19,7 @@
                 <tabBarController storyboardIdentifier="MainTabBarController" definesPresentationContext="YES" id="21" sceneMemberID="viewController">
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="26">
-                        <rect key="frame" x="0.0" y="687" width="414" height="49"/>
+                        <rect key="frame" x="0.0" y="431" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
@@ -232,37 +232,63 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="User Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="211">
-                                <rect key="frame" x="20" y="130" width="378" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="User Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="211">
+                                <rect key="frame" x="16" y="172" width="288" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" textContentType="username"/>
+                                <constraints>
+                                    <constraint id="67566" firstItem="211" firstAttribute="height" constant="30"/>
+                                </constraints>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="212">
-                                <rect key="frame" x="20" y="168" width="378" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="212">
+                                <rect key="frame" x="20" y="225" width="284" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES" secureTextEntry="YES" textContentType="password"/>
+                                <constraints>
+                                    <constraint id="65288" firstItem="212" firstAttribute="height" constant="30"/>
+                                </constraints>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="213">
-                                <rect key="frame" x="184" y="229" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="213">
+                                <rect key="frame" x="20" y="287" width="284" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="Login">
                                     <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <constraints>
+                                    <constraint id="67712" firstItem="213" firstAttribute="height" constant="30"/>
+                                </constraints>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="313">
-                                <rect key="frame" x="174" y="273" width="67" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="313">
+                                <rect key="frame" x="18" y="356" width="288" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <state key="normal" title="Sign Up">
                                     <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <segue destination="260" kind="modal" id="350"/>
                                 </connections>
+                                <constraints>
+                                    <constraint id="67718" firstItem="313" firstAttribute="height" constant="30"/>
+                                </constraints>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint id="65286" firstItem="212" firstAttribute="leading" secondItem="208" secondAttribute="leadingMargin" constant="4"/>
+                            <constraint id="65287" firstItem="212" firstAttribute="trailing" secondItem="208" secondAttribute="trailingMargin"/>
+                            <constraint id="65289" firstItem="212" firstAttribute="centerY" secondItem="208" secondAttribute="centerY"/>
+                            <constraint id="67564" firstItem="211" firstAttribute="leading" secondItem="208" secondAttribute="leadingMargin"/>
+                            <constraint id="67565" firstItem="211" firstAttribute="trailing" secondItem="208" secondAttribute="trailingMargin"/>
+                            <constraint id="67567" firstItem="212" firstAttribute="top" secondItem="211" secondAttribute="bottom" constant="23"/>
+                            <constraint id="67709" firstItem="213" firstAttribute="trailing" secondItem="212" secondAttribute="trailing"/>
+                            <constraint id="67710" firstItem="213" firstAttribute="leading" secondItem="212" secondAttribute="leading"/>
+                            <constraint id="67711" firstItem="213" firstAttribute="leading" secondItem="208" secondAttribute="leadingMargin" constant="4"/>
+                            <constraint id="67713" firstItem="213" firstAttribute="top" secondItem="212" secondAttribute="bottom" constant="32"/>
+                            <constraint id="67714" firstItem="313" firstAttribute="top" secondItem="213" secondAttribute="bottom" constant="39"/>
+                            <constraint id="67715" firstItem="313" firstAttribute="trailing" secondItem="208" secondAttribute="trailingMargin" constant="2"/>
+                            <constraint id="67716" firstItem="313" firstAttribute="leading" secondItem="208" secondAttribute="leadingMargin" constant="2"/>
+                            <constraint id="67717" firstItem="205" firstAttribute="top" secondItem="313" secondAttribute="bottom" constant="94"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="BtnLogin" destination="213" id="name-outlet-213"/>
@@ -287,67 +313,115 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="User Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="264">
-                                <rect key="frame" x="20" y="82" width="267" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="User Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="264">
+                                <rect key="frame" x="16" y="80" width="288" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <constraints>
+                                    <constraint id="69807" firstItem="264" firstAttribute="height" constant="30"/>
+                                </constraints>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="265">
-                                <rect key="frame" x="16" y="373" width="267" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="265">
+                                <rect key="frame" x="16" y="330" width="288" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <constraints>
+                                    <constraint id="70523" firstItem="265" firstAttribute="height" constant="30"/>
+                                </constraints>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confrim Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="266">
-                                <rect key="frame" x="16" y="410" width="267" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confrim Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="266">
+                                <rect key="frame" x="16" y="380" width="288" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
+                                <constraints>
+                                    <constraint id="71100" firstItem="266" firstAttribute="height" constant="30"/>
+                                </constraints>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="267">
-                                <rect key="frame" x="47" y="459" width="82" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="267">
+                                <rect key="frame" x="16" y="430" width="120" height="30"/>
                                 <state key="normal" title="Register">
                                     <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <constraints>
+                                    <constraint id="68191" firstItem="267" firstAttribute="height" constant="30"/>
+                                    <constraint id="68198" firstItem="267" firstAttribute="width" constant="120"/>
+                                </constraints>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="354">
-                                <rect key="frame" x="152" y="459" width="71" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="354">
+                                <rect key="frame" x="184" y="430" width="120" height="30"/>
                                 <state key="normal" title="Cancel">
                                     <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="CancelButton_TouchUpInside:" destination="260" eventType="touchUpInside" id="355"/>
                                 </connections>
+                                <constraints>
+                                    <constraint id="68199" firstItem="354" firstAttribute="width" constant="120"/>
+                                    <constraint id="68203" firstItem="354" firstAttribute="height" constant="30"/>
+                                </constraints>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Surname" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="47138">
-                                <rect key="frame" x="20" y="128" width="267" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Surname" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="47138">
+                                <rect key="frame" x="16" y="130" width="288" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <constraints>
+                                    <constraint id="70308" firstItem="47138" firstAttribute="height" constant="30"/>
+                                </constraints>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Other Names" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="47139">
-                                <rect key="frame" x="20" y="174" width="267" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Other Names" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="47139">
+                                <rect key="frame" x="16" y="180" width="288" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <constraints>
+                                    <constraint id="70410" firstItem="47139" firstAttribute="height" constant="30"/>
+                                </constraints>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="47140">
-                                <rect key="frame" x="20" y="220" width="267" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="47140">
+                                <rect key="frame" x="16" y="230" width="288" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" textContentType="email"/>
+                                <constraints>
+                                    <constraint id="70515" firstItem="47140" firstAttribute="height" constant="30"/>
+                                </constraints>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone Number" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="47141">
-                                <rect key="frame" x="20" y="266" width="267" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone Number" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="47141">
+                                <rect key="frame" x="16" y="280" width="288" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" textContentType="tel"/>
+                                <constraints>
+                                    <constraint id="70519" firstItem="47141" firstAttribute="height" constant="30"/>
+                                </constraints>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint id="68190" firstItem="267" firstAttribute="leading" secondItem="261" secondAttribute="leadingMargin"/>
+                            <constraint id="68197" firstItem="258" firstAttribute="top" secondItem="267" secondAttribute="bottom" constant="20"/>
+                            <constraint id="68200" firstItem="354" firstAttribute="leading" secondItem="267" secondAttribute="trailing" constant="48"/>
+                            <constraint id="68202" firstItem="354" firstAttribute="trailing" secondItem="261" secondAttribute="trailingMargin"/>
+                            <constraint id="68205" firstItem="258" firstAttribute="top" secondItem="354" secondAttribute="bottom" constant="20"/>
+                            <constraint id="69804" firstItem="264" firstAttribute="leading" secondItem="261" secondAttribute="leadingMargin"/>
+                            <constraint id="69805" firstItem="264" firstAttribute="trailing" secondItem="261" secondAttribute="trailingMargin"/>
+                            <constraint id="69806" firstItem="264" firstAttribute="top" secondItem="257" secondAttribute="bottom" constant="60"/>
+                            <constraint id="70306" firstItem="47138" firstAttribute="leading" secondItem="261" secondAttribute="leadingMargin"/>
+                            <constraint id="70307" firstItem="47138" firstAttribute="trailing" secondItem="261" secondAttribute="trailingMargin"/>
+                            <constraint id="70309" firstItem="47138" firstAttribute="top" secondItem="264" secondAttribute="bottom" constant="20"/>
+                            <constraint id="70407" firstItem="47139" firstAttribute="top" secondItem="47138" secondAttribute="bottom" constant="20"/>
+                            <constraint id="70408" firstItem="47139" firstAttribute="trailing" secondItem="261" secondAttribute="trailingMargin"/>
+                            <constraint id="70409" firstItem="47139" firstAttribute="leading" secondItem="261" secondAttribute="leadingMargin"/>
+                            <constraint id="70512" firstItem="47140" firstAttribute="top" secondItem="47139" secondAttribute="bottom" constant="20"/>
+                            <constraint id="70513" firstItem="47140" firstAttribute="trailing" secondItem="261" secondAttribute="trailingMargin"/>
+                            <constraint id="70514" firstItem="47140" firstAttribute="leading" secondItem="261" secondAttribute="leadingMargin"/>
+                            <constraint id="70516" firstItem="47141" firstAttribute="top" secondItem="47140" secondAttribute="bottom" constant="20"/>
+                            <constraint id="70517" firstItem="47141" firstAttribute="leading" secondItem="261" secondAttribute="leadingMargin"/>
+                            <constraint id="70518" firstItem="47141" firstAttribute="trailing" secondItem="261" secondAttribute="trailingMargin"/>
+                            <constraint id="70520" firstItem="265" firstAttribute="leading" secondItem="267" secondAttribute="leading"/>
+                            <constraint id="70521" firstItem="265" firstAttribute="trailing" secondItem="354" secondAttribute="trailing"/>
+                            <constraint id="70522" firstItem="265" firstAttribute="top" secondItem="47141" secondAttribute="bottom" constant="20"/>
+                            <constraint id="71098" firstItem="266" firstAttribute="leading" secondItem="267" secondAttribute="leading"/>
+                            <constraint id="71099" firstItem="266" firstAttribute="trailing" secondItem="354" secondAttribute="trailing"/>
+                            <constraint id="71101" firstItem="266" firstAttribute="top" secondItem="265" secondAttribute="bottom" constant="20"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="CancelButton" destination="354" id="name-outlet-354"/>
@@ -810,5 +884,6 @@
     </scenes>
     <resources>
         <image name="pizza.png" width="48" height="48"/>
+        <image name="splashscreen" width="1024" height="1024"/>
     </resources>
 </document>
