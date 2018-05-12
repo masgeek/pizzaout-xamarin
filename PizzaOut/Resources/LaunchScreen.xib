@@ -1,5 +1,8 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina5_5" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -12,30 +15,49 @@
             <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PizzaOut" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4216" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
-                    <rect key="frame" x="8" y="190" width="464" height="32"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="28"/>
-                    <nil key="textColor"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pizza Out" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="354" translatesAutoresizingMaskIntoConstraints="NO">
+                    <rect key="frame" x="8" y="266" width="464" height="44"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="32"/>
                     <nil key="highlightedColor"/>
+                    <constraints>
+                        <constraint id="801" firstItem="354" firstAttribute="height" constant="44"/>
+                    </constraints>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fresh. Fast. Tasy" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4217" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
-                    <rect key="frame" x="8" y="445" width="464" height="20"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fresh. Fast. Tasty" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="356" translatesAutoresizingMaskIntoConstraints="NO">
+                    <rect key="frame" x="8" y="436" width="464" height="21.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                    <nil key="textColor"/>
                     <nil key="highlightedColor"/>
+                    <constraints/>
                 </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="357" translatesAutoresizingMaskIntoConstraints="NO" image="splashimage">
+                    <rect key="frame" x="8" y="77" width="464" height="172"/>
+                    <constraints>
+                        <constraint id="1267" firstItem="357" firstAttribute="height" constant="172"/>
+                    </constraints>
+                </imageView>
             </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="548" y="455"/>
+            <constraints>
+                <constraint id="642" firstItem="356" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8"/>
+                <constraint id="643" firstItem="iN0-l3-epB" firstAttribute="trailing" secondItem="356" secondAttribute="trailing" constant="8"/>
+                <constraint id="645" firstItem="iN0-l3-epB" firstAttribute="bottom" secondItem="356" secondAttribute="bottom" constant="22"/>
+                <constraint id="799" firstItem="354" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8"/>
+                <constraint id="800" firstItem="iN0-l3-epB" firstAttribute="trailing" secondItem="354" secondAttribute="trailing" constant="8"/>
+                <constraint id="802" firstItem="354" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" multiplier="1.2/1"/>
+                <constraint id="803" firstItem="354" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX"/>
+                <constraint id="1265" firstItem="357" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8"/>
+                <constraint id="1266" firstItem="iN0-l3-epB" firstAttribute="trailing" secondItem="357" secondAttribute="trailing" constant="8"/>
+                <constraint id="1268" firstItem="354" firstAttribute="top" secondItem="357" secondAttribute="bottom" constant="17"/>
+            </constraints>
         </view>
     </objects>
     <resources>
         <image name="pizza.png" width="48" height="48"/>
+        <image name="splashimage" width="1024" height="1024"/>
         <image name="pizzaplaceholder" width="343" height="343"/>
         <image name="placeholder" width="343" height="343"/>
-        <image name="splashimage" width="1024" height="1024"/>
     </resources>
 </document>
