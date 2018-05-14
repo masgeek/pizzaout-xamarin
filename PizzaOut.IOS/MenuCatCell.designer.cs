@@ -7,11 +7,12 @@
 using Foundation;
 using System;
 using System.CodeDom.Compiler;
+using UIKit;
 
-namespace PizzaOut.IOS
+namespace PizzaOut
 {
-    [Register ("ViewController")]
-    partial class ViewController
+    [Register ("MenuCatCell")]
+    partial class MenuCatCell
     {
         void ReleaseDesignerOutlets ()
         {
