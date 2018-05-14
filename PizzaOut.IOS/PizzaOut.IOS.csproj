@@ -215,6 +215,9 @@
     <ImageAsset Include="Assets.xcassets\carticon.imageset\Contents.json">
       <Visible>false</Visible>
     </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\menu.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
     <ImageAsset Include="Assets.xcassets\menuicon.imageset\menu.png">
       <Visible>false</Visible>
     </ImageAsset>
