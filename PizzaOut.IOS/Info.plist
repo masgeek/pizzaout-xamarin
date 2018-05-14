@@ -5,7 +5,7 @@
 	<key>CFBundleName</key>
 	<string>PizzaOut.IOS</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.tsobu.pizzaout-ios</string>
+	<string>com.tsobu.pizzaout</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
@@ -30,13 +30,13 @@
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 	</array>
-	<key>XSAppIconAssets</key>
-	<string>Resources/Assets.xcassets/AppIcon.appiconset</string>
 	<key>UIMainStoryboardFile</key>
 	<string>MainStoryboard</string>
 	<key>CFBundleDisplayName</key>
 	<string>Pizza Out</string>
 	<key>XSLaunchImageAssets</key>
 	<string>Resources/Assets.xcassets/LaunchImages.launchimage</string>
+	<key>XSAppIconAssets</key>
+	<string>Resources/Assets.xcassets/AppIcons.appiconset</string>
 </dict>
 </plist>

@@ -5,11 +5,11 @@ namespace PizzaData.Helpers
     public class Helper
     {
 #pragma warning disable 169
-        public static string UriScheme = "https://";
-        //public static string UriScheme = "http://";
-        //private static string BaseUrl = "pizzaout.so/"; //live url
+        //public static string UriScheme = "https://";
+        public static string UriScheme = "http://";
+        private static string BaseUrl = "pizzaout.so/"; //live url
 
-        private const string BaseUrl = "pizza.tsobu.co.ke/"; //test url
+        //private const string BaseUrl = "pizza.tsobu.co.ke/"; //test url
         //private static string BaseUrl = "192.168.100.4/pizza/"; //local test url
         //private static string BaseUrl = "41.89.65.170:81/pizza/"; //local test url
         //private static string BaseUrl = "192.168.126.1:81/pizza/"; //local test url

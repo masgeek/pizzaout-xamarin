@@ -29,8 +29,8 @@ namespace PizzaOut.IOS
 	        _restActions = new RestActions();
 	        _userModel = new User();
 
-            UserNameTextView.Text = "fatelord";
-	        PasswordTextView.Text = "andalite6";
+            //UserNameTextView.Text = "fatelord";
+	        //PasswordTextView.Text = "andalite6";
 
     
             //set buton click actions

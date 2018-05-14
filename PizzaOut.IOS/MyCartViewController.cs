@@ -85,7 +85,7 @@ namespace PizzaOut.IOS
                 dtDeliveryDate.SetDate(_orderNsDate, true);
                 dtDeliveryDate.MaximumDate = _orderNsDate;
 
-                btnViewItems.Hidden = true;
+                //btnViewItems.Hidden = true;
             }
 
 
@@ -181,7 +181,7 @@ namespace PizzaOut.IOS
                     {
                         var least = minprice.ToString("C", CultureInfo.CreateSpecificCulture("en-US"));
 #pragma warning disable 618
-                        new UIAlertView("Minimum Price", $"Please make a purchase of at least {least} to be eligible for free delivery", null, "OK", null).Show();
+                        new UIAlertView("Minimum Price", $"Please make a purchase of at least {least} to be eligible for delivery", null, "OK", null).Show();
 #pragma warning restore 618
                     }
                 }
