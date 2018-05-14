@@ -2,12 +2,13 @@
 
 using UIKit;
 
-namespace PizzaOut.IOS
+namespace pizzaoutios
 {
     public partial class ViewController : UIViewController
     {
-        public ViewController(IntPtr handle) : base(handle)
+        protected ViewController(IntPtr handle) : base(handle)
         {
+            // Note: this .ctor should not contain any initialization logic.
         }
 
         public override void ViewDidLoad()
