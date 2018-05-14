@@ -14,6 +14,7 @@ namespace PizzaOut
         //Implement a Logout Feature
         partial void LogOutButton_TouchUpInside(UIButton sender)
         {
+            UserSession.UserLogout();
             //Create an instance of our AppDelegate
             var appDelegate = UIApplication.SharedApplication.Delegate as AppDelegate;
 
@@ -26,7 +27,7 @@ namespace PizzaOut
             //Wire our event handler to show the MainTabBarController after we successfully logged in.
             loginPageViewController.OnLoginSuccess += (s, e) => 
             {
-                UserSession.UserLogout();
+
                 var tabBarController = appDelegate.GetViewController(mainStoryboard, "MainTabBarController");
                 appDelegate.SetRootViewController(tabBarController, true);
             };
