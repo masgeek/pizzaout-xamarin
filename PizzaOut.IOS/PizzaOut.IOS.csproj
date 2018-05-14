@@ -26,7 +26,7 @@
     <MtouchFloat32>true</MtouchFloat32>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <IOSDebuggerPort>64373</IOSDebuggerPort>
-    <MtouchLink>None</MtouchLink>
+    <MtouchLink>SdkOnly</MtouchLink>
     <MtouchArch>x86_64</MtouchArch>
     <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
     <MtouchVerbosity>
@@ -89,6 +89,9 @@
     <MtouchVerbosity>
     </MtouchVerbosity>
   </PropertyGroup>
+  <PropertyGroup Condition=" '$(RunConfiguration)' == 'Default' ">
+    <AppExtensionDebugBundleId />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="FFImageLoading, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Xamarin.FFImageLoading.2.3.6\lib\Xamarin.iOS10\FFImageLoading.dll</HintPath>
@@ -140,36 +143,89 @@
     <Reference Include="Xamarin.iOS" />
   </ItemGroup>
   <ItemGroup>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\App Store-1024.png">
+      <Visible>false</Visible>
+    </ImageAsset>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\iPad App-76.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\iPad App-76@2x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\iPad Notifications-20.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\iPad Notifications-20@2x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\iPad Pro App-83.5@2x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\iPad Settings-29.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\iPad Settings-29@2x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\iPad Spotlight-40.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\iPad Spotlight-40@2x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\iPhone App-60@2x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\iPhone App-60@3x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\iPhone Notification-20@2x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\iPhone Notification-20@3x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\iPhone Settings-29@2x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\iPhone Settings-29@3x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\iPhone Spotlight-40@2x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\iPhone Spotlight-40@3x.png">
       <Visible>false</Visible>
     </ImageAsset>
     <ImageAsset Include="Assets.xcassets\Contents.json">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\iPhone Notification-20%403x.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\iPhone Notification-20%402x.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\iPhone Settings-29%402x.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\iPhone Settings-29%403x.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\iPhone Spotlight-40%403x.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\iPhone Spotlight-40%402x.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\iPhone App-60%402x.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\iPhone App-60%403x.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\iPad Notifications-20.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\iPad Notifications-20%402x.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\iPad Settings-29.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\iPad Settings-29%402x.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\iPad Spotlight-40.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\iPad Spotlight-40%402x.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\iPad App-76.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\iPad App-76%402x.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\iPad Pro App-83.5%402x.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\App Store-1024.png" />
+    <ImageAsset Include="Assets.xcassets\placeholder.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\LaunchImages.launchimage\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\placeholder.imageset\Icon-1024.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\placeholder.imageset\Icon-256.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\placeholder.imageset\Icon-512.png">
+      <Visible>false</Visible>
+    </ImageAsset>
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
     <None Include="Info.plist" />
     <None Include="Entitlements.plist" />
     <InterfaceDefinition Include="MainStoryboard.storyboard" />
+    <ITunesArtwork Include="iTunesArtwork" />
+    <ITunesArtwork Include="iTunesArtwork%402x" />
     <None Include="packages.config" />
     <InterfaceDefinition Include="Resources\LaunchScreen.xib" />
   </ItemGroup>
