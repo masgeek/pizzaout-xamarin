@@ -3,7 +3,7 @@
     {
       "scale": "1x",
       "idiom": "iphone",
-      "filename": "Icon-App-20x20@2x.png"
+      "filename": "Icon-App-20x20@1x.png"
     },
     {
       "scale": "2x",
@@ -13,7 +13,7 @@
     {
       "scale": "3x",
       "idiom": "iphone",
-      "filename": "Icon-App-20x20@2x.png"
+      "filename": "Icon-App-20x20@3x.png"
     },
     {
       "idiom": "iphone"
