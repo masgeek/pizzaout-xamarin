@@ -214,7 +214,7 @@
         <scene sceneID="41">
             <objects>
                 <navigationController definesPresentationContext="YES" id="42" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Cart" id="74"/>
+                    <tabBarItem key="tabBarItem" title="Cart" id="74" image="carticon"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="45">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -232,7 +232,7 @@
         <scene sceneID="95">
             <objects>
                 <navigationController definesPresentationContext="YES" id="96" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Orders" id="131"/>
+                    <tabBarItem key="tabBarItem" id="131" title="Orders" image="ordericon"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="99">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -545,13 +545,13 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2349" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-951" y="124"/>
+            <point key="canvasLocation" x="-927" y="105"/>
         </scene>
         <!--Menu-->
         <scene sceneID="2350">
             <objects>
                 <navigationController storyboardIdentifier="OurMenuNavigationController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="2351" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Menu" id="2497"/>
+                    <tabBarItem key="tabBarItem" title="Menu" id="2497" landscapeImage="menu" image="menuicon"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="2353">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -1051,7 +1051,7 @@
         <scene sceneID="64713">
             <objects>
                 <navigationController id="64714" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="More" id="64800"/>
+                    <tabBarItem key="tabBarItem" id="64800" systemItem="more"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="64716">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -1067,7 +1067,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="pizza.png" width="48" height="48"/>
-        <image name="splashscreen" width="1024" height="1024"/>
+        <image name="placeholder" width="1024" height="1024"/>
+        <image name="menuicon" width="25" height="25"/>
+        <image name="carticon" width="25" height="25"/>
+        <image name="ordericon" width="25" height="25"/>
     </resources>
 </document>
