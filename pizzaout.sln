@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PizzaData", "PizzaData\Pizz
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PizzaOut", "PizzaOut\PizzaOut.csproj", "{84563AF5-67F4-46D6-B49C-BF8D718F3C64}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pizzaoutios", "pizzaoutios\pizzaoutios.csproj", "{79076F62-2C1A-40A5-9D0F-461DA7F25512}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PizzaOut.IOS", "PizzaOut.IOS\PizzaOut.IOS.csproj", "{79076F62-2C1A-40A5-9D0F-461DA7F25512}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -98,22 +98,20 @@ Global
 		{79076F62-2C1A-40A5-9D0F-461DA7F25512}.Ad-Hoc|Any CPU.Build.0 = Release|iPhone
 		{79076F62-2C1A-40A5-9D0F-461DA7F25512}.Ad-Hoc|iPhone.ActiveCfg = Release|iPhone
 		{79076F62-2C1A-40A5-9D0F-461DA7F25512}.Ad-Hoc|iPhone.Build.0 = Release|iPhone
-		{79076F62-2C1A-40A5-9D0F-461DA7F25512}.Ad-Hoc|iPhoneSimulator.ActiveCfg = Release|iPhone
-		{79076F62-2C1A-40A5-9D0F-461DA7F25512}.Ad-Hoc|iPhoneSimulator.Build.0 = Release|iPhone
+		{79076F62-2C1A-40A5-9D0F-461DA7F25512}.Ad-Hoc|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
+		{79076F62-2C1A-40A5-9D0F-461DA7F25512}.Ad-Hoc|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
 		{79076F62-2C1A-40A5-9D0F-461DA7F25512}.AppStore|Any CPU.ActiveCfg = Release|iPhone
 		{79076F62-2C1A-40A5-9D0F-461DA7F25512}.AppStore|Any CPU.Build.0 = Release|iPhone
 		{79076F62-2C1A-40A5-9D0F-461DA7F25512}.AppStore|iPhone.ActiveCfg = Release|iPhone
 		{79076F62-2C1A-40A5-9D0F-461DA7F25512}.AppStore|iPhone.Build.0 = Release|iPhone
-		{79076F62-2C1A-40A5-9D0F-461DA7F25512}.AppStore|iPhoneSimulator.ActiveCfg = Release|iPhone
-		{79076F62-2C1A-40A5-9D0F-461DA7F25512}.AppStore|iPhoneSimulator.Build.0 = Release|iPhone
+		{79076F62-2C1A-40A5-9D0F-461DA7F25512}.AppStore|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
+		{79076F62-2C1A-40A5-9D0F-461DA7F25512}.AppStore|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
 		{79076F62-2C1A-40A5-9D0F-461DA7F25512}.Debug|Any CPU.ActiveCfg = Debug|iPhone
-		{79076F62-2C1A-40A5-9D0F-461DA7F25512}.Debug|Any CPU.Build.0 = Debug|iPhone
 		{79076F62-2C1A-40A5-9D0F-461DA7F25512}.Debug|iPhone.ActiveCfg = Debug|iPhone
 		{79076F62-2C1A-40A5-9D0F-461DA7F25512}.Debug|iPhone.Build.0 = Debug|iPhone
 		{79076F62-2C1A-40A5-9D0F-461DA7F25512}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
 		{79076F62-2C1A-40A5-9D0F-461DA7F25512}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
 		{79076F62-2C1A-40A5-9D0F-461DA7F25512}.Release|Any CPU.ActiveCfg = Release|iPhone
-		{79076F62-2C1A-40A5-9D0F-461DA7F25512}.Release|Any CPU.Build.0 = Release|iPhone
 		{79076F62-2C1A-40A5-9D0F-461DA7F25512}.Release|iPhone.ActiveCfg = Release|iPhone
 		{79076F62-2C1A-40A5-9D0F-461DA7F25512}.Release|iPhone.Build.0 = Release|iPhone
 		{79076F62-2C1A-40A5-9D0F-461DA7F25512}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
