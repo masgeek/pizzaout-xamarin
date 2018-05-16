@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using PizzaData.Helpers;
 using PizzaData.models;
 using PizzaData.Rest;
-using RestService.Helpers;
 using RestSharp;
 
 namespace TestConsole
@@ -154,7 +153,7 @@ namespace TestConsole
                 LOCATION_ID = "1",
                 ADDRESS = "TEST",
                 EMAIL = "sammy@gmail.com",
-                MOBILE_NO = "0733333",
+                MOBILE = "0733333",
                 PASSWORD = "123456",
                 RESET_TOKEN = Guid.NewGuid().ToString()
             };
@@ -163,7 +162,7 @@ namespace TestConsole
             {
                 {"SURNAME", user.SURNAME},
                 {"OTHER_NAMES", user.OTHER_NAMES},
-                {"MOBILE", user.MOBILE_NO},
+                {"MOBILE", user.MOBILE},
                 {"EMAIL", user.EMAIL},
                 {"LOCATION_ID", user.LOCATION_ID},
                 {"USER_NAME", user.USER_NAME},

@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
+using Newtonsoft.Json.Linq;
 
 namespace PizzaData.models
 {
@@ -25,6 +28,8 @@ namespace PizzaData.models
     [SuppressMessage("ReSharper", "InconsistentNaming")]
     public class User
     {
+
+
         public enum ACCOUNT_STATUS
         {
             DEACTIVATED = 0,
@@ -42,12 +47,35 @@ namespace PizzaData.models
         public string OTHER_NAMES { get; set; }
 
         public string EMAIL { get; set; }
-        public string MOBILE_NO { get; set; }
-
+        public string MOBILE { get; set; }
         public string USER_NAME { get; set; }
         public string PASSWORD { get; set; }
         public string ADDRESS { get; set; }
         
         public string RESET_TOKEN { get; set; }
+        public string API_TOKEN { get; set; }
+
+        public string HELPLINE { get; set; }
+
+        public bool HAS_ERRORS { get; set; }
+
+        public List<ErrorModel> ERROR_LIST { get; set; }
+
+
+        public List<ErrorModel> GetErrors(JArray errorsJArray)
+        {
+            List<ErrorModel> items = null;
+            if (errorsJArray != null)
+            {
+                items = (errorsJArray).Select(x => new ErrorModel
+                {
+                    field = (string)x["field"],
+                    message = (string)x["message"],
+      
+                }).ToList();
+            }
+
+            return items;
+        }
     }
 }

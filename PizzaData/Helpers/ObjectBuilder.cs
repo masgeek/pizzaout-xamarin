@@ -158,12 +158,25 @@ namespace PizzaData.Helpers
             {
                 var token = JToken.Parse(response.Content); //validate if its object or array
 
-                if (!(token is JObject)) return null;
-                userObject = JsonConvert.DeserializeObject<User>(response.Content);
+
+                if ((token is JArray))
+                {
+                    userObject = new User
+                    {
+                        HAS_ERRORS = true,
+                        ERROR_LIST = JsonConvert.DeserializeObject<List<ErrorModel>>(response.Content)
+                    };
+                }
+                else
+                {
+                    userObject = JsonConvert.DeserializeObject<User>(response.Content);
+                    userObject.HAS_ERRORS = false;
+                }
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.StackTrace);
+                Console.WriteLine(ex.Message);
+                
             }
 
             return userObject;
@@ -235,5 +248,49 @@ namespace PizzaData.Helpers
             return result;
         }
         #endregion cart items
+
+        #region Delivery location, time and date
+        public static List<Location> BuildLocationList(IRestResponse response)
+        {
+            List<Location> result = null;
+
+            try
+            {
+                var token = JToken.Parse(response.Content); //validate if its object or array
+
+                if (!(token is JArray)) return null;
+
+
+                result = JsonConvert.DeserializeObject<List<Location>>(response.Content);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            return result;
+        }
+
+        public static List<DeliveryTime> BuildDeliveryTimeList(IRestResponse response)
+        {
+            List<DeliveryTime> result = null;
+
+            try
+            {
+                var token = JToken.Parse(response.Content); //validate if its object or array
+
+                if (!(token is JArray)) return null;
+
+
+                result = JsonConvert.DeserializeObject<List<DeliveryTime>>(response.Content);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            return result;
+        }
+        #endregion
     }
 }

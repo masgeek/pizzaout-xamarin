@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Newtonsoft.Json.Linq;
@@ -9,23 +10,35 @@ namespace PizzaData.models
     [SuppressMessage("ReSharper", "InconsistentNaming")]
     public class Order
     {
-
+        [Key]
         public int ORDER_ID { get; set; }
         public int USER_ID { get; set; }
         public int LOCATION_ID { get; set; }
         public int KITCHEN_ID { get; set; }
         public int CHEF_ID { get; set; }
         public int RIDER_ID { get; set; }
+
         public double ORDER_TOTAL { get; set; }
 
         public DateTime ORDER_DATE { get; set; }
         public DateTime CREATED_AT { get; set; }
         public DateTime UPDATED_AT { get; set; }
+        public DateTime ORDER_DATE_TIME { get; set; }
+
+        public string ORDER_TIME { get; set; }
+
         public string PAYMENT_METHOD { get; set; }
         public string ORDER_STATUS { get; set; }
 
+        public string USSD_NUMBER { get; set; }
+
+        public bool ORDER_CREATED { get; set; }
+        public bool PAY_ORDER { get; set; }
+
         public string NOTES { get; set; }
-  
+
+        public Location LOCATION { get; set; }
+
         public JArray ORDER_DETAILS { get; set; }
         public JArray ORDER_TIMELINE { get; set; }
         public JArray ORDER_ITEMS { get; set; }
@@ -92,6 +105,26 @@ namespace PizzaData.models
             return items;
         }
 
+        /// <summary>
+        /// Get the total of all order items
+        /// </summary>
+        /// <returns>double orderTotal</returns>
+        public double ComputeOrderTotal()
+        {
+            double orderTotal = 0.0;
+            if (this.ORDER_DETAILS != null)
+            {
+                List<OrderItem> orderItem = GetOrderItems(ORDER_DETAILS);
+
+                foreach (var item in orderItem)
+                {
+                    double subtotal = item.QUANTITY * item.PRICE;
+                    orderTotal = orderTotal + subtotal;
+                }
+            }
+
+            return orderTotal;
+        }
         /// <summary>
         /// 
         /// </summary>

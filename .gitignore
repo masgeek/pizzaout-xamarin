@@ -8,6 +8,10 @@
 *.user
 *.sln.docstates
 
+#Ignore ipa fiels
+*.ipa
+*.apk
+
 # Build results
 [Dd]ebug/
 [Rr]elease/
