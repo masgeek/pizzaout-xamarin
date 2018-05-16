@@ -19,10 +19,6 @@ namespace PizzaOut.IOS
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIActivityIndicatorView loginAtivityIndicator { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UITextField PasswordTextView { get; set; }
 
         [Outlet]
@@ -38,11 +34,6 @@ namespace PizzaOut.IOS
             if (BtnLogin != null) {
                 BtnLogin.Dispose ();
                 BtnLogin = null;
-            }
-
-            if (loginAtivityIndicator != null) {
-                loginAtivityIndicator.Dispose ();
-                loginAtivityIndicator = null;
             }
 
             if (PasswordTextView != null) {

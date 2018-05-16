@@ -2,6 +2,7 @@ using System;
 using System.Threading.Tasks;
 using PizzaData.models;
 using PizzaOut.IOS.DataManager;
+using PizzaOut.IOS.UIHelpers;
 using UIKit;
 
 namespace PizzaOut.IOS
@@ -10,6 +11,7 @@ namespace PizzaOut.IOS
 	{
 
 	    private RestActions _restActions;
+	    LoadingOverlay _loadPop;
 
         public SignUpViewController (IntPtr handle) : base (handle)
 		{
@@ -24,7 +26,12 @@ namespace PizzaOut.IOS
 
 	        SignUpButton.TouchUpInside += async (e, s) =>
 	        {
-	            var canregister = CanRegister();
+	            var bounds = UIScreen.MainScreen.Bounds;
+
+	            // show the loading overlay on the UI thread using the correct orientation sizing
+	            _loadPop = new LoadingOverlay(bounds, "Signing you up..."); // using field from step 2
+	            View.Add(_loadPop);
+                var canregister = CanRegister();
                 
 	            if (canregister)
 	            {
@@ -33,15 +40,49 @@ namespace PizzaOut.IOS
 
 	                if (user?.USER_NAME != null)
 	                {
-	                    ShowAlert("Registration Successfull","Welcome " + user.SURNAME + " Please login and begin ordering");
+	                    _loadPop.Hide();
+
+                        MessagingActions.ShowAlert("Registration Successfull","Welcome " + user.SURNAME + " Please login and begin ordering");
 	                    DismissViewController(true, null); //close the view controller
 	                    return;
 	                }
-	                ShowAlert("Registration not Successfull", "Unable to register, please try again");
+	                _loadPop.Hide();
+                    MessagingActions.ShowAlert("Registration not Successfull", "Unable to register, please try again");
                 }
-	        };
+	            _loadPop.Hide();
+            };
 
-	    }
+            #region  handle the return actions to clear the on screen keyboard properly
+            UserNameTextView.ShouldReturn = (textField) => {
+	            textField.ResignFirstResponder();
+	            return true;
+	        };
+	        SurNameTextView.ShouldReturn = (textField) => {
+	            textField.ResignFirstResponder();
+	            return true;
+	        };
+	        OtherNamesTextView.ShouldReturn = (textField) => {
+	            textField.ResignFirstResponder();
+	            return true;
+	        };
+	        EmailTextView.ShouldReturn = (textField) => {
+	            textField.ResignFirstResponder();
+	            return true;
+	        };
+	        PhoneTextView.ShouldReturn = (textField) => {
+	            textField.ResignFirstResponder();
+	            return true;
+	        };
+	        PasswordTextField.ShouldReturn = (textField) => {
+	            textField.ResignFirstResponder();
+	            return true;
+	        };
+	        ConfirmPasswordTextField.ShouldReturn = (textField) => {
+	            textField.ResignFirstResponder();
+	            return true;
+	        };
+            #endregion
+        }
 
 	    //This assumes we have successfully create a new user account
         //Naturally, you'll add your logic here, but we're ignoring
@@ -51,25 +92,25 @@ namespace PizzaOut.IOS
             //let us initate the sign up process
             if (!IsUserNameValid())
             {
-                ShowAlert("Invalid User Name","Invalid User Name");
+                MessagingActions.ShowAlert("Invalid User Name","Invalid User Name");
                 return false;
             }
 
             if (!IsSurnameValid())
             {
-                ShowAlert("Invalid Surname", "Please provide a valid surname");
+                MessagingActions.ShowAlert("Invalid Surname", "Please provide a valid surname");
                 return false;
             }
 
             if (!IsOtherNamesValid())
             {
-                ShowAlert("Empty Other Names", "Please provide you other names");
+                MessagingActions.ShowAlert("Empty Other Names", "Please provide you other names");
                 return false;
             }
 
             if (!IsEmailValid())
             {
-                ShowAlert("Invalid Email", "Please enter correct email address");
+                MessagingActions.ShowAlert("Invalid Email", "Please enter correct email address");
                 return false;
             }
 
@@ -77,19 +118,19 @@ namespace PizzaOut.IOS
 
             if (!IsPhoneValid())
             {
-                ShowAlert("Invalid Phone Number", "PLease provide a valid phone number");
+                MessagingActions.ShowAlert("Invalid Phone Number", "PLease provide a valid phone number");
                 return false;
             }
 
             if (!IsPasswordValid())
             {
-                ShowAlert("Empty Password", "Empty Passwords are not allowed");
+                MessagingActions.ShowAlert("Empty Password", "Empty Passwords are not allowed");
                 return false;
             }
 
             if (!IsPasswordConfirmed())
             {
-                ShowAlert("Password Do Not Match", "The Passwords do not match, please try again");
+                MessagingActions.ShowAlert("Password Do Not Match", "The Passwords do not match, please try again");
                 return false;
             }
 
@@ -168,20 +209,12 @@ namespace PizzaOut.IOS
                 //show the errors
 	            if (error.message != null)
 	            {
-	                ShowAlert("Unable to register", error.message);
+	                MessagingActions.ShowAlert("Unable to register", error.message);
 	                return null;
 	            }
 	        }
-
-	        //userModel.HAS_ERRORS = false;
 	        return userModel;
 	    }
-        private void ShowAlert(string title,string message)
-	    {
-#pragma warning disable 618
-	        new UIAlertView(title, message, null, "OK", null).Show();
-#pragma warning restore 618
-        }
 
     }
 }
