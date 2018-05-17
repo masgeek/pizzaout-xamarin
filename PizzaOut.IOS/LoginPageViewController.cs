@@ -1,7 +1,10 @@
 using System;
 using System.Threading.Tasks;
+using Microsoft.AppCenter;
+using Microsoft.AppCenter.Crashes;
 using PizzaData.models;
 using PizzaOut.IOS.DataManager;
+using PizzaOut.IOS.UIHelpers;
 using UIKit;
 
 namespace PizzaOut.IOS
@@ -14,6 +17,7 @@ namespace PizzaOut.IOS
 
 	    private RestActions _restActions;
 	    private User _userModel;
+	    LoadingOverlay _loadPop;
 
 
         public LoginPageViewController(IntPtr handle) : base(handle)
@@ -35,14 +39,37 @@ namespace PizzaOut.IOS
     
             //set buton click actions
 	        BtnLogin.TouchUpInside += async (object sender, EventArgs e) => { await BtnLogin_TouchUpInside(sender); };
-	    }
 
-        private async Task BtnLogin_TouchUpInside(object sender)
+	        UserNameTextView.EditingDidEnd += HandleEditingDidEnd;
+	        UserNameTextView.Delegate = new CatchEnterDelegate();
+
+            PasswordTextView.EditingDidEnd += HandleEditingDidEnd;
+            PasswordTextView.Delegate = new CatchEnterDelegate();
+
+	        /*UserNameTextView.ShouldReturn =(textField) => {
+	            textField.ResignFirstResponder();
+	            return true;
+	        };
+
+	        UserNameTextView.ShouldReturn = (textField) => {
+	            PasswordTextView.ResignFirstResponder();
+	            return true;
+	        };*/
+        }
+
+
+	    private async Task BtnLogin_TouchUpInside(object sender)
         {
             //Validate our Username & Password.
             //This is usually a web service call.
             try
             {
+                var bounds = UIScreen.MainScreen.Bounds;
+
+                // show the loading overlay on the UI thread using the correct orientation sizing
+                _loadPop = new LoadingOverlay(bounds,"Logging you in..."); // using field from step 2
+                View.Add(_loadPop);
+
                 if (IsUserNameValid() && IsPasswordValid())
                 {
                     username = UserNameTextView.Text.Trim();
@@ -50,7 +77,6 @@ namespace PizzaOut.IOS
 
                     //We have successfully authenticated a the user,
                     //Now fire our OnLoginSuccess Event.
-
                     _userModel = await _restActions.LoginUser(username, password);
 
                     if (_userModel != null)
@@ -58,22 +84,33 @@ namespace PizzaOut.IOS
                         UserSession.SetUserSession(_userModel);
                         if (UserSession.IsLoggedIn())
                         {
+                            _loadPop.Hide();
                             OnLoginSuccess?.Invoke(sender, new EventArgs());
                         }
+                        else
+                        {
+                            _loadPop.Hide();
+                            MessagingActions.ShowAlert("Login Error", "Unable to log you in, please try again");
+                        }
                     }
-
-    
+                    else
+                    {
+                        _loadPop.Hide();
+                        MessagingActions.ShowAlert("Login Error", "Incorrect user name or password");
+                    }
                 }
                 else
                 {
-#pragma warning disable 618
-                    new UIAlertView("Login Error", "Bad user name or password", null, "OK", null).Show();
-#pragma warning restore 618
+                    _loadPop.Hide();
+                    MessagingActions.ShowAlert("Login Error", "Incorrect user name or password");
                 }
+
+
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.StackTrace);
+              Crashes.TrackError(ex);
+                _loadPop.Hide(0); //hide immediatelly
             }
         }
 
@@ -88,6 +125,29 @@ namespace PizzaOut.IOS
         {
             return !String.IsNullOrEmpty(PasswordTextView.Text.Trim());
         }
-	}
+
+	    void HandleEditingDidEnd(object sender, EventArgs e)
+	    {
+	        //do what you need to do with the value of the textfield here
+	    }
+
+	    public override void ViewDidUnload()
+	    {
+	        base.ViewDidUnload();
+
+	        // Clear any references to subviews of the main view in order to
+	        // allow the Garbage Collector to collect them sooner.
+	        //
+	        // e.g. myOutlet.Dispose (); myOutlet = null;
+
+	        ReleaseDesignerOutlets();
+	    }
+
+	    public override bool ShouldAutorotateToInterfaceOrientation(UIInterfaceOrientation toInterfaceOrientation)
+	    {
+	        // Return true for supported orientations
+	        return (toInterfaceOrientation != UIInterfaceOrientation.PortraitUpsideDown);
+	    }
+    }
 }
 
