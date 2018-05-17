@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="21">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
@@ -43,7 +43,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="160">
-                                <rect key="frame" x="219" y="584" width="140" height="32"/>
+                                <rect key="frame" x="219" y="535" width="140" height="32"/>
                                 <color key="backgroundColor" red="0.94901960784313721" green="0.5490196078431373" blue="0.011764705882352941" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="32" id="87972"/>
@@ -105,7 +105,7 @@
                                 </date>
                             </datePicker>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="44783">
-                                <rect key="frame" x="16" y="584" width="140" height="32"/>
+                                <rect key="frame" x="16" y="535" width="140" height="32"/>
                                 <color key="backgroundColor" red="0.94901960784313721" green="0.5490196078431373" blue="0.011764705882352941" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                 <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -444,19 +444,19 @@
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Registration" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oBG-dH-HMg">
                                                 <rect key="frame" x="8" y="28" width="359" height="21"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bac-EG-KdP">
-                                                <rect key="frame" x="8" y="719" width="359" height="30"/>
+                                                <rect key="frame" x="8" y="480" width="359" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="ANn-zl-Q8z"/>
                                                 </constraints>
                                                 <state key="normal" title="REGISTER"/>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M6O-7D-tI8">
-                                                <rect key="frame" x="8" y="767" width="359" height="30"/>
+                                                <rect key="frame" x="8" y="540" width="359" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="bcS-p9-aIc"/>
                                                 </constraints>
@@ -469,14 +469,14 @@
                                             <constraint firstItem="gDB-Cm-2hb" firstAttribute="leading" secondItem="Wi9-Mp-HhU" secondAttribute="leading" constant="8" id="89k-vU-hQE"/>
                                             <constraint firstItem="P13-1K-SFr" firstAttribute="top" secondItem="gDB-Cm-2hb" secondAttribute="bottom" constant="21" id="AFu-tL-Oiu"/>
                                             <constraint firstItem="rrR-TG-Zm8" firstAttribute="top" secondItem="oBG-dH-HMg" secondAttribute="bottom" constant="51" id="Afl-qE-wQh"/>
-                                            <constraint firstItem="Bac-EG-KdP" firstAttribute="top" secondItem="P13-1K-SFr" secondAttribute="bottom" constant="299" id="DrJ-rV-3Zk"/>
+                                            <constraint firstItem="Bac-EG-KdP" firstAttribute="top" secondItem="P13-1K-SFr" secondAttribute="bottom" constant="60" id="DrJ-rV-3Zk"/>
                                             <constraint firstItem="rrR-TG-Zm8" firstAttribute="centerX" secondItem="Wi9-Mp-HhU" secondAttribute="centerX" id="GCA-np-8A8"/>
                                             <constraint firstAttribute="trailing" secondItem="M6O-7D-tI8" secondAttribute="trailing" constant="8" id="HO3-qE-g4Y"/>
-                                            <constraint firstAttribute="bottom" secondItem="M6O-7D-tI8" secondAttribute="bottom" constant="70" id="IZa-4s-pd2"/>
+                                            <constraint firstAttribute="bottom" secondItem="M6O-7D-tI8" secondAttribute="bottom" constant="297" id="IZa-4s-pd2"/>
                                             <constraint firstItem="Dcv-06-Q8p" firstAttribute="leading" secondItem="Wi9-Mp-HhU" secondAttribute="leading" constant="8" id="Jww-61-XMk"/>
                                             <constraint firstAttribute="trailing" secondItem="Dcv-06-Q8p" secondAttribute="trailing" constant="8" id="K9w-hv-yxq"/>
                                             <constraint firstAttribute="trailing" secondItem="vAz-Nk-AaI" secondAttribute="trailing" constant="8" id="N55-Nf-Upy"/>
-                                            <constraint firstItem="M6O-7D-tI8" firstAttribute="top" secondItem="Bac-EG-KdP" secondAttribute="bottom" constant="18" id="NNz-aD-IVp"/>
+                                            <constraint firstItem="M6O-7D-tI8" firstAttribute="top" secondItem="Bac-EG-KdP" secondAttribute="bottom" constant="30" id="NNz-aD-IVp"/>
                                             <constraint firstAttribute="trailing" secondItem="foB-yD-Lfv" secondAttribute="trailing" constant="8" id="NoF-qT-cSv"/>
                                             <constraint firstItem="oBG-dH-HMg" firstAttribute="centerX" secondItem="Wi9-Mp-HhU" secondAttribute="centerX" id="OX7-hA-cEQ"/>
                                             <constraint firstItem="P13-1K-SFr" firstAttribute="leading" secondItem="Wi9-Mp-HhU" secondAttribute="leading" constant="8" id="Oqx-Sj-c3s"/>
@@ -510,7 +510,6 @@
                                 </constraints>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Pb0-L0-74y" firstAttribute="top" secondItem="257" secondAttribute="bottom" constant="-20" id="4Ky-Ty-1bU"/>
                             <constraint firstItem="Pb0-L0-74y" firstAttribute="leading" secondItem="261" secondAttribute="leading" id="7IC-BJ-9hI"/>
@@ -520,15 +519,15 @@
                     </view>
                     <size key="freeformSize" width="375" height="800"/>
                     <connections>
-                        <outlet property="UserNameTextView" destination="rrR-TG-Zm8" id="name-outlet-rrR-TG-Zm8"/>
-                        <outlet property="OtherNamesTextView" destination="Dcv-06-Q8p" id="name-outlet-Dcv-06-Q8p"/>
-                        <outlet property="SurNameTextView" destination="vAz-Nk-AaI" id="name-outlet-vAz-Nk-AaI"/>
-                        <outlet property="EmailTextView" destination="foB-yD-Lfv" id="name-outlet-foB-yD-Lfv"/>
-                        <outlet property="PhoneTextView" destination="KUA-vQ-L0r" id="name-outlet-KUA-vQ-L0r"/>
-                        <outlet property="PasswordTextField" destination="gDB-Cm-2hb" id="name-outlet-gDB-Cm-2hb"/>
-                        <outlet property="ConfirmPasswordTextField" destination="P13-1K-SFr" id="name-outlet-P13-1K-SFr"/>
-                        <outlet property="SignUpButton" destination="Bac-EG-KdP" id="name-outlet-Bac-EG-KdP"/>
                         <outlet property="CancelButton" destination="M6O-7D-tI8" id="name-outlet-M6O-7D-tI8"/>
+                        <outlet property="ConfirmPasswordTextField" destination="P13-1K-SFr" id="name-outlet-P13-1K-SFr"/>
+                        <outlet property="EmailTextView" destination="foB-yD-Lfv" id="name-outlet-foB-yD-Lfv"/>
+                        <outlet property="OtherNamesTextView" destination="Dcv-06-Q8p" id="name-outlet-Dcv-06-Q8p"/>
+                        <outlet property="PasswordTextField" destination="gDB-Cm-2hb" id="name-outlet-gDB-Cm-2hb"/>
+                        <outlet property="PhoneTextView" destination="KUA-vQ-L0r" id="name-outlet-KUA-vQ-L0r"/>
+                        <outlet property="SignUpButton" destination="Bac-EG-KdP" id="name-outlet-Bac-EG-KdP"/>
+                        <outlet property="SurNameTextView" destination="vAz-Nk-AaI" id="name-outlet-vAz-Nk-AaI"/>
+                        <outlet property="UserNameTextView" destination="rrR-TG-Zm8" id="name-outlet-rrR-TG-Zm8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="262" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1098,8 +1097,10 @@
     </scenes>
     <resources>
         <image name="carticon" width="25" height="25"/>
+        <image name="menu" width="16" height="16"/>
         <image name="menuicon" width="25" height="25"/>
         <image name="ordericon" width="25" height="25"/>
         <image name="placeholder" width="1024" height="1024"/>
+        <image name="splashscreen" width="16" height="16"/>
     </resources>
 </document>
