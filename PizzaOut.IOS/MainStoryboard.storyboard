@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="21">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
@@ -43,7 +43,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="160">
-                                <rect key="frame" x="219" y="535" width="140" height="32"/>
+                                <rect key="frame" x="219" y="584" width="140" height="32"/>
                                 <color key="backgroundColor" red="0.94901960784313721" green="0.5490196078431373" blue="0.011764705882352941" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="32" id="87972"/>
@@ -105,7 +105,7 @@
                                 </date>
                             </datePicker>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="44783">
-                                <rect key="frame" x="16" y="535" width="140" height="32"/>
+                                <rect key="frame" x="16" y="584" width="140" height="32"/>
                                 <color key="backgroundColor" red="0.94901960784313721" green="0.5490196078431373" blue="0.011764705882352941" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                 <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -463,7 +463,6 @@
                                                 <state key="normal" title="CANCEL"/>
                                             </button>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="foB-yD-Lfv" firstAttribute="top" secondItem="Dcv-06-Q8p" secondAttribute="bottom" constant="18" id="2UW-fB-054"/>
                                             <constraint firstItem="vAz-Nk-AaI" firstAttribute="leading" secondItem="Wi9-Mp-HhU" secondAttribute="leading" constant="8" id="5kI-Bd-TM5"/>
@@ -520,6 +519,17 @@
                         </constraints>
                     </view>
                     <size key="freeformSize" width="375" height="800"/>
+                    <connections>
+                        <outlet property="UserNameTextView" destination="rrR-TG-Zm8" id="name-outlet-rrR-TG-Zm8"/>
+                        <outlet property="OtherNamesTextView" destination="Dcv-06-Q8p" id="name-outlet-Dcv-06-Q8p"/>
+                        <outlet property="SurNameTextView" destination="vAz-Nk-AaI" id="name-outlet-vAz-Nk-AaI"/>
+                        <outlet property="EmailTextView" destination="foB-yD-Lfv" id="name-outlet-foB-yD-Lfv"/>
+                        <outlet property="PhoneTextView" destination="KUA-vQ-L0r" id="name-outlet-KUA-vQ-L0r"/>
+                        <outlet property="PasswordTextField" destination="gDB-Cm-2hb" id="name-outlet-gDB-Cm-2hb"/>
+                        <outlet property="ConfirmPasswordTextField" destination="P13-1K-SFr" id="name-outlet-P13-1K-SFr"/>
+                        <outlet property="SignUpButton" destination="Bac-EG-KdP" id="name-outlet-Bac-EG-KdP"/>
+                        <outlet property="CancelButton" destination="M6O-7D-tI8" id="name-outlet-M6O-7D-tI8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="262" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1088,10 +1098,8 @@
     </scenes>
     <resources>
         <image name="carticon" width="25" height="25"/>
-        <image name="menu" width="16" height="16"/>
         <image name="menuicon" width="25" height="25"/>
         <image name="ordericon" width="25" height="25"/>
         <image name="placeholder" width="1024" height="1024"/>
-        <image name="splashscreen" width="16" height="16"/>
     </resources>
 </document>
