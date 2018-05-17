@@ -40,13 +40,13 @@ namespace PizzaOut.IOS
             //set buton click actions
 	        BtnLogin.TouchUpInside += async (object sender, EventArgs e) => { await BtnLogin_TouchUpInside(sender); };
 
-	        //UserNameTextView.EditingDidEnd += HandleEditingDidEnd;
-	        //UserNameTextView.Delegate = new CatchEnterDelegate();
+	        UserNameTextView.EditingDidEnd += HandleEditingDidEnd;
+	        UserNameTextView.Delegate = new CatchEnterDelegate();
 
-            //PasswordTextView.EditingDidEnd += HandleEditingDidEnd;
-            //PasswordTextView.Delegate = new CatchEnterDelegate();
+            PasswordTextView.EditingDidEnd += HandleEditingDidEnd;
+            PasswordTextView.Delegate = new CatchEnterDelegate();
 
-	        UserNameTextView.ShouldReturn =(textField) => {
+	        /*UserNameTextView.ShouldReturn =(textField) => {
 	            textField.ResignFirstResponder();
 	            return true;
 	        };
@@ -54,7 +54,7 @@ namespace PizzaOut.IOS
 	        UserNameTextView.ShouldReturn = (textField) => {
 	            PasswordTextView.ResignFirstResponder();
 	            return true;
-	        };
+	        };*/
         }
 
 
@@ -147,16 +147,6 @@ namespace PizzaOut.IOS
 	    {
 	        // Return true for supported orientations
 	        return (toInterfaceOrientation != UIInterfaceOrientation.PortraitUpsideDown);
-	    }
-
-        
-	    public class CatchEnterDelegate : UITextFieldDelegate
-	    {
-	        public override bool ShouldReturn(UITextField textField)
-	        {
-	            textField.ResignFirstResponder();
-	            return true;
-	        }
 	    }
     }
 }

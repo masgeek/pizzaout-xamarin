@@ -107,6 +107,9 @@
     <Reference Include="FFImageLoading.Platform, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Xamarin.FFImageLoading.2.3.6\lib\Xamarin.iOS10\FFImageLoading.Platform.dll</HintPath>
     </Reference>
+    <Reference Include="KeyboardHandler, Version=1.0.6301.791, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Keyboard.Handler.1.0.0\lib\Xamarin.iOS10\KeyboardHandler.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.AppCenter, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AppCenter.1.6.0\lib\Xamarin.iOS10\Microsoft.AppCenter.dll</HintPath>
     </Reference>
@@ -312,6 +315,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="Info.plist" />
     <None Include="Entitlements.plist" />
     <InterfaceDefinition Include="MainStoryboard.storyboard" />
@@ -391,6 +395,7 @@
     <Compile Include="TabPage2ViewController.designer.cs">
       <DependentUpon>TabPage2ViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="UIHelpers\CCatchEnterDelegate.cs" />
     <Compile Include="UIHelpers\LoadingOverlay.cs" />
     <Compile Include="ViewController.cs" />
     <Compile Include="ViewController.designer.cs">

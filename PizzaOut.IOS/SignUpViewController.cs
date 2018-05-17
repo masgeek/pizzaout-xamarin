@@ -111,6 +111,12 @@ namespace PizzaOut.IOS
             #endregion
         }
 
+	    public override void ViewWillAppear(bool animated)
+	    {
+	        base.ViewWillAppear(animated);
+	        //registerScrollView.SubscribeKeyboardManager();
+        }
+
 	    //This assumes we have successfully create a new user account
         //Naturally, you'll add your logic here, but we're ignoring
         //that for simplicity.
