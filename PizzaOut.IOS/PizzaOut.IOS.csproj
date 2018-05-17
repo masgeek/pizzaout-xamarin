@@ -396,7 +396,7 @@
     <Compile Include="TabPage2ViewController.designer.cs">
       <DependentUpon>TabPage2ViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="UIHelpers\CCatchEnterDelegate.cs" />
+    <Compile Include="UIHelpers\CatchEnterDelegate.cs" />
     <Compile Include="UIHelpers\LoadingOverlay.cs" />
     <Compile Include="ViewController.cs" />
     <Compile Include="ViewController.designer.cs">
