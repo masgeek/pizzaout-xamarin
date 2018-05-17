@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using KeyboardHandler;
 using PizzaData.models;
 using PizzaOut.IOS.DataManager;
 using PizzaOut.IOS.UIHelpers;
@@ -55,8 +56,13 @@ namespace PizzaOut.IOS
 	    public override void ViewWillAppear(bool animated)
 	    {
 	        base.ViewWillAppear(animated);
-	        //registerScrollView.SubscribeKeyboardManager();
+	        registerScrollView.SubscribeKeyboardManager();
         }
 
-    }
+	    public override void ViewWillDisappear(bool animated)
+	    {
+	        base.ViewWillDisappear(animated);
+            registerScrollView.UnsubscribeKeyboardManager();
+	    }
+	}
 }

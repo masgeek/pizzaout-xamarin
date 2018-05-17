@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="21">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
@@ -43,7 +43,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="160">
-                                <rect key="frame" x="219" y="535" width="140" height="32"/>
+                                <rect key="frame" x="219" y="584" width="140" height="32"/>
                                 <color key="backgroundColor" red="0.94901960784313721" green="0.5490196078431373" blue="0.011764705882352941" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="32" id="87972"/>
@@ -105,7 +105,7 @@
                                 </date>
                             </datePicker>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="44783">
-                                <rect key="frame" x="16" y="535" width="140" height="32"/>
+                                <rect key="frame" x="16" y="584" width="140" height="32"/>
                                 <color key="backgroundColor" red="0.94901960784313721" green="0.5490196078431373" blue="0.011764705882352941" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                 <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -498,6 +498,7 @@
                                             <constraint firstAttribute="trailing" secondItem="oBG-dH-HMg" secondAttribute="trailing" constant="8" id="vIc-2w-wdT"/>
                                             <constraint firstAttribute="trailing" secondItem="P13-1K-SFr" secondAttribute="trailing" constant="8" id="z2X-kU-pyb"/>
                                         </constraints>
+                                        <color key="backgroundColor" colorSpace="calibratedWhite" white="1" alpha="1"/>
                                     </view>
                                 </subviews>
                                 <constraints>
@@ -508,6 +509,7 @@
                                     <constraint firstItem="Wi9-Mp-HhU" firstAttribute="leading" secondItem="Pb0-L0-74y" secondAttribute="leading" id="ks1-Gn-E73"/>
                                     <constraint firstItem="Wi9-Mp-HhU" firstAttribute="top" secondItem="Pb0-L0-74y" secondAttribute="top" id="tC5-1P-4z5"/>
                                 </constraints>
+                                <color key="backgroundColor" colorSpace="calibratedWhite" white="1" alpha="1"/>
                             </scrollView>
                         </subviews>
                         <constraints>
@@ -516,6 +518,7 @@
                             <constraint firstAttribute="trailing" secondItem="Pb0-L0-74y" secondAttribute="trailing" id="T2F-J9-Get"/>
                             <constraint firstItem="258" firstAttribute="top" secondItem="Pb0-L0-74y" secondAttribute="bottom" id="mv1-EW-Ru1"/>
                         </constraints>
+                        <color key="backgroundColor" colorSpace="calibratedWhite" white="1" alpha="1"/>
                     </view>
                     <size key="freeformSize" width="375" height="800"/>
                     <connections>
@@ -528,6 +531,8 @@
                         <outlet property="SignUpButton" destination="Bac-EG-KdP" id="name-outlet-Bac-EG-KdP"/>
                         <outlet property="SurNameTextView" destination="vAz-Nk-AaI" id="name-outlet-vAz-Nk-AaI"/>
                         <outlet property="UserNameTextView" destination="rrR-TG-Zm8" id="name-outlet-rrR-TG-Zm8"/>
+                        <outlet property="registerScrollView" destination="Pb0-L0-74y" id="name-outlet-Pb0-L0-74y"/>
+                        <outlet property="registerContentView" destination="Wi9-Mp-HhU" id="name-outlet-Wi9-Mp-HhU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="262" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1097,10 +1102,8 @@
     </scenes>
     <resources>
         <image name="carticon" width="25" height="25"/>
-        <image name="menu" width="16" height="16"/>
         <image name="menuicon" width="25" height="25"/>
         <image name="ordericon" width="25" height="25"/>
         <image name="placeholder" width="1024" height="1024"/>
-        <image name="splashscreen" width="16" height="16"/>
     </resources>
 </document>
