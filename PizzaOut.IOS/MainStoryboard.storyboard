@@ -42,18 +42,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="0.0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="34472">
-                                <rect key="frame" x="168" y="72" width="192" height="22"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="34600">
-                                <rect key="frame" x="16" y="72" width="40" height="22"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="41979">
                                 <rect key="frame" x="16" y="447" width="343" height="30"/>
                                 <constraints>
@@ -63,7 +51,7 @@
                                 <state key="normal" title="Delivery Address"/>
                             </button>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="42316">
-                                <rect key="frame" x="16" y="101" width="343" height="103"/>
+                                <rect key="frame" x="15" y="177" width="343" height="103"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="103" id="JId-RW-94A"/>
                                 </constraints>
@@ -93,22 +81,34 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <state key="normal" title="Delivery  Time"/>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="0.0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="34472">
+                                <rect key="frame" x="167" y="124" width="192" height="22"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="34600">
+                                <rect key="frame" x="15" y="124" width="40" height="22"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="34600" firstAttribute="top" secondItem="16" secondAttribute="bottom" constant="8" id="30g-Ol-oB4"/>
-                            <constraint firstAttribute="trailing" secondItem="42316" secondAttribute="trailing" constant="16" id="5zj-Lu-LQ8"/>
+                            <constraint firstItem="34600" firstAttribute="top" secondItem="16" secondAttribute="bottom" constant="60" id="30g-Ol-oB4"/>
+                            <constraint firstAttribute="trailing" secondItem="42316" secondAttribute="trailing" constant="17" id="5zj-Lu-LQ8"/>
                             <constraint firstItem="44783" firstAttribute="trailing" secondItem="29" secondAttribute="trailingMargin" id="64r-u3-WsA"/>
-                            <constraint firstItem="42316" firstAttribute="leading" secondItem="29" secondAttribute="leading" constant="16" id="8jV-jV-rIi"/>
+                            <constraint firstItem="42316" firstAttribute="leading" secondItem="29" secondAttribute="leading" constant="15" id="8jV-jV-rIi"/>
                             <constraint firstItem="41980" firstAttribute="leading" secondItem="29" secondAttribute="leading" constant="16" id="CqV-IP-2aP"/>
                             <constraint firstItem="41980" firstAttribute="top" secondItem="41979" secondAttribute="bottom" constant="8" symbolic="YES" id="HK9-5q-qlj"/>
-                            <constraint firstItem="34472" firstAttribute="top" secondItem="16" secondAttribute="bottom" constant="8" id="Nki-Ns-TSw"/>
+                            <constraint firstItem="34472" firstAttribute="top" secondItem="16" secondAttribute="bottom" constant="60" id="Nki-Ns-TSw"/>
                             <constraint firstItem="17" firstAttribute="top" secondItem="44783" secondAttribute="bottom" constant="7" id="REG-WO-nEU"/>
                             <constraint firstItem="44783" firstAttribute="top" secondItem="41980" secondAttribute="bottom" constant="20" id="RrP-o7-jmt"/>
-                            <constraint firstItem="34600" firstAttribute="leading" secondItem="29" secondAttribute="leading" constant="16" id="aYX-jG-p1d"/>
-                            <constraint firstItem="42316" firstAttribute="top" secondItem="34472" secondAttribute="bottom" constant="7" id="e4v-US-tdZ"/>
-                            <constraint firstItem="42316" firstAttribute="top" secondItem="34600" secondAttribute="bottom" constant="7" id="fkK-D9-R1B"/>
-                            <constraint firstAttribute="trailing" secondItem="34472" secondAttribute="trailing" constant="15" id="hDS-Ti-e0P"/>
+                            <constraint firstItem="34600" firstAttribute="leading" secondItem="29" secondAttribute="leading" constant="15" id="aYX-jG-p1d"/>
+                            <constraint firstItem="42316" firstAttribute="top" secondItem="34472" secondAttribute="bottom" constant="31" id="e4v-US-tdZ"/>
+                            <constraint firstItem="42316" firstAttribute="top" secondItem="34600" secondAttribute="bottom" constant="31" id="fkK-D9-R1B"/>
+                            <constraint firstAttribute="trailing" secondItem="34472" secondAttribute="trailing" constant="16" id="hDS-Ti-e0P"/>
                             <constraint firstAttribute="trailing" secondItem="41980" secondAttribute="trailing" constant="16" id="jkH-cS-Ph6"/>
                             <constraint firstItem="44783" firstAttribute="leading" secondItem="29" secondAttribute="leadingMargin" id="m7h-sT-UCe"/>
                             <constraint firstAttribute="trailing" secondItem="44783" secondAttribute="trailing" constant="16" id="n12-D4-Mj4"/>
