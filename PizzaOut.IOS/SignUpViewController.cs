@@ -13,7 +13,7 @@ namespace PizzaOut.IOS
 	{
 
 	    private RestActions _restActions;
-	    LoadingOverlay _loadPop;
+	    private LoadingOverlay _loadPop;
 
         public SignUpViewController (IntPtr handle) : base (handle)
 		{
