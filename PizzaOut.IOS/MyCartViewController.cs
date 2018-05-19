@@ -228,7 +228,7 @@ namespace PizzaOut.IOS
                 _cartTimestamp = cartItem.CART_TIMESTAMP;
             }
 
-            lblTotal.Text = total.ToString("C", CultureInfo.CreateSpecificCulture("en-US"));
+            //lblTotal.Text = total.ToString("C", CultureInfo.CreateSpecificCulture("en-US"));
         }
 
         private async Task<List<CartItem>> LoadCartItems(int userId)

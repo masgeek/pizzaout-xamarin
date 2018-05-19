@@ -84,8 +84,8 @@ namespace PizzaOut.IOS
         private async Task SizeStepperValueChanged(object sender, EventArgs e)
         {
        
-            sizeValue.Text = _selectedSize;
-            _sizeIndex = (int)sizeStepper.Value;
+            //sizeValue.Text = _selectedSize;
+            _sizeIndex = 0;///(int)sizeStepper.Value;
 
 
             //check if the item is already in the cart
@@ -101,8 +101,8 @@ namespace PizzaOut.IOS
 
         private async Task QuantityStepperValueChanged(object sender, EventArgs e)
         {
-            _selectedQuantity = (int) quantityStepper.Value;
-            quantityValue.Text = _selectedQuantity.ToString();
+            _selectedQuantity = 0;//(int) quantityStepper.Value;
+           // quantityValue.Text = _selectedQuantity.ToString();
 
             if (_sizeIndex < 0)
             {
@@ -122,10 +122,10 @@ namespace PizzaOut.IOS
             _itemsSubTotal = _itemPrice * _selectedQuantity;
 
             //totalCost.Text = String.Format("{0:C}", totalItemCost);//totalItemCost.ToString();
-            totalCost.Text = _itemsSubTotal.ToString("C", CultureInfo.CreateSpecificCulture("en-US"));
+            //totalCost.Text = _itemsSubTotal.ToString("C", CultureInfo.CreateSpecificCulture("en-US"));
 
             _selectedSize = size.ITEM_TYPE_SIZE;
-            sizeValue.Text = _selectedSize;
+            //sizeValue.Text = _selectedSize;
 
             if (!itemExists)
             {
@@ -164,24 +164,24 @@ namespace PizzaOut.IOS
                     _itemsSubTotal = _itemPrice * _selectedQuantity;
 
                     //totalCost.Text = String.Format("{0:C}", totalItemCost);//totalItemCost.ToString();
-                    totalCost.Text = _itemsSubTotal.ToString("C", CultureInfo.CreateSpecificCulture("en-US"));
+                    //totalCost.Text = _itemsSubTotal.ToString("C", CultureInfo.CreateSpecificCulture("en-US"));
 
                     // _selectedSize = cartItems.ITEM_SIZE;
                     // sizeValue.Text = _selectedSize;
 
-                    quantityValue.Text = cartItem.QUANTITY.ToString();
-                    quantityStepper.Value = _selectedQuantity;
+                    //quantityValue.Text = cartItem.QUANTITY.ToString();
+                    //quantityStepper.Value = _selectedQuantity;
 
-                    btnAddToCart.SetTitle("Update Cart", UIControlState.Highlighted);
+                    //btnAddToCart.SetTitle("Update Cart", UIControlState.Highlighted);
                 }
                 else
                 {
-                    btnAddToCart.SetTitle("Add to Cart", UIControlState.Normal);
+                    //btnAddToCart.SetTitle("Add to Cart", UIControlState.Normal);
                 }
             }
             else
             {
-                btnAddToCart.SetTitle("Add to Cart", UIControlState.Normal);
+                //btnAddToCart.SetTitle("Add to Cart", UIControlState.Normal);
             }
         }
     }

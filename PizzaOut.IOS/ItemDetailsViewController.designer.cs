@@ -13,87 +13,12 @@ namespace PizzaOut.IOS
     [Register ("ItemDetailsViewController")]
     partial class ItemDetailsViewController
     {
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIButton btnAddToCart { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIImageView itemImage { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UILabel lblItemName { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIStepper quantityStepper { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UILabel quantityValue { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIStepper sizeStepper { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UILabel sizeValue { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UILabel totalCost { get; set; }
-
         [Action ("ItemSizeChangedEvent:")]
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void ItemSizeChangedEvent (UIKit.UIStepper sender);
 
-        [Action ("SizeChangedEvent:")]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        partial void SizeChangedEvent (UIKit.UIStepper sender);
-
         void ReleaseDesignerOutlets ()
         {
-            if (btnAddToCart != null) {
-                btnAddToCart.Dispose ();
-                btnAddToCart = null;
-            }
-
-            if (itemImage != null) {
-                itemImage.Dispose ();
-                itemImage = null;
-            }
-
-            if (lblItemName != null) {
-                lblItemName.Dispose ();
-                lblItemName = null;
-            }
-
-            if (quantityStepper != null) {
-                quantityStepper.Dispose ();
-                quantityStepper = null;
-            }
-
-            if (quantityValue != null) {
-                quantityValue.Dispose ();
-                quantityValue = null;
-            }
-
-            if (sizeStepper != null) {
-                sizeStepper.Dispose ();
-                sizeStepper = null;
-            }
-
-            if (sizeValue != null) {
-                sizeValue.Dispose ();
-                sizeValue = null;
-            }
-
-            if (totalCost != null) {
-                totalCost.Dispose ();
-                totalCost = null;
-            }
         }
     }
 }

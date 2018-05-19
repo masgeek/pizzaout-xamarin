@@ -33,18 +33,18 @@ namespace PizzaOut.IOS
                 Title = "Order Payment";
 
 
-                txtOrderNumber.Text = _order.ORDER_ID.ToString();
-                txtOrderTotal.Text = totalAmount.ToString("C", CultureInfo.CreateSpecificCulture("en-US"));
+                //txtOrderNumber.Text = _order.ORDER_ID.ToString();
+                //txtOrderTotal.Text = totalAmount.ToString("C", CultureInfo.CreateSpecificCulture("en-US"));
 
-                lblOrderHeader.Text = $"Pay for order number :{_order.ORDER_ID}";
+                //lblOrderHeader.Text = $"Pay for order number :{_order.ORDER_ID}";
                 //lblHelpLine.Text = $"Call us on {UserSession.HelpLine()}";
-                lblPaymentNumber.Text = $"Payment Number is :{_paymentUssd}";
+                //lblPaymentNumber.Text = $"Payment Number is :{_paymentUssd}";
 
-                btnPayOrder.SetTitle($"Tap to pay for order number :{_order.ORDER_ID}", UIControlState.Normal);
+                //btnPayOrder.SetTitle($"Tap to pay for order number :{_order.ORDER_ID}", UIControlState.Normal);
 
-                txtOrderTotal.Enabled = false;
-                txtOrderNumber.Enabled = false;
-                btnPayOrder.TouchUpInside += (e, s) =>
+                //txtOrderTotal.Enabled = false;
+                //txtOrderNumber.Enabled = false;
+                /*btnPayOrder.TouchUpInside += (e, s) =>
                 {
                     //let us launch the dialler
                     var launched = _messagingActions.MakePhoneCall(_paymentUssd);
@@ -54,7 +54,7 @@ namespace PizzaOut.IOS
                         MessagingActions.ShowAlert("Dialler Not opened","Unable to open dialling keypad on this device");
                         Analytics.TrackEvent($"Unable to launch dialler for user id {UserSession.GetUserId()}");
                     }
-                };
+                };*/
 
                
             }
