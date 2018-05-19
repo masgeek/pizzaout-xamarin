@@ -27,10 +27,6 @@ namespace PizzaOut.IOS
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIButton btnViewItems { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIDatePicker dtDeliveryDate { get; set; }
 
         [Outlet]
@@ -52,11 +48,6 @@ namespace PizzaOut.IOS
             if (btnPay != null) {
                 btnPay.Dispose ();
                 btnPay = null;
-            }
-
-            if (btnViewItems != null) {
-                btnViewItems.Dispose ();
-                btnViewItems = null;
             }
 
             if (dtDeliveryDate != null) {

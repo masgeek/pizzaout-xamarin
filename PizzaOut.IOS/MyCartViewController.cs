@@ -91,7 +91,7 @@ namespace PizzaOut.IOS
 
 
 
-            btnViewItems.TouchUpInside += (e, s) =>
+            /*btnViewItems.TouchUpInside += (e, s) =>
             {
                 // create the view controller for your initial view - using storyboard, code, etc
                 CartItemsViewController cartItemsViewController = this.Storyboard.InstantiateViewController(controllerName) as CartItemsViewController;
@@ -100,7 +100,7 @@ namespace PizzaOut.IOS
                     cartItemsViewController.SetCartItems(cartItemList);
                     NavigationController.PushViewController(cartItemsViewController, true);
                 }
-            };
+            };*/
 
             btnDeliveryAddress.TouchUpInside += (e, s) => { _deliveryAddressActionSheet.ShowInView(View); };
 

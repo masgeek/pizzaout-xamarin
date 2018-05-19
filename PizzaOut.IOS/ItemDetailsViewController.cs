@@ -6,6 +6,7 @@ using Foundation;
 using PizzaData.Helpers;
 using PizzaData.models;
 using PizzaOut.IOS.DataManager;
+using PizzaOut.IOS.UIHelpers;
 using SDWebImage;
 using UIKit;
 
@@ -24,6 +25,7 @@ namespace PizzaOut.IOS
         private int _cartItemId;
         private bool itemExists;
 
+        private LoadingOverlay _loadingOverlay;
         public ItemDetailsViewController (IntPtr handle) : base(handle) { }
 
         public ItemDetailsViewController()
@@ -48,8 +50,6 @@ namespace PizzaOut.IOS
         {
             base.ViewWillAppear(animated);
             _sizes = _categoryItem.GetSizes(_categoryItem.SIZES);
-
-            activityIndicator.StartAnimating();
 
             lblItemName.Text = _categoryItem.MENU_ITEM_NAME;
             //lblItemDesc.Text = _categoryItem.MENU_ITEM_DESC;
@@ -85,18 +85,17 @@ namespace PizzaOut.IOS
             //click action for add to cart
             btnAddToCart.TouchUpInside += async (object sender, EventArgs e) =>
                 {
-                    activityIndicator.StartAnimating();
+                    var bounds = UIScreen.MainScreen.Bounds;
+                    _loadingOverlay = new LoadingOverlay(bounds,"Updating your cart...");
                     var itemAdded = await AddItemToCart();
 
-                    activityIndicator.StopAnimating();
+                    _loadingOverlay.Hide();
                     if (!itemAdded) return;
                     //resest the exists flag
                     itemExists = false;
                     //close the view and go back
                     this.NavigationController.PopViewController(true);
                 };
-
-            activityIndicator.StopAnimating();
         }
 
         private async Task<bool> AddItemToCart()

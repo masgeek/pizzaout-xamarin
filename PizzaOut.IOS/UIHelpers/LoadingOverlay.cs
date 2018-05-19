@@ -20,10 +20,8 @@ namespace PizzaOut.IOS.UIHelpers
     public sealed class LoadingOverlay:UIView
     {
         // control declarations
-        readonly UIActivityIndicatorView activitySpinner;
-        readonly UILabel loadingLabel;
 
-        public LoadingOverlay(CGRect frame,string message = "Loading Data...") : base(frame)
+        public LoadingOverlay(CGRect frame,string message = "Loading Items...") : base(frame)
         {
             // configurable bits
             BackgroundColor = UIColor.Black;
@@ -38,7 +36,7 @@ namespace PizzaOut.IOS.UIHelpers
             nfloat centerY = Frame.Height / 2;
 
             // create the activity spinner, center it horizontall and put it 5 points above center x
-            activitySpinner = new UIActivityIndicatorView(UIActivityIndicatorViewStyle.WhiteLarge);
+            var activitySpinner = new UIActivityIndicatorView(UIActivityIndicatorViewStyle.WhiteLarge);
             activitySpinner.Frame = new CGRect(
                 centerX - (activitySpinner.Frame.Width / 2),
                 centerY - activitySpinner.Frame.Height - 20,
@@ -49,7 +47,7 @@ namespace PizzaOut.IOS.UIHelpers
             activitySpinner.StartAnimating();
 
             // create and configure the "Loading Data" label
-            loadingLabel = new UILabel(new CGRect(
+            var loadingLabel = new UILabel(new CGRect(
                 centerX - (labelWidth / 2),
                 centerY + 20,
                 labelWidth,
