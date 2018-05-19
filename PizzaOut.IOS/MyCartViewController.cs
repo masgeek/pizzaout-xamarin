@@ -46,12 +46,12 @@ namespace PizzaOut.IOS
             unpaidOrder = true;
 
         }
-        public override async void ViewDidLoad()
+        public override void ViewDidLoad()
         {
        
             base.ViewDidLoad();
 
-            Title = "My Cart";
+            /*Title = "My Cart";
             restActions = new RestActions();
 
 
@@ -91,7 +91,7 @@ namespace PizzaOut.IOS
 
 
 
-            /*btnViewItems.TouchUpInside += (e, s) =>
+            btnViewItems.TouchUpInside += (e, s) =>
             {
                 // create the view controller for your initial view - using storyboard, code, etc
                 CartItemsViewController cartItemsViewController = this.Storyboard.InstantiateViewController(controllerName) as CartItemsViewController;
@@ -100,7 +100,7 @@ namespace PizzaOut.IOS
                     cartItemsViewController.SetCartItems(cartItemList);
                     NavigationController.PushViewController(cartItemsViewController, true);
                 }
-            };*/
+            };
 
             btnDeliveryAddress.TouchUpInside += (e, s) => { _deliveryAddressActionSheet.ShowInView(View); };
 
@@ -191,7 +191,7 @@ namespace PizzaOut.IOS
                     new UIAlertView("Incomplete Info", "Ensure delivery location,date and time are specified", null, "OK", null).Show();
 #pragma warning restore 618
                 }
-            };
+            };*/
         }
 
         private int GetLocationId(List<Location> locations,string _deliveryLocation)
@@ -204,11 +204,11 @@ namespace PizzaOut.IOS
             return locationid;
         }
 
-        public override async void ViewDidAppear(bool animated)
+        public override void ViewDidAppear(bool animated)
         {
             base.ViewDidAppear(animated);
             //reload the data
-            if (unpaidOrder)
+            /*if (unpaidOrder)
             {
                 total = _order.ComputeOrderTotal();
                 lblTotal.Text = total.ToString("C", CultureInfo.CreateSpecificCulture("en-US"));
@@ -216,7 +216,7 @@ namespace PizzaOut.IOS
             else
             {
                 cartItemList = await LoadCartItems(UserSession.GetUserId());
-            }
+            }*/
         }
 
         private void ComputeTotal(List<CartItem> cartItems)
