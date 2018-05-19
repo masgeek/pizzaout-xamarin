@@ -15,49 +15,49 @@ namespace PizzaOut.IOS
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIButton btnPayOrder { get; set; }
+        UIKit.UIButton BtnPayOrder { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UILabel lblOrderHeader { get; set; }
+        UIKit.UILabel LblOrderSummary { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UILabel lblPaymentNumber { get; set; }
+        UIKit.UILabel LblUssdNumber { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UITextField txtOrderNumber { get; set; }
+        UIKit.UITextField TxtOrderNumber { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UITextField txtOrderTotal { get; set; }
+        UIKit.UITextField TxtOrderTotal { get; set; }
 
         void ReleaseDesignerOutlets ()
         {
-            if (btnPayOrder != null) {
-                btnPayOrder.Dispose ();
-                btnPayOrder = null;
+            if (BtnPayOrder != null) {
+                BtnPayOrder.Dispose ();
+                BtnPayOrder = null;
             }
 
-            if (lblOrderHeader != null) {
-                lblOrderHeader.Dispose ();
-                lblOrderHeader = null;
+            if (LblOrderSummary != null) {
+                LblOrderSummary.Dispose ();
+                LblOrderSummary = null;
             }
 
-            if (lblPaymentNumber != null) {
-                lblPaymentNumber.Dispose ();
-                lblPaymentNumber = null;
+            if (LblUssdNumber != null) {
+                LblUssdNumber.Dispose ();
+                LblUssdNumber = null;
             }
 
-            if (txtOrderNumber != null) {
-                txtOrderNumber.Dispose ();
-                txtOrderNumber = null;
+            if (TxtOrderNumber != null) {
+                TxtOrderNumber.Dispose ();
+                TxtOrderNumber = null;
             }
 
-            if (txtOrderTotal != null) {
-                txtOrderTotal.Dispose ();
-                txtOrderTotal = null;
+            if (TxtOrderTotal != null) {
+                TxtOrderTotal.Dispose ();
+                TxtOrderTotal = null;
             }
         }
     }

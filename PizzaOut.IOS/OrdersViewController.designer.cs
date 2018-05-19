@@ -15,11 +15,11 @@ namespace PizzaOut.IOS
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIButton BtnConfirmedOrders { get; set; }
+        UIKit.UIButton BtnOrderHistory { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIButton BtnOrderHistory { get; set; }
+        UIKit.UIButton BtnRecentOrders { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -27,14 +27,14 @@ namespace PizzaOut.IOS
 
         void ReleaseDesignerOutlets ()
         {
-            if (BtnConfirmedOrders != null) {
-                BtnConfirmedOrders.Dispose ();
-                BtnConfirmedOrders = null;
-            }
-
             if (BtnOrderHistory != null) {
                 BtnOrderHistory.Dispose ();
                 BtnOrderHistory = null;
+            }
+
+            if (BtnRecentOrders != null) {
+                BtnRecentOrders.Dispose ();
+                BtnRecentOrders = null;
             }
 
             if (BtnUnpaidOrders != null) {

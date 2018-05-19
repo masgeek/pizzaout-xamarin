@@ -17,7 +17,7 @@ namespace PizzaOut.IOS
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
-            Title = "Orders";
+            Title = "Orders History";
 
             _ordersViewTableController = Storyboard.InstantiateViewController(controllerName) as OrdersViewTableController;
             int userId = UserSession.GetUserId();
@@ -36,7 +36,7 @@ namespace PizzaOut.IOS
                 }
             };
 
-            BtnConfirmedOrders.TouchUpInside += (e, s) =>
+            BtnRecentOrders.TouchUpInside += (e, s) =>
             {
                 //open the table and show the confirmed orders
                 // create the view controller for your initial view - using storyboard, code, etc

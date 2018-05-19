@@ -15,11 +15,7 @@ namespace PizzaOut.IOS
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIActivityIndicatorView activityIndicator { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIButton btnAddToCart { get; set; }
+        UIKit.UIButton BtnAddToCart { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -27,46 +23,41 @@ namespace PizzaOut.IOS
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UILabel lblItemName { get; set; }
+        UIKit.UILabel LblItemName { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIStepper quantityStepper { get; set; }
+        UIKit.UILabel LblSelectedQuantity { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UILabel quantityValue { get; set; }
+        UIKit.UILabel LblSelectedSize { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIStepper sizeStepper { get; set; }
+        UIKit.UILabel LblTotal { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UILabel sizeValue { get; set; }
+        UIKit.UIStepper QuantityPicker { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UILabel totalCost { get; set; }
+        UIKit.UIStepper SizePicker { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UITextView TxtItemDesc { get; set; }
 
         [Action ("ItemSizeChangedEvent:")]
         [GeneratedCode ("iOS Designer", "1.0")]
         partial void ItemSizeChangedEvent (UIKit.UIStepper sender);
 
-        [Action ("SizeChangedEvent:")]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        partial void SizeChangedEvent (UIKit.UIStepper sender);
-
         void ReleaseDesignerOutlets ()
         {
-            if (activityIndicator != null) {
-                activityIndicator.Dispose ();
-                activityIndicator = null;
-            }
-
-            if (btnAddToCart != null) {
-                btnAddToCart.Dispose ();
-                btnAddToCart = null;
+            if (BtnAddToCart != null) {
+                BtnAddToCart.Dispose ();
+                BtnAddToCart = null;
             }
 
             if (itemImage != null) {
@@ -74,34 +65,39 @@ namespace PizzaOut.IOS
                 itemImage = null;
             }
 
-            if (lblItemName != null) {
-                lblItemName.Dispose ();
-                lblItemName = null;
+            if (LblItemName != null) {
+                LblItemName.Dispose ();
+                LblItemName = null;
             }
 
-            if (quantityStepper != null) {
-                quantityStepper.Dispose ();
-                quantityStepper = null;
+            if (LblSelectedQuantity != null) {
+                LblSelectedQuantity.Dispose ();
+                LblSelectedQuantity = null;
             }
 
-            if (quantityValue != null) {
-                quantityValue.Dispose ();
-                quantityValue = null;
+            if (LblSelectedSize != null) {
+                LblSelectedSize.Dispose ();
+                LblSelectedSize = null;
             }
 
-            if (sizeStepper != null) {
-                sizeStepper.Dispose ();
-                sizeStepper = null;
+            if (LblTotal != null) {
+                LblTotal.Dispose ();
+                LblTotal = null;
             }
 
-            if (sizeValue != null) {
-                sizeValue.Dispose ();
-                sizeValue = null;
+            if (QuantityPicker != null) {
+                QuantityPicker.Dispose ();
+                QuantityPicker = null;
             }
 
-            if (totalCost != null) {
-                totalCost.Dispose ();
-                totalCost = null;
+            if (SizePicker != null) {
+                SizePicker.Dispose ();
+                SizePicker = null;
+            }
+
+            if (TxtItemDesc != null) {
+                TxtItemDesc.Dispose ();
+                TxtItemDesc = null;
             }
         }
     }

@@ -39,6 +39,14 @@ namespace PizzaOut.IOS
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIView registerContentView { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIScrollView registerScrollView { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIButton SignUpButton { get; set; }
 
         [Outlet]
@@ -48,10 +56,6 @@ namespace PizzaOut.IOS
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UITextField UserNameTextView { get; set; }
-
-        [Action ("CancelButton_TouchUpInside:")]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        partial void CancelButton_TouchUpInside (UIKit.UIButton sender);
 
         void ReleaseDesignerOutlets ()
         {
@@ -83,6 +87,16 @@ namespace PizzaOut.IOS
             if (PhoneTextView != null) {
                 PhoneTextView.Dispose ();
                 PhoneTextView = null;
+            }
+
+            if (registerContentView != null) {
+                registerContentView.Dispose ();
+                registerContentView = null;
+            }
+
+            if (registerScrollView != null) {
+                registerScrollView.Dispose ();
+                registerScrollView = null;
             }
 
             if (SignUpButton != null) {

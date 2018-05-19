@@ -15,58 +15,49 @@ namespace PizzaOut.IOS
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIButton btnDeliveryAddress { get; set; }
+        UIKit.UIButton BtnDeliveryAddress { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIButton btnDeliveryTime { get; set; }
+        UIKit.UIButton BtnDeliveryTime { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIButton btnPay { get; set; }
+        UIKit.UIButton BtnPay { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIButton btnViewItems { get; set; }
+        UIKit.UIDatePicker deliveryDatePicker { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIDatePicker dtDeliveryDate { get; set; }
-
-        [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UILabel lblTotal { get; set; }
+        UIKit.UILabel lblTotalAmount { get; set; }
 
         void ReleaseDesignerOutlets ()
         {
-            if (btnDeliveryAddress != null) {
-                btnDeliveryAddress.Dispose ();
-                btnDeliveryAddress = null;
+            if (BtnDeliveryAddress != null) {
+                BtnDeliveryAddress.Dispose ();
+                BtnDeliveryAddress = null;
             }
 
-            if (btnDeliveryTime != null) {
-                btnDeliveryTime.Dispose ();
-                btnDeliveryTime = null;
+            if (BtnDeliveryTime != null) {
+                BtnDeliveryTime.Dispose ();
+                BtnDeliveryTime = null;
             }
 
-            if (btnPay != null) {
-                btnPay.Dispose ();
-                btnPay = null;
+            if (BtnPay != null) {
+                BtnPay.Dispose ();
+                BtnPay = null;
             }
 
-            if (btnViewItems != null) {
-                btnViewItems.Dispose ();
-                btnViewItems = null;
+            if (deliveryDatePicker != null) {
+                deliveryDatePicker.Dispose ();
+                deliveryDatePicker = null;
             }
 
-            if (dtDeliveryDate != null) {
-                dtDeliveryDate.Dispose ();
-                dtDeliveryDate = null;
-            }
-
-            if (lblTotal != null) {
-                lblTotal.Dispose ();
-                lblTotal = null;
+            if (lblTotalAmount != null) {
+                lblTotalAmount.Dispose ();
+                lblTotalAmount = null;
             }
         }
     }
