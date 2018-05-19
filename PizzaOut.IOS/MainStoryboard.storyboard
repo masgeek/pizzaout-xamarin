@@ -835,17 +835,17 @@
                         <viewControllerLayoutGuide type="bottom" id="45117"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="45120">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="800"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BSy-mz-fQ0" userLabel="paymentScrollView">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="800"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EG6-O7-VpS" userLabel="paymentView">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap to pay for order no : 2277" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ppx-Xj-f87">
-                                                <rect key="frame" x="70.5" y="67" width="234.5" height="21"/>
+                                                <rect key="frame" x="70" y="67" width="235" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -927,27 +927,27 @@
                                     </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="EG6-O7-VpS" secondAttribute="trailing" id="8Ef-Pn-Fmi"/>
-                                    <constraint firstItem="EG6-O7-VpS" firstAttribute="height" secondItem="BSy-mz-fQ0" secondAttribute="height" priority="250" id="OIX-c3-LMk"/>
-                                    <constraint firstItem="EG6-O7-VpS" firstAttribute="leading" secondItem="BSy-mz-fQ0" secondAttribute="leading" id="Ume-m2-hWz"/>
-                                    <constraint firstItem="EG6-O7-VpS" firstAttribute="width" secondItem="BSy-mz-fQ0" secondAttribute="width" id="WyO-p2-FM0"/>
-                                    <constraint firstItem="EG6-O7-VpS" firstAttribute="top" secondItem="BSy-mz-fQ0" secondAttribute="top" id="cQR-RG-wQY"/>
-                                    <constraint firstAttribute="bottom" secondItem="EG6-O7-VpS" secondAttribute="bottom" id="fSU-qa-NAF"/>
+                                    <constraint firstAttribute="bottom" secondItem="EG6-O7-VpS" secondAttribute="bottom" constant="133" id="DHm-Zh-UkE"/>
+                                    <constraint firstItem="EG6-O7-VpS" firstAttribute="top" secondItem="BSy-mz-fQ0" secondAttribute="top" id="YoI-oh-aLj"/>
+                                    <constraint firstItem="EG6-O7-VpS" firstAttribute="leading" secondItem="BSy-mz-fQ0" secondAttribute="leading" id="j3K-KE-9iZ"/>
+                                    <constraint firstAttribute="trailing" secondItem="EG6-O7-VpS" secondAttribute="trailing" id="p3W-b2-BTX"/>
+                                    <constraint firstItem="EG6-O7-VpS" firstAttribute="centerX" secondItem="BSy-mz-fQ0" secondAttribute="centerX" id="vQg-zo-kp4"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="BSy-mz-fQ0" firstAttribute="top" secondItem="45116" secondAttribute="bottom" constant="-20" id="7rL-ek-ZTi"/>
-                            <constraint firstItem="BSy-mz-fQ0" firstAttribute="leading" secondItem="45120" secondAttribute="leading" id="AyL-7G-v9q"/>
-                            <constraint firstAttribute="trailing" secondItem="BSy-mz-fQ0" secondAttribute="trailing" id="fW5-5Q-yKw"/>
-                            <constraint firstItem="45117" firstAttribute="top" secondItem="BSy-mz-fQ0" secondAttribute="bottom" id="iFU-aH-S5A"/>
+                            <constraint firstItem="BSy-mz-fQ0" firstAttribute="top" secondItem="45120" secondAttribute="top" id="8Ch-8o-yMv"/>
+                            <constraint firstAttribute="trailing" secondItem="BSy-mz-fQ0" secondAttribute="trailing" id="haP-g2-Rma"/>
+                            <constraint firstItem="BSy-mz-fQ0" firstAttribute="bottom" secondItem="45117" secondAttribute="top" id="j8V-pD-uTr"/>
+                            <constraint firstItem="BSy-mz-fQ0" firstAttribute="leading" secondItem="45120" secondAttribute="leading" id="mMh-fz-snK"/>
                         </constraints>
                     </view>
+                    <size key="freeformSize" width="375" height="800"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="45121" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1525.5" y="-792.5"/>
+            <point key="canvasLocation" x="1525.5" y="-793"/>
         </scene>
         <!--Orders View Table Controller-->
         <scene sceneID="46776">
@@ -989,11 +989,11 @@
                         <viewControllerLayoutGuide type="bottom" id="48783"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="48786">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="800"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Bd-c5-QNm">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="800"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ez2-iB-rXJ" userLabel="orderSummaryView">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -1084,6 +1084,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="48985"/>
+                    <size key="freeformSize" width="375" height="800"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="48787" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
