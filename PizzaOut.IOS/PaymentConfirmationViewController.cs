@@ -3,6 +3,7 @@ using System.Globalization;
 using Microsoft.AppCenter.Analytics;
 using PizzaData.models;
 using PizzaOut.IOS.DataManager;
+using PizzaOut.IOS.UIHelpers;
 using UIKit;
 
 namespace PizzaOut.IOS
@@ -12,6 +13,7 @@ namespace PizzaOut.IOS
         private Order _order;
         private MessagingActions _messagingActions;
         private string _paymentUssd;
+        private LoadingOverlay _loadingOverlay;
         public PaymentConfirmationViewController (IntPtr handle) : base (handle)
         {
         }
@@ -33,18 +35,18 @@ namespace PizzaOut.IOS
                 Title = "Order Payment";
 
 
-                //txtOrderNumber.Text = _order.ORDER_ID.ToString();
-                //txtOrderTotal.Text = totalAmount.ToString("C", CultureInfo.CreateSpecificCulture("en-US"));
+                TxtOrderNumber.Text = _order.ORDER_ID.ToString();
+                TxtOrderTotal.Text = totalAmount.ToString("C", CultureInfo.CreateSpecificCulture("en-US"));
 
-                //lblOrderHeader.Text = $"Pay for order number :{_order.ORDER_ID}";
+                LblOrderSummary.Text = $"Pay for order number :{_order.ORDER_ID}";
                 //lblHelpLine.Text = $"Call us on {UserSession.HelpLine()}";
-                //lblPaymentNumber.Text = $"Payment Number is :{_paymentUssd}";
+                LblUssdNumber.Text = $"Payment Number is :{_paymentUssd}";
 
-                //btnPayOrder.SetTitle($"Tap to pay for order number :{_order.ORDER_ID}", UIControlState.Normal);
+                BtnPayOrder.SetTitle($"Tap to pay for order number :{_order.ORDER_ID}", UIControlState.Normal);
 
-                //txtOrderTotal.Enabled = false;
-                //txtOrderNumber.Enabled = false;
-                /*btnPayOrder.TouchUpInside += (e, s) =>
+                TxtOrderTotal.Enabled = false;
+                TxtOrderNumber.Enabled = false;
+                BtnPayOrder.TouchUpInside += (e, s) =>
                 {
                     //let us launch the dialler
                     var launched = _messagingActions.MakePhoneCall(_paymentUssd);
@@ -54,7 +56,7 @@ namespace PizzaOut.IOS
                         MessagingActions.ShowAlert("Dialler Not opened","Unable to open dialling keypad on this device");
                         Analytics.TrackEvent($"Unable to launch dialler for user id {UserSession.GetUserId()}");
                     }
-                };*/
+                };
 
                
             }

@@ -19,14 +19,14 @@ namespace PizzaOut.IOS
         private int _selectedQuantity = 1, _sizeIndex = 0;
         private string _selectedSize = null;
         private List<ItemSize> _sizes;
-        private double _itemsSubTotal = 0.0,_itemPrice = 0.0;
+        private double _itemsSubTotal = 0.0, _itemPrice = 0.0;
         private int _userId;
         private int _itemTypeId;
         private int _cartItemId;
         private bool itemExists;
 
         private LoadingOverlay _loadingOverlay;
-        public ItemDetailsViewController (IntPtr handle) : base(handle) { }
+        public ItemDetailsViewController(IntPtr handle) : base(handle) { }
 
         public ItemDetailsViewController()
         {
@@ -43,12 +43,62 @@ namespace PizzaOut.IOS
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
+            Title = _categoryItem.MENU_ITEM_NAME;
         }
 
-        public override void ViewWillAppear(bool animated)
+        public override async void ViewWillAppear(bool animated)
         {
             base.ViewWillAppear(animated);
-         
+            _sizes = _categoryItem.GetSizes(_categoryItem.SIZES);
+
+            LblItemName.Text = _categoryItem.MENU_ITEM_NAME;
+            TxtItemDesc.Text = _categoryItem.MENU_ITEM_DESC;
+
+            TxtItemDesc.Editable = false; //make the textfield readonly
+
+            itemImage.SetImage(
+                url: new NSUrl(_categoryItem.MENU_ITEM_IMAGE),
+                placeholder: UIImage.FromBundle("placeholder")
+            );
+
+            //lblItemDesc.Editable = false;
+            LblSelectedQuantity.Text = _selectedQuantity.ToString();
+
+            //set the default values
+            SizePicker.MinimumValue = 0;
+            SizePicker.MaximumValue = _sizes.Count - 1; //set the maximum value based on sizes list decrease by one
+
+            QuantityPicker.MinimumValue = 1;
+            QuantityPicker.MaximumValue = _categoryItem.MAX_QTY; //set the maximum value
+
+            await ComputeSizeAndCost(0, _sizes[_sizeIndex]);
+
+            //sizeStepper.Value = _selectedQuantity;
+            QuantityPicker.Value = _selectedQuantity;
+
+            SizePicker.ValueChanged += async (object sender, EventArgs e) =>
+            {
+                await SizeStepperValueChanged(sender, e);
+            };
+
+            QuantityPicker.ValueChanged += async (object sender, EventArgs e) =>
+            {
+                await QuantityStepperValueChanged(sender, e);
+            };
+            //click action for add to cart
+            BtnAddToCart.TouchUpInside += async (object sender, EventArgs e) =>
+            {
+                var bounds = UIScreen.MainScreen.Bounds;
+                _loadingOverlay = new LoadingOverlay(bounds, "Updating your cart...");
+                var itemAdded = await AddItemToCart();
+
+                _loadingOverlay.Hide();
+                if (!itemAdded) return;
+                //resest the exists flag
+                itemExists = false;
+                //close the view and go back
+                this.NavigationController.PopViewController(true);
+            };
         }
 
         private async Task<bool> AddItemToCart()
@@ -68,7 +118,7 @@ namespace PizzaOut.IOS
             if (itemExists)
             {
                 //let us update the cart
-            
+
                 cart = await restActions.UpdateCartItem(cartItem, _cartItemId);
             }
             else
@@ -83,9 +133,9 @@ namespace PizzaOut.IOS
 
         private async Task SizeStepperValueChanged(object sender, EventArgs e)
         {
-       
-            //sizeValue.Text = _selectedSize;
-            _sizeIndex = 0;///(int)sizeStepper.Value;
+
+            LblSelectedSize.Text = _selectedSize;
+            _sizeIndex = (int)SizePicker.Value;
 
 
             //check if the item is already in the cart
@@ -101,8 +151,8 @@ namespace PizzaOut.IOS
 
         private async Task QuantityStepperValueChanged(object sender, EventArgs e)
         {
-            _selectedQuantity = 0;//(int) quantityStepper.Value;
-           // quantityValue.Text = _selectedQuantity.ToString();
+            _selectedQuantity = (int)QuantityPicker.Value;
+            LblSelectedQuantity.Text = _selectedQuantity.ToString();
 
             if (_sizeIndex < 0)
             {
@@ -122,10 +172,10 @@ namespace PizzaOut.IOS
             _itemsSubTotal = _itemPrice * _selectedQuantity;
 
             //totalCost.Text = String.Format("{0:C}", totalItemCost);//totalItemCost.ToString();
-            //totalCost.Text = _itemsSubTotal.ToString("C", CultureInfo.CreateSpecificCulture("en-US"));
+            LblTotal.Text = _itemsSubTotal.ToString("C", CultureInfo.CreateSpecificCulture("en-US"));
 
             _selectedSize = size.ITEM_TYPE_SIZE;
-            //sizeValue.Text = _selectedSize;
+            LblSelectedSize.Text = _selectedSize;
 
             if (!itemExists)
             {
@@ -164,24 +214,24 @@ namespace PizzaOut.IOS
                     _itemsSubTotal = _itemPrice * _selectedQuantity;
 
                     //totalCost.Text = String.Format("{0:C}", totalItemCost);//totalItemCost.ToString();
-                    //totalCost.Text = _itemsSubTotal.ToString("C", CultureInfo.CreateSpecificCulture("en-US"));
+                    totalCost.Text = _itemsSubTotal.ToString("C", CultureInfo.CreateSpecificCulture("en-US"));
 
                     // _selectedSize = cartItems.ITEM_SIZE;
                     // sizeValue.Text = _selectedSize;
 
-                    //quantityValue.Text = cartItem.QUANTITY.ToString();
-                    //quantityStepper.Value = _selectedQuantity;
+                    quantityValue.Text = cartItem.QUANTITY.ToString();
+                    quantityStepper.Value = _selectedQuantity;
 
-                    //btnAddToCart.SetTitle("Update Cart", UIControlState.Highlighted);
+                    btnAddToCart.SetTitle("Update Cart", UIControlState.Highlighted);
                 }
                 else
                 {
-                    //btnAddToCart.SetTitle("Add to Cart", UIControlState.Normal);
+                    btnAddToCart.SetTitle("Add to Cart", UIControlState.Normal);
                 }
             }
             else
             {
-                //btnAddToCart.SetTitle("Add to Cart", UIControlState.Normal);
+                btnAddToCart.SetTitle("Add to Cart", UIControlState.Normal);
             }
         }
     }

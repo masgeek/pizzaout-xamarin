@@ -17,12 +17,12 @@ namespace PizzaOut.IOS
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
-            Title = "Orders";
+            Title = "Orders History";
 
             _ordersViewTableController = Storyboard.InstantiateViewController(controllerName) as OrdersViewTableController;
             int userId = UserSession.GetUserId();
 
-            /*BtnUnpaidOrders.TouchUpInside += (e, s) =>
+            BtnUnpaidOrders.TouchUpInside += (e, s) =>
             {
                 //open the table and show the unpaid orders
                 // create the view controller for your initial view - using storyboard, code, etc
@@ -36,7 +36,7 @@ namespace PizzaOut.IOS
                 }
             };
 
-            BtnConfirmedOrders.TouchUpInside += (e, s) =>
+            BtnRecentOrders.TouchUpInside += (e, s) =>
             {
                 //open the table and show the confirmed orders
                 // create the view controller for your initial view - using storyboard, code, etc
@@ -62,7 +62,7 @@ namespace PizzaOut.IOS
 
                     NavigationController.PushViewController(_ordersViewTableController, true);
                 }
-            };*/
+            };
         }
     }
 }

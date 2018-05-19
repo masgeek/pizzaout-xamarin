@@ -8,6 +8,7 @@ using Microsoft.AppCenter;
 using PizzaData.Helpers;
 using PizzaData.models;
 using PizzaOut.IOS.DataManager;
+using PizzaOut.IOS.UIHelpers;
 using UIKit;
 
 namespace PizzaOut.IOS
@@ -17,6 +18,7 @@ namespace PizzaOut.IOS
         UIActionSheet normal;
         UIActionSheet _deliveryAddressActionSheet,_deliveryTimeActionSheet;
 
+        private LoadingOverlay _loadingOverlay;
         private RestActions restActions;
         private Order _order;
         private List<CartItem> cartItemList;
@@ -46,21 +48,29 @@ namespace PizzaOut.IOS
             unpaidOrder = true;
 
         }
-        public override void ViewDidLoad()
+        public override async void ViewDidLoad()
         {
        
             base.ViewDidLoad();
 
-            /*Title = "My Cart";
+            Title = "My Cart";
             restActions = new RestActions();
+            var bounds = UIScreen.MainScreen.Bounds;
+
+            _loadingOverlay = new LoadingOverlay(bounds,"Updating Cart Items...");
 
 
             cartItemList = await LoadCartItems(UserSession.GetUserId());
             locationStingList = await LoadLocationList();
             deliveryTimeList = await LoadDeliveryTimeList();
 
+            _loadingOverlay.Hide();
+
+#pragma warning disable 618
             _deliveryAddressActionSheet = new UIActionSheet("Select Delivery Address", null, cancelTitle: "Cancel", destroy: null, other: locationStingList);
+
             _deliveryTimeActionSheet = new UIActionSheet("Select Delivery Time", null, cancelTitle: "Cancel", destroy: null, other: deliveryTimeList);
+#pragma warning restore 618
 
             //set minimum date
             DateTime date = DateTime.Now;
@@ -80,10 +90,10 @@ namespace PizzaOut.IOS
 
                 //set the current values
 
-                btnDeliveryAddress.SetTitle(deliveryLocation, UIControlState.Normal);
-                btnDeliveryTime.SetTitle(deliveryTime, UIControlState.Normal);
-                dtDeliveryDate.SetDate(_orderNsDate, true);
-                dtDeliveryDate.MaximumDate = _orderNsDate;
+                BtnDeliveryAddress.SetTitle(deliveryLocation, UIControlState.Normal);
+                BtnDeliveryTime.SetTitle(deliveryTime, UIControlState.Normal);
+                deliveryDatePicker.SetDate(_orderNsDate, true);
+                deliveryDatePicker.MaximumDate = _orderNsDate;
 
                 //btnViewItems.Hidden = true;
             }
@@ -91,7 +101,7 @@ namespace PizzaOut.IOS
 
 
 
-            btnViewItems.TouchUpInside += (e, s) =>
+            /*btnViewItems.TouchUpInside += (e, s) =>
             {
                 // create the view controller for your initial view - using storyboard, code, etc
                 CartItemsViewController cartItemsViewController = this.Storyboard.InstantiateViewController(controllerName) as CartItemsViewController;
@@ -100,16 +110,16 @@ namespace PizzaOut.IOS
                     cartItemsViewController.SetCartItems(cartItemList);
                     NavigationController.PushViewController(cartItemsViewController, true);
                 }
-            };
+            };*/
 
-            btnDeliveryAddress.TouchUpInside += (e, s) => { _deliveryAddressActionSheet.ShowInView(View); };
+            BtnDeliveryAddress.TouchUpInside += (e, s) => { _deliveryAddressActionSheet.ShowInView(View); };
 
-            btnDeliveryTime.TouchUpInside += (e, s) => { _deliveryTimeActionSheet.ShowInView(View); };
+            BtnDeliveryTime.TouchUpInside += (e, s) => { _deliveryTimeActionSheet.ShowInView(View); };
 
-            dtDeliveryDate.ValueChanged += (e, s) =>
+            deliveryDatePicker.ValueChanged += (e, s) =>
             {
-                dtDeliveryDate.MinimumDate = currentNsDate; //set minimum date to current date
-                deliveryDate = dtDeliveryDate.Date.ToString();
+                deliveryDatePicker.MinimumDate = currentNsDate; //set minimum date to current date
+                deliveryDate = deliveryDatePicker.Date.ToString();
             };
 
             _deliveryAddressActionSheet.Clicked += (btn_sender, args) =>
@@ -123,7 +133,7 @@ namespace PizzaOut.IOS
 
                         deliveryLocation = locationStingList[selectedIndex];
 
-                        btnDeliveryAddress.SetTitle(deliveryLocation, UIControlState.Normal);
+                        BtnDeliveryAddress.SetTitle(deliveryLocation, UIControlState.Normal);
 
                         _selectedLocationId = GetLocationId(locationList,deliveryLocation);
                     }
@@ -146,7 +156,7 @@ namespace PizzaOut.IOS
                         var selectedIndex = args.ButtonIndex;
 
                         deliveryTime = deliveryTimeList[selectedIndex];
-                        btnDeliveryTime.SetTitle(deliveryTime, UIControlState.Normal);
+                        BtnDeliveryTime.SetTitle(deliveryTime, UIControlState.Normal);
                     }
 
                     Console.WriteLine("{0} Clicked", args.ButtonIndex);
@@ -157,7 +167,7 @@ namespace PizzaOut.IOS
                 }
             };
 
-            btnPay.TouchUpInside += async (e, s) =>
+            BtnPay.TouchUpInside += async (e, s) =>
             {
                 
                 //let us validate the data
@@ -174,24 +184,23 @@ namespace PizzaOut.IOS
                         }
                         else
                         {
+        
                             await CreateOrderFromCart();
                         }
                     }
                     else
                     {
                         var least = minprice.ToString("C", CultureInfo.CreateSpecificCulture("en-US"));
-#pragma warning disable 618
-                        new UIAlertView("Minimum Price", $"Please make a purchase of at least {least} to be eligible for delivery", null, "OK", null).Show();
-#pragma warning restore 618
+                        MessagingActions.ShowAlert("Minimum Price",
+                            $"Please make a purchase of at least {least} to be eligible for delivery");
+       
                     }
                 }
                 else
                 {
-#pragma warning disable 618
-                    new UIAlertView("Incomplete Info", "Ensure delivery location,date and time are specified", null, "OK", null).Show();
-#pragma warning restore 618
+                    MessagingActions.ShowAlert("Incomplete Info", "Ensure delivery location,date and time are specified");
                 }
-            };*/
+            };
         }
 
         private int GetLocationId(List<Location> locations,string _deliveryLocation)
@@ -204,19 +213,19 @@ namespace PizzaOut.IOS
             return locationid;
         }
 
-        public override void ViewDidAppear(bool animated)
+        public override async void ViewDidAppear(bool animated)
         {
             base.ViewDidAppear(animated);
             //reload the data
-            /*if (unpaidOrder)
+            if (unpaidOrder)
             {
                 total = _order.ComputeOrderTotal();
-                lblTotal.Text = total.ToString("C", CultureInfo.CreateSpecificCulture("en-US"));
+                lblTotalAmount.Text = total.ToString("C", CultureInfo.CreateSpecificCulture("en-US"));
             }
             else
             {
                 cartItemList = await LoadCartItems(UserSession.GetUserId());
-            }*/
+            }
         }
 
         private void ComputeTotal(List<CartItem> cartItems)
@@ -228,20 +237,20 @@ namespace PizzaOut.IOS
                 _cartTimestamp = cartItem.CART_TIMESTAMP;
             }
 
-            //lblTotal.Text = total.ToString("C", CultureInfo.CreateSpecificCulture("en-US"));
+            lblTotalAmount.Text = total.ToString("C", CultureInfo.CreateSpecificCulture("en-US"));
         }
 
         private async Task<List<CartItem>> LoadCartItems(int userId)
         {
             //let us load the items for teh signed in user from the cart
-            var cartItemList = await restActions.GetCartItems(userId);
+            var cartItems = await restActions.GetCartItems(userId);
 
-            if (cartItemList != null)
+            if (cartItems != null)
             {
-                //load teh total and all that stuff
-                ComputeTotal(cartItemList);
+                //load the total and all that stuff
+                ComputeTotal(cartItems);
             }
-            return cartItemList;
+            return cartItems;
         }
 
         private async Task<string[]> LoadLocationList()
@@ -313,7 +322,10 @@ namespace PizzaOut.IOS
 
         private async Task CreateOrderFromCart()
         {
-            //let us load the items for teh signed in user from the cart
+            var innerRect = UIScreen.MainScreen.Bounds;
+
+            _loadingOverlay = new LoadingOverlay(innerRect, "Creating Order...");
+            //let us load the items for the signed in user from the cart
             DateTime myDate = DateTime.Parse(deliveryDate);
             string orderTime = myDate.ToShortDateString() +" "+ deliveryTime+":00";
 
@@ -328,6 +340,8 @@ namespace PizzaOut.IOS
             };
 
             _order = await restActions.CreateOrderFromCart(orderDictionary);
+
+            _loadingOverlay.Hide();
             OpenCheckout(_order);
         }
 

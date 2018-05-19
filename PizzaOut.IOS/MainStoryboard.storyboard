@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="21">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
@@ -43,12 +43,12 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IDI-og-jq4">
-                                <rect key="frame" x="0.0" y="64" width="375" height="652"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="701"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rXo-5l-cqM" userLabel="cartSummaryView">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="652"/>
                                         <subviews>
-                                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="woY-ZS-o03">
+                                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="5" translatesAutoresizingMaskIntoConstraints="NO" id="woY-ZS-o03">
                                                 <rect key="frame" x="8" y="73" width="359" height="162"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="162" id="gzn-Co-9SW"/>
@@ -158,6 +158,10 @@
                     <size key="freeformSize" width="375" height="800"/>
                     <connections>
                         <outlet property="BtnPay" destination="qP3-gD-yPT" id="name-outlet-qP3-gD-yPT"/>
+                        <outlet property="deliveryDatePicker" destination="woY-ZS-o03" id="name-outlet-woY-ZS-o03"/>
+                        <outlet property="BtnDeliveryTime" destination="NJu-po-gL3" id="name-outlet-NJu-po-gL3"/>
+                        <outlet property="BtnDeliveryAddress" destination="Tf4-ag-N9S" id="name-outlet-Tf4-ag-N9S"/>
+                        <outlet property="lblTotalAmount" destination="ux5-yV-Oup" id="name-outlet-ux5-yV-Oup"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="31" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -826,6 +830,17 @@
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="24592"/>
                     <size key="freeformSize" width="375" height="800"/>
+                    <connections>
+                        <outlet property="itemImage" destination="YdX-PP-PzE" id="name-outlet-YdX-PP-PzE"/>
+                        <outlet property="LblItemName" destination="Odt-QD-G6h" id="name-outlet-Odt-QD-G6h"/>
+                        <outlet property="TxtItemDesc" destination="vMG-L7-uZB" id="name-outlet-vMG-L7-uZB"/>
+                        <outlet property="LblSelectedSize" destination="cg3-YD-LhB" id="name-outlet-cg3-YD-LhB"/>
+                        <outlet property="SizePicker" destination="bgf-sH-i63" id="name-outlet-bgf-sH-i63"/>
+                        <outlet property="LblSelectedQuantity" destination="4v3-mb-SnQ" id="name-outlet-4v3-mb-SnQ"/>
+                        <outlet property="QuantityPicker" destination="DFI-5H-hT0" id="name-outlet-DFI-5H-hT0"/>
+                        <outlet property="LblTotal" destination="7HV-jp-RwQ" id="name-outlet-7HV-jp-RwQ"/>
+                        <outlet property="BtnAddToCart" destination="MJ4-V0-2U1" id="name-outlet-MJ4-V0-2U1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="24462" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -868,7 +883,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ivm-Xj-086">
-                                                <rect key="frame" x="10" y="742" width="342" height="50"/>
+                                                <rect key="frame" x="10" y="742" width="359" height="50"/>
                                                 <color key="backgroundColor" red="1" green="0.57342036490000003" blue="0.12450395309999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="P3L-XE-4Ml"/>
@@ -914,7 +929,7 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="Ivm-Xj-086" secondAttribute="bottom" constant="8" id="4w7-yf-VNx"/>
-                                            <constraint firstAttribute="trailing" secondItem="Ivm-Xj-086" secondAttribute="trailing" constant="23" id="66z-HH-JuH"/>
+                                            <constraint firstAttribute="trailing" secondItem="Ivm-Xj-086" secondAttribute="trailing" constant="6" id="66z-HH-JuH"/>
                                             <constraint firstItem="ZUJ-Ij-0F4" firstAttribute="leading" secondItem="EG6-O7-VpS" secondAttribute="leading" constant="11" id="6Um-cv-6mN"/>
                                             <constraint firstAttribute="trailing" secondItem="ZUJ-Ij-0F4" secondAttribute="trailing" constant="15" id="AVN-xt-1F6"/>
                                             <constraint firstAttribute="trailing" secondItem="Fe3-A0-eVv" secondAttribute="trailing" constant="14" id="BCs-c7-6Nh"/>
@@ -957,6 +972,13 @@
                         </constraints>
                     </view>
                     <size key="freeformSize" width="375" height="800"/>
+                    <connections>
+                        <outlet property="TxtOrderNumber" destination="E3v-F3-QzL" id="name-outlet-E3v-F3-QzL"/>
+                        <outlet property="TxtOrderTotal" destination="Fe3-A0-eVv" id="name-outlet-Fe3-A0-eVv"/>
+                        <outlet property="LblUssdNumber" destination="ctB-Ue-IMg" id="name-outlet-ctB-Ue-IMg"/>
+                        <outlet property="LblOrderSummary" destination="Ppx-Xj-f87" id="name-outlet-Ppx-Xj-f87"/>
+                        <outlet property="BtnPayOrder" destination="Ivm-Xj-086" id="name-outlet-Ivm-Xj-086"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="45121" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1111,10 +1133,8 @@
     </scenes>
     <resources>
         <image name="carticon" width="25" height="25"/>
-        <image name="menu" width="16" height="16"/>
         <image name="menuicon" width="25" height="25"/>
         <image name="ordericon" width="25" height="25"/>
         <image name="placeholder" width="1024" height="1024"/>
-        <image name="splashscreen" width="16" height="16"/>
     </resources>
 </document>
