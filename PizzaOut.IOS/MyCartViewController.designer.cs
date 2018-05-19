@@ -13,8 +13,16 @@ namespace PizzaOut.IOS
     [Register ("MyCartViewController")]
     partial class MyCartViewController
     {
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton BtnPay { get; set; }
+
         void ReleaseDesignerOutlets ()
         {
+            if (BtnPay != null) {
+                BtnPay.Dispose ();
+                BtnPay = null;
+            }
         }
     }
 }
