@@ -43,59 +43,12 @@ namespace PizzaOut.IOS
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
-            Title = _categoryItem.MENU_ITEM_NAME;
         }
 
-        public override async void ViewWillAppear(bool animated)
+        public override void ViewWillAppear(bool animated)
         {
             base.ViewWillAppear(animated);
-            _sizes = _categoryItem.GetSizes(_categoryItem.SIZES);
-
-            lblItemName.Text = _categoryItem.MENU_ITEM_NAME;
-            //lblItemDesc.Text = _categoryItem.MENU_ITEM_DESC;
-            itemImage.SetImage(
-                url: new NSUrl(_categoryItem.MENU_ITEM_IMAGE),
-                placeholder: UIImage.FromBundle("placeholder")
-            );
-
-            //lblItemDesc.Editable = false;
-            quantityValue.Text = _selectedQuantity.ToString();
-
-            //set the default values
-            sizeStepper.MinimumValue = 0;
-            sizeStepper.MaximumValue = _sizes.Count - 1; //set the maximum value based on sizes list decrease by one
-
-            quantityStepper.MinimumValue = 1;
-            quantityStepper.MaximumValue = _categoryItem.MAX_QTY; //set the maximum value
-
-            await ComputeSizeAndCost(0, _sizes[_sizeIndex]);
-
-            //sizeStepper.Value = _selectedQuantity;
-            quantityStepper.Value = _selectedQuantity;
-
-            sizeStepper.ValueChanged += async (object sender, EventArgs e) =>
-                {
-                    await SizeStepperValueChanged(sender, e);
-                };
-
-            quantityStepper.ValueChanged += async (object sender, EventArgs e) =>
-            {
-                await QuantityStepperValueChanged(sender, e);
-            };
-            //click action for add to cart
-            btnAddToCart.TouchUpInside += async (object sender, EventArgs e) =>
-                {
-                    var bounds = UIScreen.MainScreen.Bounds;
-                    _loadingOverlay = new LoadingOverlay(bounds,"Updating your cart...");
-                    var itemAdded = await AddItemToCart();
-
-                    _loadingOverlay.Hide();
-                    if (!itemAdded) return;
-                    //resest the exists flag
-                    itemExists = false;
-                    //close the view and go back
-                    this.NavigationController.PopViewController(true);
-                };
+         
         }
 
         private async Task<bool> AddItemToCart()
