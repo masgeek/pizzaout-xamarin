@@ -14,16 +14,16 @@ namespace PizzaOut.IOS
 {
     public partial class ItemDetailsViewController : UIViewController
     {
-        private RestActions restActions;
+        private RestActions _restActions;
         private MenuCategoryItem _categoryItem;
-        private int _selectedQuantity = 1, _sizeIndex = 0;
-        private string _selectedSize = null;
+        private int _selectedQuantity = 1, _sizeIndex;
+        private string _selectedSize;
         private List<ItemSize> _sizes;
-        private double _itemsSubTotal = 0.0, _itemPrice = 0.0;
+        private double _itemsSubTotal, _itemPrice;
         private int _userId;
         private int _itemTypeId;
         private int _cartItemId;
-        private bool itemExists;
+        private bool _itemExists;
 
         private LoadingOverlay _loadingOverlay;
         public ItemDetailsViewController(IntPtr handle) : base(handle) { }
@@ -34,8 +34,8 @@ namespace PizzaOut.IOS
 
         public void SetSelectedItem(MenuCategoryItem categoryItem)
         {
-            this._categoryItem = categoryItem;
-            restActions = new RestActions();
+            _categoryItem = categoryItem;
+            _restActions = new RestActions();
             _userId = UserSession.GetUserId();
         }
 
@@ -71,22 +71,22 @@ namespace PizzaOut.IOS
             QuantityPicker.MinimumValue = 1;
             QuantityPicker.MaximumValue = _categoryItem.MAX_QTY; //set the maximum value
 
-            await ComputeSizeAndCost(0, _sizes[_sizeIndex]);
+            await ComputeSizeAndCost(_sizes[_sizeIndex]);
 
             //sizeStepper.Value = _selectedQuantity;
             QuantityPicker.Value = _selectedQuantity;
 
-            SizePicker.ValueChanged += async (object sender, EventArgs e) =>
+            SizePicker.ValueChanged += async (sender, e) =>
             {
-                await SizeStepperValueChanged(sender, e);
+                await SizeStepperValueChanged();
             };
 
-            QuantityPicker.ValueChanged += async (object sender, EventArgs e) =>
+            QuantityPicker.ValueChanged += async (sender, e) =>
             {
-                await QuantityStepperValueChanged(sender, e);
+                await QuantityStepperValueChanged();
             };
             //click action for add to cart
-            BtnAddToCart.TouchUpInside += async (object sender, EventArgs e) =>
+            BtnAddToCart.TouchUpInside += async (sender, e) =>
             {
                 var bounds = UIScreen.MainScreen.Bounds;
                 _loadingOverlay = new LoadingOverlay(bounds, "Updating your cart...");
@@ -95,9 +95,9 @@ namespace PizzaOut.IOS
                 _loadingOverlay.Hide();
                 if (!itemAdded) return;
                 //resest the exists flag
-                itemExists = false;
+                _itemExists = false;
                 //close the view and go back
-                this.NavigationController.PopViewController(true);
+                NavigationController.PopViewController(true);
             };
         }
 
@@ -115,15 +115,15 @@ namespace PizzaOut.IOS
                 QUANTITY = _selectedQuantity,
                 CART_TIMESTAMP = Helper.GetTimeStamp()
             };
-            if (itemExists)
+            if (_itemExists)
             {
                 //let us update the cart
 
-                cart = await restActions.UpdateCartItem(cartItem, _cartItemId);
+                cart = await _restActions.UpdateCartItem(cartItem, _cartItemId);
             }
             else
             {
-                cart = await restActions.AddCartItem(cartItem);
+                cart = await _restActions.AddCartItem(cartItem);
             }
 
 
@@ -131,7 +131,7 @@ namespace PizzaOut.IOS
         }
 
 
-        private async Task SizeStepperValueChanged(object sender, EventArgs e)
+        private async Task SizeStepperValueChanged()
         {
 
             LblSelectedSize.Text = _selectedSize;
@@ -145,11 +145,11 @@ namespace PizzaOut.IOS
             }
             var size = _sizes[_sizeIndex];
 
-            itemExists = false; //set the item exosts flag to false so we can recheck the cart
-            await ComputeSizeAndCost(_sizeIndex, size);
+            _itemExists = false; //set the item exosts flag to false so we can recheck the cart
+            await ComputeSizeAndCost(size);
         }
 
-        private async Task QuantityStepperValueChanged(object sender, EventArgs e)
+        private async Task QuantityStepperValueChanged()
         {
             _selectedQuantity = (int)QuantityPicker.Value;
             LblSelectedQuantity.Text = _selectedQuantity.ToString();
@@ -160,11 +160,11 @@ namespace PizzaOut.IOS
             }
             var size = _sizes[_sizeIndex];
 
-            await ComputeSizeAndCost(_sizeIndex, size);
+            await ComputeSizeAndCost(size);
         }
 
 
-        private async Task ComputeSizeAndCost(int index, ItemSize size)
+        private async Task ComputeSizeAndCost(ItemSize size)
         {
             _itemPrice = size.PRICE;
             _itemTypeId = size.ITEM_TYPE_ID;
@@ -177,7 +177,7 @@ namespace PizzaOut.IOS
             _selectedSize = size.ITEM_TYPE_SIZE;
             LblSelectedSize.Text = _selectedSize;
 
-            if (!itemExists)
+            if (!_itemExists)
             {
                 await ItemAlreadyInCart(size);
             }
@@ -199,12 +199,12 @@ namespace PizzaOut.IOS
             };
 
 
-            if (!itemExists)
+            if (!_itemExists)
             {
-                var cartItem = await restActions.ItemAlreadyInCart(queryCartItem);
+                var cartItem = await _restActions.ItemAlreadyInCart(queryCartItem);
                 if (cartItem != null)
                 {
-                    itemExists = true;
+                    _itemExists = true;
 
                     _cartItemId = cartItem.CART_ITEM_ID;
                     _selectedQuantity = cartItem.QUANTITY;
@@ -214,24 +214,24 @@ namespace PizzaOut.IOS
                     _itemsSubTotal = _itemPrice * _selectedQuantity;
 
                     //totalCost.Text = String.Format("{0:C}", totalItemCost);//totalItemCost.ToString();
-                    totalCost.Text = _itemsSubTotal.ToString("C", CultureInfo.CreateSpecificCulture("en-US"));
+                    LblTotal.Text = _itemsSubTotal.ToString("C", CultureInfo.CreateSpecificCulture("en-US"));
 
                     // _selectedSize = cartItems.ITEM_SIZE;
                     // sizeValue.Text = _selectedSize;
 
-                    quantityValue.Text = cartItem.QUANTITY.ToString();
-                    quantityStepper.Value = _selectedQuantity;
+                    LblSelectedQuantity.Text = cartItem.QUANTITY.ToString();
+                    QuantityPicker.Value = _selectedQuantity;
 
-                    btnAddToCart.SetTitle("Update Cart", UIControlState.Highlighted);
+                    BtnAddToCart.SetTitle("Update Cart", UIControlState.Highlighted);
                 }
                 else
                 {
-                    btnAddToCart.SetTitle("Add to Cart", UIControlState.Normal);
+                    BtnAddToCart.SetTitle("Add to Cart", UIControlState.Normal);
                 }
             }
             else
             {
-                btnAddToCart.SetTitle("Add to Cart", UIControlState.Normal);
+                BtnAddToCart.SetTitle("Add to Cart", UIControlState.Normal);
             }
         }
     }
