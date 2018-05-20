@@ -64,7 +64,7 @@ namespace PizzaOut.IOS
                 _loadingOverlay.Hide(0);
             }
 
-            _loadingOverlay = new LoadingOverlay(bounds, "Loading Locations anddelivery times...");
+            _loadingOverlay = new LoadingOverlay(bounds, "Loading Locations and Delivery times...");
             View.Add(_loadingOverlay);
             locationStingList = await LoadLocationList();
             deliveryTimeList = await LoadDeliveryTimeList();
