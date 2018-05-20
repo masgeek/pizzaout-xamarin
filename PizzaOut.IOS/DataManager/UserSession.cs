@@ -23,6 +23,7 @@ namespace PizzaOut.IOS.DataManager
                     _user.SetString(userModel.MOBILE, "MOBILE");
                     _user.SetString(userModel.API_TOKEN, "API_TOKEN");
                     _user.SetString(userModel.HELPLINE, "HELPLINE");
+                    _user.SetDouble(userModel.MIN_PRICE, "MIN_PRICE");
                     _user.Synchronize();
                 }
             }
@@ -73,6 +74,13 @@ namespace PizzaOut.IOS.DataManager
         {
             var helpline = NSUserDefaults.StandardUserDefaults.StringForKey("HELPLINE");
             return helpline;
+        }
+
+        public static double MinPrice()
+        {
+            var minPrice = NSUserDefaults.StandardUserDefaults.DoubleForKey("MIN_PRICE");
+
+            return minPrice;
         }
     }
 }

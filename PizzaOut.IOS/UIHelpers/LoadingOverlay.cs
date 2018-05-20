@@ -11,7 +11,7 @@ namespace PizzaOut.IOS.UIHelpers
     /// <summary>
     /// This class cannot be inherited
     ///
-    ///   var bounds = UIScreen.MainScreen.Bounds;
+    ///var bounds = UIScreen.MainScreen.Bounds;
     /// 
     /// show the loading overlay on the UI thread using the correct orientation sizing
     /// loadPop = new LoadingOverlay (bounds); // using field from step 2
@@ -20,7 +20,11 @@ namespace PizzaOut.IOS.UIHelpers
     public sealed class LoadingOverlay:UIView
     {
         // control declarations
-
+        /// <summary>
+        /// var bounds = UIScreen.MainScreen.Bounds;
+        /// </summary>
+        /// <param name="frame"></param>
+        /// <param name="message"></param>
         public LoadingOverlay(CGRect frame,string message = "Loading Items...") : base(frame)
         {
             // configurable bits

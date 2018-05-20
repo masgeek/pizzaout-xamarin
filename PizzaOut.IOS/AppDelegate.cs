@@ -52,10 +52,26 @@ namespace PizzaOut.IOS
         {
             //set the crash analytics
             AppCenter.Start("cfa8f1ba-443f-4136-a786-1b8ceabf07d8", typeof(Analytics), typeof(Crashes));
-            AppCenter.LogLevel = LogLevel.Verbose;
+            //AppCenter.LogLevel = LogLevel.Verbose;
             MSAnalytics.SetEnabled(true);
             //isAuthenticated can be used for an auto-login feature, you'll have to implement this
             //as you see fit or get rid of the if statement if you want.
+
+            //first we will check if internet is available
+            if (!AppHelper.HasInternetConnection())
+            {
+                MessagingActions.ShowAlert("No Internet Connection",
+                    "This app requires an active intenet connection to function");
+            }
+            else
+            {
+                if (!AppHelper.IsNetworkAvailable())
+                {
+                    MessagingActions.ShowAlert("Unstable Network",
+                        "Your Network appeasr to be unstable, app perfomance will be impaired");
+                }
+            }
+
             _isAuthenticated = UserSession.IsLoggedIn();
             if (_isAuthenticated)
             {
@@ -66,7 +82,8 @@ namespace PizzaOut.IOS
             else
             {
                 //User needs to log in, so show the Login View Controlller
-                var loginViewController = GetViewController(MainStoryboard, "LoginPageViewController") as LoginPageViewController;
+                var loginViewController =
+                    GetViewController(MainStoryboard, "LoginPageViewController") as LoginPageViewController;
                 if (loginViewController != null)
                 {
                     loginViewController.OnLoginSuccess += LoginViewController_OnLoginSuccess;
@@ -74,8 +91,12 @@ namespace PizzaOut.IOS
                 }
             }
 
+
+
+
             //Analytics.TrackEvent("Application started logged in status is "+isAuthenticated);
             return true;
+
         }
 
         void LoginViewController_OnLoginSuccess(object sender, EventArgs e)

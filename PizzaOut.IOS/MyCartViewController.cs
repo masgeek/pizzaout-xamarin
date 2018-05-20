@@ -36,7 +36,7 @@ namespace PizzaOut.IOS
         private bool unpaidOrder = false;
 
         private double total = 0.0;
-        private double minprice = 11.00;
+        private double minprice;
         public MyCartViewController (IntPtr handle) : base (handle)
         {
      
@@ -46,7 +46,6 @@ namespace PizzaOut.IOS
         {
             _order = order;
             unpaidOrder = true;
-
         }
         public override async void ViewDidLoad()
         {
@@ -55,10 +54,11 @@ namespace PizzaOut.IOS
 
             Title = "My Cart";
             restActions = new RestActions();
+            minprice = UserSession.MinPrice();
             var bounds = UIScreen.MainScreen.Bounds;
 
-            _loadingOverlay = new LoadingOverlay(bounds,"Updating Cart Items...");
-
+            _loadingOverlay = new LoadingOverlay(bounds,"Refreshing Cart...");
+            View.Add(_loadingOverlay);
 
             cartItemList = await LoadCartItems(UserSession.GetUserId());
             locationStingList = await LoadLocationList();
@@ -352,7 +352,12 @@ namespace PizzaOut.IOS
             if (paymentConfirmationViewController != null)
             {
                 paymentConfirmationViewController.SetOrderItems(order);
-                NavigationController.PushViewController(paymentConfirmationViewController, true);
+                //NavigationController.PushViewController(paymentConfirmationViewController, true);
+                //NavigationController.PushViewController(paymentConfirmationViewController, true);
+
+                paymentConfirmationViewController.ModalPresentationStyle = UIModalPresentationStyle.FormSheet;
+                this.PresentViewController(paymentConfirmationViewController, true, null);
+
             }
         }
     }

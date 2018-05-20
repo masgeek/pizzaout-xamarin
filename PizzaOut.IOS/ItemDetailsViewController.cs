@@ -90,6 +90,7 @@ namespace PizzaOut.IOS
             {
                 var bounds = UIScreen.MainScreen.Bounds;
                 _loadingOverlay = new LoadingOverlay(bounds, "Updating your cart...");
+                View.Add(_loadingOverlay);
                 var itemAdded = await AddItemToCart();
 
                 _loadingOverlay.Hide();

@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using PizzaData.models;
 using PizzaOut.IOS.DataManager;
 using PizzaOut.IOS.TableViews;
+using PizzaOut.IOS.UIHelpers;
 using UIKit;
 
 namespace PizzaOut.IOS
@@ -14,6 +15,7 @@ namespace PizzaOut.IOS
         private string _orderUrl;
         private RestActions restActions;
         private OrderTablesSource _tableSource;
+        private LoadingOverlay _loadingOverlay;
 
         public OrdersViewTableController (IntPtr handle) : base (handle)
         {
@@ -36,8 +38,13 @@ namespace PizzaOut.IOS
         public override async void ViewWillAppear(bool animated)
         {
             base.ViewWillAppear(animated);
+            var bounds = UIScreen.MainScreen.Bounds;
+            _loadingOverlay = new LoadingOverlay(bounds,"Loading Orders...");
+            View.Add(_loadingOverlay);
             //set the orders table
+
             List<Order> orders = await LoadOrders(_orderUrl, _orderType);
+            _loadingOverlay.Hide();
             if (orders != null)
             {
                 _tableSource = new OrderTablesSource(orders, this, _orderType);
