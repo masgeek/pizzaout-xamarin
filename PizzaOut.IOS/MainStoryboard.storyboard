@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="21">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
@@ -43,7 +43,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IDI-og-jq4">
-                                <rect key="frame" x="0.0" y="64" width="375" height="701"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="652"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rXo-5l-cqM" userLabel="cartSummaryView">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="652"/>
@@ -86,17 +86,6 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qP3-gD-yPT">
-                                                <rect key="frame" x="9" y="514" width="359" height="50"/>
-                                                <color key="backgroundColor" red="1" green="0.57342036490000003" blue="0.12450395309999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="50" id="D23-tY-JpV"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
-                                                <state key="normal" title="TAP TO PAY">
-                                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                </state>
-                                            </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Amount" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g7G-Un-N96">
                                                 <rect key="frame" x="9" y="372" width="359" height="21"/>
                                                 <constraints>
@@ -106,23 +95,34 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qP3-gD-yPT">
+                                                <rect key="frame" x="8" y="485" width="359" height="50"/>
+                                                <color key="backgroundColor" red="1" green="0.57342036490000003" blue="0.12450395309999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="D23-tY-JpV"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                                <state key="normal" title="TAP TO PAY">
+                                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                </state>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="Tf4-ag-N9S" secondAttribute="trailing" constant="8" id="4Iq-mp-7Cq"/>
-                                            <constraint firstAttribute="trailing" secondItem="qP3-gD-yPT" secondAttribute="trailing" constant="7" id="4OQ-KR-Ro3"/>
+                                            <constraint firstAttribute="trailing" secondItem="qP3-gD-yPT" secondAttribute="trailing" constant="8" id="4OQ-KR-Ro3"/>
                                             <constraint firstAttribute="trailing" secondItem="g7G-Un-N96" secondAttribute="trailing" constant="7" id="5HS-4f-LLt"/>
-                                            <constraint firstAttribute="bottom" secondItem="qP3-gD-yPT" secondAttribute="bottom" constant="88" id="82A-yP-WdV"/>
+                                            <constraint firstAttribute="bottom" secondItem="qP3-gD-yPT" secondAttribute="bottom" constant="117" id="82A-yP-WdV"/>
                                             <constraint firstItem="33h-rk-rEu" firstAttribute="centerX" secondItem="rXo-5l-cqM" secondAttribute="centerX" id="EHx-cE-oCc"/>
                                             <constraint firstItem="woY-ZS-o03" firstAttribute="top" secondItem="33h-rk-rEu" secondAttribute="bottom" constant="18" id="Jjo-zk-xpx"/>
                                             <constraint firstItem="33h-rk-rEu" firstAttribute="top" secondItem="rXo-5l-cqM" secondAttribute="top" constant="34" id="MFz-Fi-mx5"/>
                                             <constraint firstItem="NJu-po-gL3" firstAttribute="top" secondItem="woY-ZS-o03" secondAttribute="bottom" constant="28" id="Mgt-cu-bvO"/>
-                                            <constraint firstItem="qP3-gD-yPT" firstAttribute="leading" secondItem="rXo-5l-cqM" secondAttribute="leading" constant="9" id="OHY-1r-Icv"/>
+                                            <constraint firstItem="qP3-gD-yPT" firstAttribute="leading" secondItem="rXo-5l-cqM" secondAttribute="leading" constant="8" id="OHY-1r-Icv"/>
                                             <constraint firstItem="g7G-Un-N96" firstAttribute="top" secondItem="Tf4-ag-N9S" secondAttribute="bottom" constant="21" id="QYt-gb-bar"/>
                                             <constraint firstAttribute="trailing" secondItem="ux5-yV-Oup" secondAttribute="trailing" constant="7" id="U6u-gv-qYv"/>
                                             <constraint firstItem="Tf4-ag-N9S" firstAttribute="top" secondItem="NJu-po-gL3" secondAttribute="bottom" constant="28" id="WHT-yM-fJn"/>
                                             <constraint firstItem="ux5-yV-Oup" firstAttribute="leading" secondItem="rXo-5l-cqM" secondAttribute="leading" constant="9" id="aej-Yy-ypC"/>
-                                            <constraint firstItem="qP3-gD-yPT" firstAttribute="top" secondItem="ux5-yV-Oup" secondAttribute="bottom" constant="74" id="cV1-cd-K2o"/>
+                                            <constraint firstItem="qP3-gD-yPT" firstAttribute="top" secondItem="ux5-yV-Oup" secondAttribute="bottom" constant="45" id="cV1-cd-K2o"/>
                                             <constraint firstAttribute="trailing" secondItem="woY-ZS-o03" secondAttribute="trailing" constant="8" id="fiO-KB-Ceh"/>
                                             <constraint firstAttribute="trailing" secondItem="NJu-po-gL3" secondAttribute="trailing" constant="8" id="hd4-XT-Wsu"/>
                                             <constraint firstItem="g7G-Un-N96" firstAttribute="leading" secondItem="rXo-5l-cqM" secondAttribute="leading" constant="9" id="ib4-2w-Py5"/>
@@ -862,7 +862,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="800"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EG6-O7-VpS" userLabel="paymentView">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="800"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="799"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap to pay for order no : 2277" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ppx-Xj-f87">
                                                 <rect key="frame" x="70" y="64" width="235" height="21"/>
@@ -883,7 +883,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ivm-Xj-086">
-                                                <rect key="frame" x="8" y="423" width="359" height="50"/>
+                                                <rect key="frame" x="8" y="422" width="359" height="50"/>
                                                 <color key="backgroundColor" red="1" green="0.57342036490000003" blue="0.12450395309999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="JVT-xG-H54"/>
@@ -899,12 +899,12 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Payment USSD" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ctB-Ue-IMg" adjustsFontForContentSizeCategory="YES">
-                                                <rect key="frame" x="13" y="371" width="348" height="20.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Payment USSD" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ctB-Ue-IMg">
+                                                <rect key="frame" x="13" y="371" width="348" height="19.5"/>
                                                 <accessibility key="accessibilityConfiguration">
                                                     <accessibilityTraits key="traits" link="YES" staticText="YES"/>
                                                 </accessibility>
-                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -927,7 +927,7 @@
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VLa-yV-tTt">
-                                                <rect key="frame" x="10" y="498" width="357" height="32"/>
+                                                <rect key="frame" x="10" y="497" width="357" height="32"/>
                                                 <color key="backgroundColor" red="1" green="0.309452746" blue="0.028412404830000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="32" id="kcb-1X-oV3"/>
@@ -993,12 +993,12 @@
                     </view>
                     <size key="freeformSize" width="375" height="800"/>
                     <connections>
+                        <outlet property="BtnClose" destination="VLa-yV-tTt" id="name-outlet-VLa-yV-tTt"/>
                         <outlet property="BtnPayOrder" destination="Ivm-Xj-086" id="name-outlet-Ivm-Xj-086"/>
                         <outlet property="LblOrderSummary" destination="Ppx-Xj-f87" id="name-outlet-Ppx-Xj-f87"/>
                         <outlet property="LblUssdNumber" destination="ctB-Ue-IMg" id="name-outlet-ctB-Ue-IMg"/>
                         <outlet property="TxtOrderNumber" destination="E3v-F3-QzL" id="name-outlet-E3v-F3-QzL"/>
                         <outlet property="TxtOrderTotal" destination="Fe3-A0-eVv" id="name-outlet-Fe3-A0-eVv"/>
-                        <outlet property="BtnClose" destination="VLa-yV-tTt" id="name-outlet-VLa-yV-tTt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="45121" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1154,8 +1154,10 @@
     </scenes>
     <resources>
         <image name="carticon" width="25" height="25"/>
+        <image name="menu" width="16" height="16"/>
         <image name="menuicon" width="25" height="25"/>
         <image name="ordericon" width="25" height="25"/>
         <image name="placeholder" width="1024" height="1024"/>
+        <image name="splashscreen" width="16" height="16"/>
     </resources>
 </document>
