@@ -68,7 +68,7 @@ namespace PizzaOut.IOS.TableViews
                 //Here you pass the data from the registerViewController to the secondViewController
                 if (myCartViewController == null) return;
 
-                myCartViewController.SetOrderItems(order);
+                myCartViewController.SetOrderItems(order: order,unpaidOrder: true);
                 _owner.NavigationController.PushViewController(myCartViewController, true);
             }
             else

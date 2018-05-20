@@ -33,19 +33,19 @@ namespace PizzaOut.IOS
         private long _cartTimestamp;
 
         private NSDate currentNsDate;
-        private bool unpaidOrder = false;
+        private bool _unpaidOrder;
 
-        private double total = 0.0;
-        private double minprice;
+        private double _total;
+        private double _minprice;
         public MyCartViewController (IntPtr handle) : base (handle)
         {
      
         }
 
-        public void SetOrderItems(Order order)
+        public void SetOrderItems(Order order,bool unpaidOrder =false)
         {
             _order = order;
-            unpaidOrder = true;
+            _unpaidOrder = unpaidOrder;
         }
         public override async void ViewDidLoad()
         {
@@ -54,17 +54,22 @@ namespace PizzaOut.IOS
 
             Title = "My Cart";
             restActions = new RestActions();
-            minprice = UserSession.MinPrice();
+            _minprice = UserSession.MinPrice();
             var bounds = UIScreen.MainScreen.Bounds;
+            if (_unpaidOrder==false)
+            {
+                _loadingOverlay = new LoadingOverlay(bounds, "Refreshing Cart...");
+                View.Add(_loadingOverlay);
+                cartItemList = await LoadCartItems(UserSession.GetUserId());
+                _loadingOverlay.Hide(0);
+            }
 
-            _loadingOverlay = new LoadingOverlay(bounds,"Refreshing Cart...");
+            _loadingOverlay = new LoadingOverlay(bounds, "Loading Locations anddelivery times...");
             View.Add(_loadingOverlay);
-
-            cartItemList = await LoadCartItems(UserSession.GetUserId());
             locationStingList = await LoadLocationList();
             deliveryTimeList = await LoadDeliveryTimeList();
-
             _loadingOverlay.Hide();
+
 
 #pragma warning disable 618
             _deliveryAddressActionSheet = new UIActionSheet("Select Delivery Address", null, cancelTitle: "Cancel", destroy: null, other: locationStingList);
@@ -76,7 +81,7 @@ namespace PizzaOut.IOS
             DateTime date = DateTime.Now;
             currentNsDate = (NSDate) DateTime.SpecifyKind(date, DateTimeKind.Utc);
             deliveryDate = currentNsDate.ToString(); //set as default date
-            if (unpaidOrder)
+            if (_unpaidOrder)
             {
                 deliveryDate = _order.ORDER_DATE_TIME.ToString("dd/MM/yyyy"); //"09:35:37"
 
@@ -85,15 +90,15 @@ namespace PizzaOut.IOS
                 deliveryLocation = _order.LOCATION.LOCATION_NAME;
                 _selectedLocationId = _order.LOCATION_ID;
 
-                NSDate _orderNsDate = (NSDate) DateTime.SpecifyKind(_order.ORDER_DATE_TIME, DateTimeKind.Utc);
+                NSDate orderNsDate = (NSDate) DateTime.SpecifyKind(_order.ORDER_DATE_TIME, DateTimeKind.Utc);
                 ;
 
                 //set the current values
 
                 BtnDeliveryAddress.SetTitle(deliveryLocation, UIControlState.Normal);
                 BtnDeliveryTime.SetTitle(deliveryTime, UIControlState.Normal);
-                deliveryDatePicker.SetDate(_orderNsDate, true);
-                deliveryDatePicker.MaximumDate = _orderNsDate;
+                deliveryDatePicker.SetDate(orderNsDate, true);
+                deliveryDatePicker.MaximumDate = orderNsDate;
 
                 //btnViewItems.Hidden = true;
             }
@@ -174,10 +179,10 @@ namespace PizzaOut.IOS
                 if (IsLocationSelected()&&IsTimeSelected()&&IsDateSelected())
                 {
                     //check minimum purchase price
-                    if (total >= minprice)
+                    if (_total >= _minprice)
                     {
                         //create new order
-                        if (unpaidOrder)
+                        if (_unpaidOrder)
                         {
                             //let us update the order and proceed
                             OpenCheckout(_order);
@@ -190,7 +195,7 @@ namespace PizzaOut.IOS
                     }
                     else
                     {
-                        var least = minprice.ToString("C", CultureInfo.CreateSpecificCulture("en-US"));
+                        var least = _minprice.ToString("C", CultureInfo.CreateSpecificCulture("en-US"));
                         MessagingActions.ShowAlert("Minimum Price",
                             $"Please make a purchase of at least {least} to be eligible for delivery");
        
@@ -217,10 +222,10 @@ namespace PizzaOut.IOS
         {
             base.ViewDidAppear(animated);
             //reload the data
-            if (unpaidOrder)
+            if (_unpaidOrder)
             {
-                total = _order.ComputeOrderTotal();
-                lblTotalAmount.Text = total.ToString("C", CultureInfo.CreateSpecificCulture("en-US"));
+                _total = _order.ComputeOrderTotal();
+                lblTotalAmount.Text = _total.ToString("C", CultureInfo.CreateSpecificCulture("en-US"));
             }
             else
             {
@@ -228,16 +233,16 @@ namespace PizzaOut.IOS
             }
         }
 
-        private void ComputeTotal(List<CartItem> cartItems)
+        private double ComputeTotal(List<CartItem> cartItems)
         {
-            total = 0.0; //reset the amount
+            var totalAmount = 0.0; //reset the amount
             foreach (CartItem cartItem in cartItems)
             {
-                total = total + (cartItem.ITEM_PRICE * cartItem.QUANTITY);
+                totalAmount = totalAmount + (cartItem.ITEM_PRICE * cartItem.QUANTITY);
                 _cartTimestamp = cartItem.CART_TIMESTAMP;
             }
 
-            lblTotalAmount.Text = total.ToString("C", CultureInfo.CreateSpecificCulture("en-US"));
+            return totalAmount;
         }
 
         private async Task<List<CartItem>> LoadCartItems(int userId)
@@ -248,7 +253,8 @@ namespace PizzaOut.IOS
             if (cartItems != null)
             {
                 //load the total and all that stuff
-                ComputeTotal(cartItems);
+                _total = ComputeTotal(cartItems);
+                lblTotalAmount.Text = _total.ToString("C", CultureInfo.CreateSpecificCulture("en-US"));
             }
             return cartItems;
         }
@@ -351,7 +357,7 @@ namespace PizzaOut.IOS
             PaymentConfirmationViewController paymentConfirmationViewController = this.Storyboard.InstantiateViewController("PaymentConfirmationViewController") as PaymentConfirmationViewController;
             if (paymentConfirmationViewController != null)
             {
-                paymentConfirmationViewController.SetOrderItems(order);
+                paymentConfirmationViewController.SetOrderItems(order,_total);
                 //NavigationController.PushViewController(paymentConfirmationViewController, true);
                 //NavigationController.PushViewController(paymentConfirmationViewController, true);
 

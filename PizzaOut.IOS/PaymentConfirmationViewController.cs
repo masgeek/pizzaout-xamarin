@@ -14,14 +14,16 @@ namespace PizzaOut.IOS
         private MessagingActions _messagingActions;
         private string _paymentUssd;
         private LoadingOverlay _loadingOverlay;
+        private double _totalAmount;
         public PaymentConfirmationViewController (IntPtr handle) : base (handle)
         {
         }
 
-        public void SetOrderItems(Order order)
+        public void SetOrderItems(Order order, double orderTotal)
         {
             _order = order;
             _messagingActions = new MessagingActions();
+            _totalAmount = orderTotal;
         }
 
         public override void ViewDidLoad()
@@ -29,14 +31,18 @@ namespace PizzaOut.IOS
             base.ViewDidLoad();
             if (_order != null)
             {
-                double totalAmount = _order.ComputeOrderTotal();
-                _paymentUssd = $"{_order.USSD_NUMBER}{totalAmount}#";
+                if (_totalAmount <= 0)
+                {
+                    _totalAmount = _order.ComputeOrderTotal();
+                }
+
+                _paymentUssd = $"{_order.USSD_NUMBER}{_totalAmount}#";
 
                 Title = "Order Payment";
 
 
                 TxtOrderNumber.Text = _order.ORDER_ID.ToString();
-                TxtOrderTotal.Text = totalAmount.ToString("C", CultureInfo.CreateSpecificCulture("en-US"));
+                TxtOrderTotal.Text = _totalAmount.ToString("C", CultureInfo.CreateSpecificCulture("en-US"));
 
                 LblOrderSummary.Text = $"Pay for order number :{_order.ORDER_ID}";
                 //lblHelpLine.Text = $"Call us on {UserSession.HelpLine()}";
@@ -58,7 +64,12 @@ namespace PizzaOut.IOS
                     }
                 };
 
-               
+                BtnClose.TouchUpInside += (e, s) =>
+                {
+                    //dismiss the view controller
+                    DismissModalViewController(true);
+                };
+
             }
         }
 
