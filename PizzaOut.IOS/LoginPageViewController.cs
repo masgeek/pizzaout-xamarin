@@ -89,8 +89,13 @@ namespace PizzaOut.IOS
                         }
                         else
                         {
+                            var message = "Unable to log you in, please try again";
+                            if (_userModel.message != null)
+                            {
+                                message = _userModel.message;
+                            }
                             _loadPop.Hide();
-                            MessagingActions.ShowAlert("Login Error", "Unable to log you in, please try again");
+                            MessagingActions.ShowAlert("Unable to login",message);
                         }
                     }
                     else
@@ -102,7 +107,7 @@ namespace PizzaOut.IOS
                 else
                 {
                     _loadPop.Hide();
-                    MessagingActions.ShowAlert("Login Error", "Incorrect user name or password");
+                    MessagingActions.ShowAlert("Unable to login", "Incorrect user name or password");
                 }
 
 

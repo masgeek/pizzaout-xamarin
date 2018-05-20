@@ -63,6 +63,9 @@ namespace PizzaData.models
 
         public List<ErrorModel> ERROR_LIST { get; set; }
 
+        public string field { get; set; }
+        public string message { get; set; }
+
 
         public List<ErrorModel> GetErrors(JArray errorsJArray)
         {
