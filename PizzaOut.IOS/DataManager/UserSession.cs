@@ -7,7 +7,15 @@ namespace PizzaOut.IOS.DataManager
 {
     public class UserSession
     {
+        /// <summary>
+        /// The user.
+        /// </summary>
         private static NSUserDefaults _user;
+
+        /// <summary>
+        /// Sets the user session.
+        /// </summary>
+        /// <param name="userModel">User model.</param>
         public static void  SetUserSession(User userModel)
         {
             try
@@ -70,12 +78,21 @@ namespace PizzaOut.IOS.DataManager
                 Crashes.TrackError(ex);
             }
         }
+
+        /// <summary>
+        /// Gets the helpline number.
+        /// </summary>
+        /// <returns>The line.</returns>
         public static string HelpLine()
         {
             var helpline = NSUserDefaults.StandardUserDefaults.StringForKey("HELPLINE");
             return helpline;
         }
 
+        /// <summary>
+        /// gets the minimum allowed price for an order.
+        /// </summary>
+        /// <returns>The price.</returns>
         public static double MinPrice()
         {
             var minPrice = NSUserDefaults.StandardUserDefaults.DoubleForKey("MIN_PRICE");
