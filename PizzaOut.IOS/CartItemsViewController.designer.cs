@@ -7,9 +7,8 @@
 using Foundation;
 using System;
 using System.CodeDom.Compiler;
-using UIKit;
 
-namespace PizzaOut
+namespace PizzaOut.IOS
 {
     [Register ("CartItemsViewController")]
     partial class CartItemsViewController

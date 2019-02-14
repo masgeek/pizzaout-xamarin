@@ -13,7 +13,7 @@ namespace PizzaOut.IOS
 	{
 
 	    private RestActions _restActions;
-	    private LoadingOverlay _loadPop;
+	    private LoadingOverlay _loadingOverlay;
 
         public SignUpViewController (IntPtr handle) : base (handle)
 		{
@@ -42,8 +42,8 @@ namespace PizzaOut.IOS
 	            var bounds = UIScreen.MainScreen.Bounds;
 
 	            // show the loading overlay on the UI thread using the correct orientation sizing
-	            _loadPop = new LoadingOverlay(bounds, "Signing you up..."); // using field from step 2
-	            View.Add(_loadPop);
+	            _loadingOverlay = new LoadingOverlay(bounds, "Signing you up..."); // using field from step 2
+	            View.Add(_loadingOverlay);
 	            var canregister = CanRegister();
 
 	            if (canregister)
@@ -53,16 +53,16 @@ namespace PizzaOut.IOS
 
 	                if (user?.USER_NAME != null)
 	                {
-	                    _loadPop.Hide();
+	                    _loadingOverlay.Hide();
 
 	                    MessagingActions.ShowAlert("Registration Successfull", "Welcome " + user.SURNAME + " Please login and begin ordering");
 	                    DismissViewController(true, null); //close the view controller
 	                    return;
 	                }
-	                _loadPop.Hide();
+	                _loadingOverlay.Hide();
 	                //MessagingActions.ShowAlert("Registration not Successfull", "Unable to register, please try again");
 	            }
-	            _loadPop.Hide();
+	            _loadingOverlay.Hide();
 	        };
 
 	        CancelButton.TouchUpInside += (e, s) => { DismissViewController(true, null); };

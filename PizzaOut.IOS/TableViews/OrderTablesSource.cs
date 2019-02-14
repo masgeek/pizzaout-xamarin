@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Foundation;
 using PizzaData.models;
+using PizzaOut.IOS.DataManager;
 using UIKit;
 
 namespace PizzaOut.IOS.TableViews
@@ -35,7 +36,8 @@ namespace PizzaOut.IOS.TableViews
             cell.DetailTextLabel.Text = orderItem.ORDER_STATUS;
 
             //--- add accessory ---//
-            cell.Accessory = orderItem.PAY_ORDER ? UITableViewCellAccessory.DisclosureIndicator : UITableViewCellAccessory.DetailButton;
+            cell.Accessory =  UITableViewCellAccessory.None;
+            //cell.Accessory = orderItem.PAY_ORDER ? UITableViewCellAccessory.DisclosureIndicator : UITableViewCellAccessory.DetailButton;
         
             return cell;
         }
@@ -61,18 +63,18 @@ namespace PizzaOut.IOS.TableViews
             // create the view controller for your initial view - using storyboard, code, etc
             if (order.PAY_ORDER)
             {
-                MyCartViewController myCartViewController =
-                    _owner.Storyboard.InstantiateViewController("MyCartViewController") as MyCartViewController;
+                MyCartViewController myCartViewController =_owner.Storyboard.InstantiateViewController("MyCartViewController") as MyCartViewController;
 
                 //Here you pass the data from the registerViewController to the secondViewController
                 if (myCartViewController == null) return;
 
-                myCartViewController.SetOrderItems(order);
+                myCartViewController.SetOrderItems(order: order,unpaidOrder: true);
                 _owner.NavigationController.PushViewController(myCartViewController, true);
             }
             else
             {
                 //show the items in the order
+                MessagingActions.ShowAlert("Order Confirmed","This order has been confirmed, please await delivery from vendor");
             }
         }
     }

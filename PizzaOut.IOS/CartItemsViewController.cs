@@ -1,11 +1,10 @@
-﻿using Foundation;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using PizzaData.models;
 using PizzaOut.IOS.TableViews;
 using UIKit;
 
-namespace PizzaOut
+namespace PizzaOut.IOS
 {
     public partial class CartItemsViewController : UITableViewController
     {
@@ -22,7 +21,6 @@ namespace PizzaOut
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
-            LoadMenuItems();
         }
 
         public override void ViewDidAppear(bool animated)

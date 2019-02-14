@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Threading.Tasks;
 using Foundation;
+using Microsoft.AppCenter.Crashes;
 using PizzaData.Helpers;
 using PizzaData.models;
 using PizzaOut.IOS.DataManager;
@@ -49,56 +50,58 @@ namespace PizzaOut.IOS
         public override async void ViewWillAppear(bool animated)
         {
             base.ViewWillAppear(animated);
-            _sizes = _categoryItem.GetSizes(_categoryItem.SIZES);
-
-            LblItemName.Text = _categoryItem.MENU_ITEM_NAME;
-            TxtItemDesc.Text = _categoryItem.MENU_ITEM_DESC;
-
-            TxtItemDesc.Editable = false; //make the textfield readonly
-
-            itemImage.SetImage(
-                url: new NSUrl(_categoryItem.MENU_ITEM_IMAGE),
-                placeholder: UIImage.FromBundle("placeholder")
-            );
-
-            //lblItemDesc.Editable = false;
-            LblSelectedQuantity.Text = _selectedQuantity.ToString();
-
-            //set the default values
-            SizePicker.MinimumValue = 0;
-            SizePicker.MaximumValue = _sizes.Count - 1; //set the maximum value based on sizes list decrease by one
-
-            QuantityPicker.MinimumValue = 1;
-            QuantityPicker.MaximumValue = _categoryItem.MAX_QTY; //set the maximum value
-
-            await ComputeSizeAndCost(_sizes[_sizeIndex]);
-
-            //sizeStepper.Value = _selectedQuantity;
-            QuantityPicker.Value = _selectedQuantity;
-
-            SizePicker.ValueChanged += async (sender, e) =>
+            try
             {
-                await SizeStepperValueChanged();
-            };
+                _sizes = _categoryItem.GetSizes(_categoryItem.SIZES);
 
-            QuantityPicker.ValueChanged += async (sender, e) =>
-            {
-                await QuantityStepperValueChanged();
-            };
-            //click action for add to cart
-            BtnAddToCart.TouchUpInside += async (sender, e) =>
-            {
-                var bounds = UIScreen.MainScreen.Bounds;
-                _loadingOverlay = new LoadingOverlay(bounds, "Updating your cart...");
-                var itemAdded = await AddItemToCart();
+                LblItemName.Text = _categoryItem.MENU_ITEM_NAME;
+                TxtItemDesc.Text = _categoryItem.MENU_ITEM_DESC;
 
-                _loadingOverlay.Hide();
-                if (!itemAdded) return;
-                //resest the exists flag
-                _itemExists = false;
-                //close the view and go back
-                NavigationController.PopViewController(true);
-            };
+                TxtItemDesc.Editable = false; //make the textfield readonly
+
+                itemImage.SetImage(
+                    url: new NSUrl(_categoryItem.MENU_ITEM_IMAGE),
+                    placeholder: UIImage.FromBundle("placeholder")
+                );
+
+                //lblItemDesc.Editable = false;
+                LblSelectedQuantity.Text = _selectedQuantity.ToString();
+
+                //set the default values
+                SizePicker.MinimumValue = 0;
+                SizePicker.MaximumValue = _sizes.Count - 1; //set the maximum value based on sizes list decrease by one
+
+                QuantityPicker.MinimumValue = 1;
+                QuantityPicker.MaximumValue = _categoryItem.MAX_QTY; //set the maximum value
+
+                await ComputeSizeAndCost(_sizes[_sizeIndex]);
+
+                //sizeStepper.Value = _selectedQuantity;
+                QuantityPicker.Value = _selectedQuantity;
+
+                SizePicker.ValueChanged += async (sender, e) => { await SizeStepperValueChanged(); };
+
+                QuantityPicker.ValueChanged += async (sender, e) => { await QuantityStepperValueChanged(); };
+                //click action for add to cart
+                BtnAddToCart.TouchUpInside += async (sender, e) =>
+                {
+                    var bounds = UIScreen.MainScreen.Bounds;
+                    _loadingOverlay = new LoadingOverlay(bounds, "Updating your cart...");
+                    View.Add(_loadingOverlay);
+                    var itemAdded = await AddItemToCart();
+
+                    _loadingOverlay.Hide();
+                    if (!itemAdded) return;
+                    //resest the exists flag
+                    _itemExists = false;
+                    //close the view and go back
+                    NavigationController.PopViewController(true);
+                };
+            }
+            catch (Exception ex)
+            {
+                Crashes.TrackError(ex);
+            }
         }
 
         private async Task<bool> AddItemToCart()

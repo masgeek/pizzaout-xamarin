@@ -59,7 +59,12 @@ namespace PizzaData.models
 
         public bool HAS_ERRORS { get; set; }
 
+        public double MIN_PRICE { get; set; }
+
         public List<ErrorModel> ERROR_LIST { get; set; }
+
+        public string field { get; set; }
+        public string message { get; set; }
 
 
         public List<ErrorModel> GetErrors(JArray errorsJArray)

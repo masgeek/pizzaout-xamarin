@@ -15,6 +15,10 @@ namespace PizzaOut.IOS
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton BtnClose { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIButton BtnPayOrder { get; set; }
 
         [Outlet]
@@ -35,6 +39,11 @@ namespace PizzaOut.IOS
 
         void ReleaseDesignerOutlets ()
         {
+            if (BtnClose != null) {
+                BtnClose.Dispose ();
+                BtnClose = null;
+            }
+
             if (BtnPayOrder != null) {
                 BtnPayOrder.Dispose ();
                 BtnPayOrder = null;

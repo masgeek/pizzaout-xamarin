@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using PizzaData.models;
@@ -101,7 +102,7 @@ namespace PizzaData.Helpers
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Crashes.TrackError(ex);
             }
 
             return result;
