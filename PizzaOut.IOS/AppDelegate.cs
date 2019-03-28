@@ -68,7 +68,7 @@ namespace PizzaOut.IOS
                 if (!AppHelper.IsNetworkAvailable())
                 {
                     MessagingActions.ShowAlert("Unstable Network",
-                        "Your Network appeasr to be unstable, app perfomance will be impaired");
+                        "Your Network appears to be unstable, app perfomance will be impaired");
                 }
             }
 
